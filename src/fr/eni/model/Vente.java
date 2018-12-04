@@ -16,7 +16,17 @@ public class Vente {
 	
 	public Vente() {
 	}
+
 	
+	public Vente(String nomArticle, String description, Date dateFinEnchere, double miseAPrix) {
+		super();
+		this.nomArticle = nomArticle;
+		this.description = description;
+		this.dateFinEnchere = dateFinEnchere;
+		this.miseAPrix = miseAPrix;
+	}
+
+
 	public Vente(int noVente, String nomArticle, String description, Date dateFinEnchere, double miseAPrix, Categorie categorie, Retrait retrait) {
 		this.noVente = noVente;
 		this.nomArticle = nomArticle;
