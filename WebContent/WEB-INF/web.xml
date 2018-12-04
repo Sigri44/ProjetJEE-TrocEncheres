@@ -45,4 +45,22 @@
 		<servlet-name>Profil</servlet-name>
 		<url-pattern>/profil</url-pattern>
 	</servlet-mapping>
+	
+	<servlet>
+		<servlet-name>ProfilPublic</servlet-name>
+		<servlet-class>fr.eni.servlets.ProfilPublic</servlet-class>
+	</servlet>
+	<servlet-mapping>
+		<servlet-name>ProfilPublic</servlet-name>
+		<url-pattern>/profilPublic</url-pattern>
+	</servlet-mapping>
+	
+	<servlet>
+		<servlet-name>ListeEncheres</servlet-name>
+		<servlet-class>fr.eni.servlets.ListeEncheres</servlet-class>
+	</servlet>
+	<servlet-mapping>
+		<servlet-name>ListeEncheres</servlet-name>
+		<url-pattern>/listeEncheres</url-pattern>
+	</servlet-mapping>
 </web-app>

@@ -8,7 +8,6 @@
 <body>
 	<div class="container">
 		<div class="header clearfix">
-		
 		   <h3 class="text-muted">TrocEncheres.org</h3>
 		</div>
 		<div class="jumbotron col-sm-12" style="display: block;">
@@ -53,6 +52,5 @@
 		</div>
 		<jsp:include page="footer.jsp"/>
 	</div>
-	<!-- /container -->
 </body>
 </html>
