@@ -36,6 +36,18 @@ public class Inscription extends HttpServlet {
         String codePostal = request.getParameter("codePostal");
         String ville = request.getParameter("ville");
         
+        //Map des données saisies
+        Map<String, String> saisie = new HashMap<>();
+        saisie.put("email", email);
+        saisie.put("pseudo", pseudo);
+        saisie.put("prenom", prenom);
+        saisie.put("nom", nom);
+        saisie.put("telephone", telephone);
+        saisie.put("rue", rue);
+        saisie.put("codePostal", codePostal);
+        saisie.put("ville", ville);
+        
+        
         //Map d'erreurs
         Map<String, String> erreurs = new HashMap<>();
         
@@ -126,9 +138,9 @@ public class Inscription extends HttpServlet {
         
        
         if(!erreurs.isEmpty()) {
-        	request.setAttribute( "erreurs", erreurs );
-        	this.getServletContext().getRequestDispatcher( "/inscription" ).forward( request, response );
-			
+        	request.setAttribute( "erreurs", erreurs );  
+        	request.setAttribute("saisie", saisie);
+        	request.getRequestDispatcher("/WEB-INF/jsp/inscription.jsp").forward(request, response);		
         }else {
         	try {
     			UtilisateurDAO.ajouter(utilisateur);
@@ -169,9 +181,9 @@ public class Inscription extends HttpServlet {
 	    }
 	}
 	
-	private void validationString( String nom ) throws Exception {
-	    if ( nom.trim().length() < 1 ) {
-	        throw new Exception( "Que des espaces? -_-" );
+	private void validationString( String string ) throws Exception {
+	    if ( string.trim().length() < 1 ) {
+	        throw new Exception( "Champ non valide" );
 	    }
 	}
 	

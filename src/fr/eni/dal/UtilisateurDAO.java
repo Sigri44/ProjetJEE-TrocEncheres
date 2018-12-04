@@ -8,8 +8,8 @@ import java.sql.*;
 import java.util.*;
 
 public class UtilisateurDAO {
-	private static final String AJOUTER = "insert into UTILISATEURS (pseudo ,nom,"
-			+ ",email,telephone,rue ,code_postal,ville,mot_de_passe,credit,prenom) values (?,?,?,?,?,?,?,?,?,?)";
+	private static final String AJOUTER = "insert into UTILISATEURS (pseudo , nom, prenom"
+			+ ", email, telephone, rue, code_postal, ville, mot_de_passe, credit, administrateur) values (?,?,?,?,?,?,?,?,?,?,?)";
 	private static final String SUPPRIMER 	= "delete from UTILISATEURS where id = ?";
 	private static final String MODIFIER = "update UTILISATEURS set pseudo = ?, nom = ?, email = ?, telephone = ?, rue = ?, "
 			+ "code_postal = ?, ville = ?, mot_de_passe = ?, credit = ? , prenom = ? where id = ?";
@@ -27,15 +27,16 @@ private static final String LOGIN ="select * from UTILISATEURS where pseudo=? an
 
 			rqt.setString(1, utilisateur.getPseudo());
 			rqt.setString(2, utilisateur.getNom());
-			rqt.setString(3, utilisateur.getMail());
-			rqt.setInt(4, utilisateur.getTelephone());
-			rqt.setString(5, utilisateur.getRue());
-			rqt.setInt(6, utilisateur.getCodePostal());
-			rqt.setString(7, utilisateur.getVille());
-			rqt.setString(8, utilisateur.getMotDePasse());
-			rqt.setInt(9, utilisateur.getCredit());
-			rqt.setString(10, utilisateur.getPrenom());
-
+			rqt.setString(3, utilisateur.getPrenom());
+			rqt.setString(4, utilisateur.getMail());
+			rqt.setInt(5, utilisateur.getTelephone());
+			rqt.setString(6, utilisateur.getRue());
+			rqt.setInt(7, utilisateur.getCodePostal());
+			rqt.setString(8, utilisateur.getVille());
+			rqt.setString(9, utilisateur.getMotDePasse());
+			rqt.setInt(10, 0);
+			rqt.setInt(11, 0);
+			rqt.execute();
 		} catch (SQLException e) {
 			new SQLException(e.getMessage());
 		}
