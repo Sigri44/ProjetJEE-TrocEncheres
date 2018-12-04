@@ -14,7 +14,6 @@
 		<servlet-name>Connexion</servlet-name>
 		<servlet-class>fr.eni.servlets.Connexion</servlet-class>
 	</servlet>
-	
 	<servlet-mapping>
 		<servlet-name>Connexion</servlet-name>
 		<url-pattern>/connexion</url-pattern>
@@ -24,19 +23,26 @@
 		<servlet-name>Inscription</servlet-name>
 		<servlet-class>fr.eni.servlets.Inscription</servlet-class>
 	</servlet>
+	<servlet-mapping>
+		<servlet-name>Inscription</servlet-name>
+		<url-pattern>/inscription</url-pattern>
+	</servlet-mapping>
 	
+	<servlet>
+		<servlet-name>MonProfil</servlet-name>
+		<servlet-class>fr.eni.servlets.MonProfil</servlet-class>
+	</servlet>
 	<servlet-mapping>
 		<servlet-name>MonProfil</servlet-name>
 		<url-pattern>/monProfil</url-pattern>
 	</servlet-mapping>
-	
-		<servlet>
-		<servlet-name>MonProfil</servlet-name>
-		<servlet-class>fr.eni.servlets.MonProfil</servlet-class>
+		
+	<servlet>
+		<servlet-name>Profil</servlet-name>
+		<servlet-class>fr.eni.servlets.Profil</servlet-class>
 	</servlet>
-	
 	<servlet-mapping>
-		<servlet-name>MonProfil</servlet-name>
-		<url-pattern>/monProfil</url-pattern>
+		<servlet-name>Profil</servlet-name>
+		<url-pattern>/profil</url-pattern>
 	</servlet-mapping>
 </web-app>

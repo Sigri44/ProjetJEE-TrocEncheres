@@ -57,7 +57,7 @@
                           <a class="btn btn-lg" href="#"><button type="submit" class="btn btn-primary" style="background-color: rgb(255, 0, 0); text-align: left; float: none;">Supprimer mon compte</button></a>
                      	</div>
                       	<div class="col-sm-3">
-                           <a class="btn btn-lg" href="#"><button type="submit" class="btn btn-primary" style="background-color: rgb(255, 0, 0); text-align: left; float: none;">Retour</button></a>
+                           <a class="btn btn-lg" href="#"><button type="submit" class="btn btn-primary" style="background-color: #0062cc; text-align: left; float: none;">Retour</button></a>
                      	</div>
                   </div>
 				</form>
