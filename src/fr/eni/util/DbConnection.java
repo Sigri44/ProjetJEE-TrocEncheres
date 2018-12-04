@@ -8,7 +8,7 @@ import com.microsoft.sqlserver.jdbc.SQLServerDriver;
 
 public class DbConnection {
 
-	private static final  String URL= "jdbc:sqlserver://127.0.0.1:1433;databasename=ENCHERES";
+	private static final  String URL= "jdbc:sqlserver://10.12.200.16:1433;databasename=ENCHERES";
 	private static final String User = "sa";
 	private static final String Password = "Pa$$w0rd";
 	
