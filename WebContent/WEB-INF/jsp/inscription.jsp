@@ -11,7 +11,7 @@
 		<div class="jumbotron">
 	      	<h1 style="">Créer un compte</h1>
 	      	<div class="form-group">
-	      		<form>
+	      		<form action="Inscription" method="post">
 		        	<div class="row">
 						<div class="col-sm-6">					
 							<div class="form-group" style="display: block;"><label>Pseudo :<br></label>
@@ -37,6 +37,7 @@
 							</div>
 							<div class="form-group" style="display: block;"><label>Email :<br></label>
 								<input name="email" type="text" class="form-control" style="position: static; display: block;" required>
+								
 							</div>
 							<div class="form-group" style="display: block;"><label>Rue :<br></label>
 								<input name="rue" type="text" class="form-control" style="position: static; display: block;" required>
@@ -55,6 +56,5 @@
 		</div>
 		<jsp:include page="footer.jsp"/>
 	</div>
-   <!-- /container -->
 </body>
 </html>

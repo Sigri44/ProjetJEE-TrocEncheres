@@ -45,81 +45,90 @@ public class Inscription extends HttpServlet {
         //Vérification de la validité du mail
         try {
             validationEmail( email );
+            utilisateur.setMail( email );
         } catch ( Exception e ) {
             erreurs  = setErreur(erreurs, "email", e.getMessage() );
         }
-        utilisateur.setMail( email );
+        
         
         //Vérification du mot de passe
         try {
             validationMotsDePasse( motDePasse, confirmation );
+            utilisateur.setMotDePasse( motDePasse );
         } catch ( Exception e ) {
             erreurs = setErreur(erreurs, "mdp", e.getMessage() );
             erreurs = setErreur(erreurs, "mdpConf", null );
         }
-        utilisateur.setMotDePasse( motDePasse );
+        
         
         //Vérification du pseudo
         try {
             validationPseudo( pseudo );
+            utilisateur.setPseudo( pseudo );
         } catch ( Exception e ) {
             erreurs = setErreur(erreurs, "pseudo", e.getMessage() );
         }
-        utilisateur.setPseudo( pseudo );
+        
         
         //Vérification du nom
         try {
             validationString( nom );
+            utilisateur.setNom( nom );
         } catch ( Exception e ) {
             erreurs = setErreur(erreurs, "nom", e.getMessage() );
         }
-        utilisateur.setNom( nom );
+        
         
         //Vérification du prenom
         try {
             validationString( prenom );
+            utilisateur.setNom( prenom );
         } catch ( Exception e ) {
             erreurs = setErreur(erreurs, "prenom", e.getMessage() );
         }
-        utilisateur.setNom( prenom );
+        
         
         //Vérification de la ville
         try {
             validationString( ville );
+            utilisateur.setVille(ville);
         } catch ( Exception e ) {
             erreurs = setErreur(erreurs, "ville", e.getMessage() );
         }
-        utilisateur.setVille(ville);
+        
         
         //Vérification de la rue
         try {
             validationString( rue );
+            utilisateur.setRue(rue);
         } catch ( Exception e ) {
             erreurs = setErreur(erreurs, "rue", e.getMessage() );
         }
-        utilisateur.setRue(rue);
+        
         
         //Vérification du telephone
         try {
             validationTelephone(telephone);
+            utilisateur.setTelephone(Integer.parseInt(telephone));
         } catch ( Exception e ) {
             erreurs = setErreur(erreurs, "telephone", e.getMessage() );
         }
-        utilisateur.setTelephone(Integer.parseInt(telephone));
+        
         
                 
         //Vérification du code postal
         try {
             validationCodePostal(codePostal);
+            utilisateur.setCodePostal(Integer.parseInt(codePostal));
         } catch ( Exception e ) {
             erreurs = setErreur(erreurs, "codePostal", e.getMessage() );
         }
-        utilisateur.setCodePostal(Integer.parseInt(codePostal));
+        
        
         if(!erreurs.isEmpty()) {
         	request.setAttribute( "erreurs", erreurs );
-        	RequestDispatcher dispatcher = getServletContext().getRequestDispatcher("/inscription");
-			dispatcher.forward(request,response);
+        	this.getServletContext().getRequestDispatcher( "/inscription" ).forward( request, response );
+			
         }else {
         	try {
     			UtilisateurDAO.ajouter(utilisateur);
@@ -127,7 +136,6 @@ public class Inscription extends HttpServlet {
             	RequestDispatcher dispatcher = getServletContext().getRequestDispatcher("/connexion");
     			dispatcher.forward(request,response);
     		} catch (SQLException e) {
-    			// TODO Auto-generated catch block
     			e.printStackTrace();
     		}
         }
