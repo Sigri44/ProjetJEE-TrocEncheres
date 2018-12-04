@@ -26,7 +26,17 @@
 	</servlet>
 	
 	<servlet-mapping>
-		<servlet-name>Inscription</servlet-name>
-		<url-pattern>/inscription</url-pattern>
+		<servlet-name>MonProfil</servlet-name>
+		<url-pattern>/monProfil</url-pattern>
+	</servlet-mapping>
+	
+		<servlet>
+		<servlet-name>MonProfil</servlet-name>
+		<servlet-class>fr.eni.servlets.MonProfil</servlet-class>
+	</servlet>
+	
+	<servlet-mapping>
+		<servlet-name>MonProfil</servlet-name>
+		<url-pattern>/monProfil</url-pattern>
 	</servlet-mapping>
 </web-app>
