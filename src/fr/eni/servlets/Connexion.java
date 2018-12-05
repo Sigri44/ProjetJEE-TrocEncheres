@@ -69,8 +69,7 @@ public class Connexion extends HttpServlet {
     			userInfos.put("pseudo", user.getPseudo());
     			userInfos.put("isAdmin", user.isAdmin());
     			session.setAttribute("utilisateur", userInfos);
-            	RequestDispatcher dispatcher = getServletContext().getRequestDispatcher("/listeEncheres");
-    			dispatcher.forward(request,response);
+    			response.sendRedirect("listeEncheres");
     		} catch (SQLException e) {
     			e.printStackTrace();
     		}

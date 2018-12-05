@@ -7,7 +7,7 @@
 			<a class="nav-link" href="profil">Mon profil</a>
 		</li>
 		<li class="nav-item">
-			<a class="nav-link" href="#">Déconnexion</a>
+			<a class="nav-link" href="deconnexion">Déconnexion</a>
 		</li>
 	</ul>
 	</nav>
