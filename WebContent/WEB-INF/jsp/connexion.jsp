@@ -16,11 +16,11 @@
 				<form class="col-sm-6">
 					<div class="form-group">
 					   <label>Identifiant :</label>
-					   <input type="text" class="form-control">
+					   <input type="text" class="form-control" maxlength="50">
 					</div>
 					<div class="form-group">
 						<label>Mot de passe :</label>
-						<input type="text" class="form-control">
+						<input type="text" class="form-control" maxlength="30">
 					</div>
 				</form>
 				<div class="col-sm-3"></div>

@@ -37,10 +37,10 @@
 				</div>
 				<div class="row">
 					<div class="col-sm-6">
-						<h3>col-sm-6</h3>
+						<h3>Enchère 1</h3>
 					</div>
 					<div class="col-sm-6">
-						<h3>col-sm-6</h3>
+						<h3>Enchère 2</h3>
 					</div>
 				</div>
 			</div>
