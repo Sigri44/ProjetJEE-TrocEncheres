@@ -73,4 +73,12 @@
     <servlet-name>SupprProfil</servlet-name>
     <url-pattern>/supprProfil</url-pattern>
   </servlet-mapping>
+  <servlet>
+    <servlet-name>VendreUnArticle</servlet-name>
+    <servlet-class>fr.eni.servlets.VendreUnArticle</servlet-class>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>VendreUnArticle</servlet-name>
+    <url-pattern>/vendreUnArticle</url-pattern>
+  </servlet-mapping>
 </web-app>
