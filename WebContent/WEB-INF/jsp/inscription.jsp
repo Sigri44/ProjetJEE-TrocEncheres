@@ -25,6 +25,9 @@
 								<c:if test= "${not empty erreurs['pseudo']}">
 									<p class="alert alert-danger">${erreurs['pseudo']}</p>
 								</c:if>
+								<c:if test= "${not empty erreurs['existPseudo']}">
+									<p class="alert alert-danger">${erreurs['existPseudo']}</p>
+								</c:if>
 							</div>
 							<div class="form-group" style="display: block;"><label>Prénom :<br></label>
 								<c:if test= "${not empty saisie['prenom']}">
@@ -46,6 +49,9 @@
 								</c:if>
 								<c:if test= "${not empty erreurs['telephone']}">
 									<p class="alert alert-danger">${erreurs['telephone']}</p>
+								</c:if>
+								<c:if test= "${not empty erreurs['existTel']}">
+									<p class="alert alert-danger">${erreurs['existTel']}</p>
 								</c:if>
 							</div>
 							<div class="form-group" style="display: block;"><label>Code Postal :<br></label>
@@ -88,6 +94,9 @@
 								</c:if>
 								<c:if test= "${not empty erreurs['email']}">
 									<p class="alert alert-danger">${erreurs['email']}</p>
+								</c:if>
+								<c:if test= "${not empty erreurs['existMail']}">
+									<p class="alert alert-danger">${erreurs['existMail']}</p>
 								</c:if>
 							</div>
 							<div class="form-group" style="display: block;"><label>Rue :<br></label>
