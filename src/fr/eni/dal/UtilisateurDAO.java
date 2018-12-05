@@ -12,9 +12,13 @@ public class UtilisateurDAO {
 	private static final String SUPPRIMER 	= "delete from UTILISATEURS where id = ?";
 	private static final String MODIFIER = "update UTILISATEURS set pseudo = ?, nom = ?, email = ?, telephone = ?, rue = ?, "
 			+ "code_postal = ?, ville = ?, mot_de_passe = ?, credit = ? , prenom = ? where id = ?";
-	private static final String RECHERCHER ="select pseudo ,nom,email,telephone,rue ,code_postal,ville,mot_de_passe,credit,prenom from UTILISATEURS where id = ?";
+	private static final String SEARCHBYID ="select * from UTILISATEURS where id = ?";
+	private static final String SEARCHBYPSEUDO ="select pseudo  from UTILISATEURS where pseudo = ?";
+	private static final String SEARCHBYMAIL ="select email from UTILISATEURS where email = ?";
+	private static final String SEARCHBYTEL ="select telephone from UTILISATEURS where telephone = ?";
 	private static final String LISTER 	= "select pseudo ,nom,email,telephone,rue ,code_postal,ville,mot_de_passe,credit,prenom from UTILISATEURS";
-	private static final String LOGIN ="select * from UTILISATEURS where pseudo=? and mot_de_passe=?";
+	private static final String LOGINMAIL ="select * from UTILISATEURS where email=? and mot_de_passe=?";
+	private static final String LOGINPSEUDO ="select * from UTILISATEURS where pseudo=? and mot_de_passe=?";
 	
 	public static void ajouter (Utilisateur utilisateur) throws SQLException {		
 		try {
@@ -102,14 +106,14 @@ public class UtilisateurDAO {
 		return listeUtilisateurs;
 
 	}
-	public static Utilisateur rechercher (int id) throws SQLException {
+	public static Utilisateur rechercherParId (int id) throws SQLException {
 		Connection cnx=null;
 		PreparedStatement rqt=null;
 		ResultSet rs=null;
 		Utilisateur utilisateur = null;
 		try {
 			cnx = DbConnection.seConnecter();
-			rqt = cnx.prepareStatement(RECHERCHER);
+			rqt = cnx.prepareStatement(SEARCHBYID);
 			rqt.setInt(1, id);
 			rs= rqt.executeQuery();
 			while (rs.next()) {
@@ -131,5 +135,67 @@ public class UtilisateurDAO {
 			if (cnx!=null) cnx.close();
 		}
 		return utilisateur;
+	}
+	public static boolean existByPseudo (String pseudo) throws SQLException {
+		Connection cnx=null;
+		PreparedStatement rqt=null;
+		ResultSet rs=null;
+		boolean exist = false;
+		try {
+			cnx = DbConnection.seConnecter();
+			rqt = cnx.prepareStatement(SEARCHBYPSEUDO);
+			rqt.setString(1, pseudo);
+			rs= rqt.executeQuery();			
+			while (rs.next()) {
+				exist = true;
+			}
+		} finally{
+			if (rs!=null) rs.close();
+			if (rqt!=null) rqt.close();
+			if (cnx!=null) cnx.close();
+		}
+		return exist;
+	}
+	
+	public static boolean existByMail (String email) throws SQLException {
+		Connection cnx=null;
+		PreparedStatement rqt=null;
+		ResultSet rs=null;
+		boolean exist = false;
+		try {
+			cnx = DbConnection.seConnecter();
+			rqt = cnx.prepareStatement(SEARCHBYMAIL);
+			rqt.setString(1, email);
+			rs= rqt.executeQuery();			
+			while (rs.next()) {
+				exist = true;
+			}
+		} finally{
+			if (rs!=null) rs.close();
+			if (rqt!=null) rqt.close();
+			if (cnx!=null) cnx.close();
+		}
+		return exist;
+	}
+	
+	public static boolean existByTel (String telephone) throws SQLException {
+		Connection cnx=null;
+		PreparedStatement rqt=null;
+		ResultSet rs=null;
+		boolean exist = false;
+		try {
+			cnx = DbConnection.seConnecter();
+			rqt = cnx.prepareStatement(SEARCHBYTEL);
+			rqt.setString(1, telephone);
+			rs= rqt.executeQuery();			
+			while (rs.next()) {
+				exist = true;
+			}
+		} finally{
+			if (rs!=null) rs.close();
+			if (rqt!=null) rqt.close();
+			if (cnx!=null) cnx.close();
+		}
+		return exist;
 	}
 }

@@ -51,6 +51,34 @@ public class Inscription extends HttpServlet {
         //Map d'erreurs
         Map<String, String> erreurs = new HashMap<>();
         
+        //Vérification de l'unicité du pseudo, du mail et de numéro de téléphone
+        try {
+			boolean exist = UtilisateurDAO.existByPseudo(pseudo);
+			if(exist) {
+				erreurs = setErreur(erreurs, "existPseudo", "Ce pseudo est déja pris");
+			}
+		} catch (SQLException e1) {
+			e1.printStackTrace();
+		}
+        try {
+			boolean exist = UtilisateurDAO.existByMail(email);
+			System.out.println(exist);
+			if(exist) {
+				erreurs = setErreur(erreurs, "existMail", "Cet email est déja utlisé");
+			}
+		} catch (SQLException e1) {
+			e1.printStackTrace();
+		}
+        try {
+			boolean exist = UtilisateurDAO.existByTel(telephone);
+			System.out.println(exist);
+			if(exist) {
+				erreurs = setErreur(erreurs, "existTel", "Cet numéro de téléphone est déja utlisé");
+			}
+		} catch (SQLException e1) {
+			e1.printStackTrace();
+		}
+        
         //Création d'un utilisateur
         Utilisateur utilisateur = new Utilisateur();
         

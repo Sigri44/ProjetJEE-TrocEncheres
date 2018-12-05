@@ -47,9 +47,7 @@ public class Utilisateur{
 	}	
 	
 	public Utilisateur() {
-	}
-
-	
+	}	
 
 	public int getNoUtilisateur() {
 		return noUtilisateur;
@@ -118,7 +116,6 @@ public class Utilisateur{
 				+ ", telephone=" + telephone + ", rue=" + rue + ", codePostal=" + codePostal + ", ville=" + ville
 				+ ", motDePasse=" + motDePasse + "]";
 	}
-
 	
 	public String getPrenom() {
 		return prenom;
