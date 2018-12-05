@@ -11,6 +11,9 @@
 		   <h3 class="text-muted">TrocEncheres.org</h3>
 		</div>
 		<div class="jumbotron col-sm-12" style="display: block;">
+		<c:if test= "${not empty inscription}">
+			<p class="alert alert-success">${inscription}</p>
+		</c:if>		
 			<div class="row">
 	        	<div class="col-sm-3"></div>
 				<form class="col-sm-6">
