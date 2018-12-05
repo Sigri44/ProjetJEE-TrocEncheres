@@ -64,7 +64,7 @@ public class Inscription extends HttpServlet {
 			boolean exist = UtilisateurDAO.existByMail(email);
 			System.out.println(exist);
 			if(exist) {
-				erreurs = setErreur(erreurs, "existMail", "Cet email est déja utlisé");
+				erreurs = setErreur(erreurs, "existMail", "Cet email est déja utilisé");
 			}
 		} catch (SQLException e1) {
 			e1.printStackTrace();
@@ -73,7 +73,7 @@ public class Inscription extends HttpServlet {
 			boolean exist = UtilisateurDAO.existByTel(telephone);
 			System.out.println(exist);
 			if(exist) {
-				erreurs = setErreur(erreurs, "existTel", "Cet numéro de téléphone est déja utlisé");
+				erreurs = setErreur(erreurs, "existTel", "Cet numéro de téléphone est déja utilisé");
 			}
 		} catch (SQLException e1) {
 			e1.printStackTrace();
@@ -196,7 +196,7 @@ public class Inscription extends HttpServlet {
 	        if ( !mdp.equals( mdpConf ) ) {
 	            throw new Exception( "Les mots de passe entrés sont différents, merci de les saisir à nouveau." );
 	        } else if ( mdp.length() < 3 ) {
-	            throw new Exception( "Les mots de passe doivent contenir au moins 3 caractères." );
+	            throw new Exception( "Le mot de passe doit contenir au moins 3 caractères." );
 	        }
 	    } else {
 	        throw new Exception( "Merci de saisir et confirmer votre mot de passe." );
