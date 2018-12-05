@@ -6,9 +6,9 @@ public class Utilisateur{
 	private String pseudo;
 	private String nom;
 	private String mail;
-	private int telephone;
+	private String telephone;
 	private String rue;
-	private int codePostal;
+	private String codePostal;
 	private String ville;
 	private String motDePasse;
 	private int credit;
@@ -16,7 +16,7 @@ public class Utilisateur{
 	
 	
 
-	public Utilisateur(String pseudo, String nom, String mail, int telephone, String rue, int codePostal, String ville,
+	public Utilisateur(String pseudo, String nom, String mail, String telephone, String rue, String codePostal, String ville,
 			String motDePasse, int credit, String prenom) {
 		super();
 		this.pseudo = pseudo;
@@ -31,8 +31,8 @@ public class Utilisateur{
 		this.prenom = prenom;
 	}
 
-	public Utilisateur(int noUtilisateur, String pseudo, String nom, String mail, int telephone, String rue,
-			int codePostal, String ville, String motDePasse, int credit, String prenom) {
+	public Utilisateur(int noUtilisateur, String pseudo, String nom, String mail, String telephone, String rue,
+			String codePostal, String ville, String motDePasse, int credit, String prenom) {
 		this.noUtilisateur = noUtilisateur;
 		this.pseudo = pseudo;
 		this.nom = nom;
@@ -75,10 +75,10 @@ public class Utilisateur{
 	public void setMail(String mail) {
 		this.mail = mail;
 	}
-	public int getTelephone() {
+	public String getTelephone() {
 		return telephone;
 	}
-	public void setTelephone(int telephone) {
+	public void setTelephone(String telephone) {
 		this.telephone = telephone;
 	}
 	public String getRue() {
@@ -87,10 +87,10 @@ public class Utilisateur{
 	public void setRue(String rue) {
 		this.rue = rue;
 	}
-	public int getCodePostal() {
+	public String getCodePostal() {
 		return codePostal;
 	}
-	public void setCodePostal(int codePostal) {
+	public void setCodePostal(String codePostal) {
 		this.codePostal = codePostal;
 	}
 	public String getVille() {

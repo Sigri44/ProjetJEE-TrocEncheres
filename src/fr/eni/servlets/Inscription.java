@@ -85,7 +85,7 @@ public class Inscription extends HttpServlet {
         //Vérification du nom
         try {
             validationString( nom );
-            utilisateur.setNom( nom );
+            utilisateur.setNom(nom);
         } catch ( Exception e ) {
             erreurs = setErreur(erreurs, "nom", e.getMessage() );
         }
@@ -94,7 +94,7 @@ public class Inscription extends HttpServlet {
         //Vérification du prenom
         try {
             validationString( prenom );
-            utilisateur.setNom( prenom );
+            utilisateur.setPrenom( prenom );
         } catch ( Exception e ) {
             erreurs = setErreur(erreurs, "prenom", e.getMessage() );
         }
@@ -121,7 +121,7 @@ public class Inscription extends HttpServlet {
         //Vérification du telephone
         try {
             validationTelephone(telephone);
-            utilisateur.setTelephone(Integer.parseInt(telephone));
+            utilisateur.setTelephone(telephone);
         } catch ( Exception e ) {
             erreurs = setErreur(erreurs, "telephone", e.getMessage() );
         }
@@ -131,7 +131,7 @@ public class Inscription extends HttpServlet {
         //Vérification du code postal
         try {
             validationCodePostal(codePostal);
-            utilisateur.setCodePostal(Integer.parseInt(codePostal));
+            utilisateur.setCodePostal(codePostal);
         } catch ( Exception e ) {
             erreurs = setErreur(erreurs, "codePostal", e.getMessage() );
         }
