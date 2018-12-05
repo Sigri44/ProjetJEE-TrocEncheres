@@ -45,7 +45,7 @@ public class Connexion extends HttpServlet {
 			boolean existPseudo = UtilisateurDAO.existByPseudo(identifiant);
 			boolean existMail = UtilisateurDAO.existByMail(identifiant);
 			if(!existPseudo && !existMail) {				
-				erreurs = setErreur(erreurs, "notExistIdentifiant", "Cet identifiant n'existe pas");											
+				erreurs = setErreur(erreurs, "notExistIdentifiant", "L'identifiant saisi n'existe pas");											
 			}
 			else {
 				boolean checkLogin = UtilisateurDAO.passMatchId(identifiant,mdp);
@@ -69,7 +69,7 @@ public class Connexion extends HttpServlet {
     			userInfos.put("pseudo", user.getPseudo());
     			userInfos.put("isAdmin", user.isAdmin());
     			session.setAttribute("utilisateur", userInfos);
-            	RequestDispatcher dispatcher = getServletContext().getRequestDispatcher("/connexion");
+            	RequestDispatcher dispatcher = getServletContext().getRequestDispatcher("/listeEncheres");
     			dispatcher.forward(request,response);
     		} catch (SQLException e) {
     			e.printStackTrace();

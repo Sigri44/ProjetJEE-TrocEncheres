@@ -13,7 +13,7 @@ public class UtilisateurDAO {
 	private static final String MODIFIER = "update UTILISATEURS set pseudo = ?, nom = ?, email = ?, telephone = ?, rue = ?, "
 			+ "code_postal = ?, ville = ?, mot_de_passe = ?, credit = ? , prenom = ? where id = ?";
 	private static final String SEARCHBYID ="select * from UTILISATEURS where id = ?";
-	private static final String SEARCHBYLOGIN ="select pseudo  from UTILISATEURS where pseudo = ? or email = ?";
+	private static final String SEARCHBYLOGIN ="select *  from UTILISATEURS where pseudo = ? or email = ?";
 	private static final String SEARCHBYPSEUDO ="select pseudo  from UTILISATEURS where pseudo = ?";
 	private static final String SEARCHBYMAIL ="select email from UTILISATEURS where email = ?";
 	private static final String SEARCHBYTEL ="select telephone from UTILISATEURS where telephone = ?";
