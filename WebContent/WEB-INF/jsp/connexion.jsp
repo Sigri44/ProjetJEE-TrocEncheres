@@ -20,7 +20,7 @@
 					</div>
 					<div class="form-group">
 						<label>Mot de passe :</label>
-						<input type="text" class="form-control" maxlength="30">
+						<input type="password" class="form-control" maxlength="30">
 					</div>
 				</form>
 				<div class="col-sm-3"></div>
@@ -28,7 +28,13 @@
 			<div class="row">
 				<div class="col-sm-3"></div>
 				<div class="col-sm-3">
-					<a class="btn btn-lg" href="listeEncheres"><button type="button" class="btn btn-primary" style="background-color: #28a745; text-align: left; float: none;">Connexion</button></a>
+					
+					<!--<a class="btn btn-lg" href="listeEncheres"><button type="button" class="btn btn-primary" style="background-color: #28a745; text-align: left; float: none;">Connexion</button></a>
+					-->
+					<a class="btn btn-lg" href="listeEncheres">
+						<input type="submit" value="Connexion" class="btn btn-primary" style="background-color: #28a745;" />
+					</a>
+					
 				</div>
 				<div class="col-sm-3">
 					<div class="form-group">
