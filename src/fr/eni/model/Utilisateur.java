@@ -13,11 +13,12 @@ public class Utilisateur{
 	private String motDePasse;
 	private int credit;
 	private String prenom;
+	private boolean admin;
 	
 	
 
 	public Utilisateur(String pseudo, String nom, String mail, String telephone, String rue, String codePostal, String ville,
-			String motDePasse, int credit, String prenom) {
+			String motDePasse, int credit, String prenom, boolean admin) {
 		super();
 		this.pseudo = pseudo;
 		this.nom = nom;
@@ -29,10 +30,11 @@ public class Utilisateur{
 		this.motDePasse = motDePasse;
 		this.credit = credit;
 		this.prenom = prenom;
+		this.setAdmin(admin);
 	}
 
 	public Utilisateur(int noUtilisateur, String pseudo, String nom, String mail, String telephone, String rue,
-			String codePostal, String ville, String motDePasse, int credit, String prenom) {
+			String codePostal, String ville, String motDePasse, int credit, String prenom, boolean admin) {
 		this.noUtilisateur = noUtilisateur;
 		this.pseudo = pseudo;
 		this.nom = nom;
@@ -44,6 +46,7 @@ public class Utilisateur{
 		this.motDePasse = motDePasse;
 		this.setCredit(credit);
 		this.setPrenom(prenom);
+		this.setAdmin(admin);
 	}	
 	
 	public Utilisateur() {
@@ -123,6 +126,14 @@ public class Utilisateur{
 
 	public void setPrenom(String prenom) {
 		this.prenom = prenom;
+	}
+
+	public boolean isAdmin() {
+		return admin;
+	}
+
+	public void setAdmin(boolean admin) {
+		this.admin = admin;
 	}
 	
 }

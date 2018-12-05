@@ -12,12 +12,14 @@ public class UtilisateurDAO {
 	private static final String MODIFIER = "update UTILISATEURS set pseudo = ?, nom = ?, email = ?, telephone = ?, rue = ?, "
 			+ "code_postal = ?, ville = ?, mot_de_passe = ?, credit = ? , prenom = ? where id = ?";
 	private static final String SEARCHBYID ="select * from UTILISATEURS where id = ?";
+	private static final String SEARCHBYLOGIN ="select *  from UTILISATEURS where pseudo = ? or email = ?";
 	private static final String SEARCHBYPSEUDO ="select pseudo  from UTILISATEURS where pseudo = ?";
 	private static final String SEARCHBYMAIL ="select email from UTILISATEURS where email = ?";
 	private static final String SEARCHBYTEL ="select telephone from UTILISATEURS where telephone = ?";
 	private static final String LISTER 	= "select pseudo ,nom,email,telephone,rue ,code_postal,ville,mot_de_passe,credit,prenom from UTILISATEURS";
 	private static final String LOGINMAIL ="select * from UTILISATEURS where email=? and mot_de_passe=?";
 	private static final String LOGINPSEUDO ="select * from UTILISATEURS where pseudo=? and mot_de_passe=?";
+	private static final String CHECKLOGIN ="select *  from UTILISATEURS where (pseudo = ? or email = ?) and mot_de_passe=?";
 	
 	public static void ajouter (Utilisateur utilisateur) throws SQLException {		
 		try {
@@ -94,7 +96,7 @@ public class UtilisateurDAO {
 			rs = rqt.executeQuery(LISTER);
 			Utilisateur utilisateur;
 			while (rs.next()) {
-				utilisateur = new Utilisateur(rs.getString("pseudo"), rs.getString("nom"), rs.getString("email"), rs.getString("telephone"), rs.getString("rue"), rs.getString("code_postal"), rs.getString("ville"), rs.getString("mot_de_passe"), rs.getInt("credit"), rs.getString("prenom"));
+				utilisateur = new Utilisateur(rs.getString("pseudo"), rs.getString("nom"), rs.getString("email"), rs.getString("telephone"), rs.getString("rue"), rs.getString("code_postal"), rs.getString("ville"), rs.getString("mot_de_passe"), rs.getInt("credit"), rs.getString("prenom"), rs.getBoolean("administrateur"));
 				listeUtilisateurs.add(utilisateur);
 			}
 		} finally{
@@ -127,6 +129,7 @@ public class UtilisateurDAO {
 				utilisateur.setRue(rs.getString("rue"));
 				utilisateur.setTelephone(rs.getString("telephone"));
 				utilisateur.setVille(rs.getString("ville"));
+				utilisateur.setAdmin(rs.getBoolean("administrateur"));
 			}
 		} finally{
 			if (rs!=null) rs.close();
@@ -196,5 +199,61 @@ public class UtilisateurDAO {
 			if (cnx!=null) cnx.close();
 		}
 		return exist;
+	}
+
+	public static Utilisateur getUserByLogin(String identifiant) throws SQLException {
+		Connection cnx=null;
+		PreparedStatement rqt=null;
+		ResultSet rs=null;
+		Utilisateur utilisateur = null;
+		try {
+			cnx = DbConnection.seConnecter();
+			rqt = cnx.prepareStatement(SEARCHBYLOGIN);
+			rqt.setString(1, identifiant);
+			rqt.setString(2, identifiant);
+			rs= rqt.executeQuery();
+			while (rs.next()) {
+				if (utilisateur == null) utilisateur = new Utilisateur(); 
+				utilisateur.setCodePostal(rs.getString("code_postal"));
+				utilisateur.setCredit(rs.getInt("credit"));
+				utilisateur.setMail(rs.getString("email"));
+				utilisateur.setMotDePasse(rs.getString("mot_de_passe"));
+				utilisateur.setNom(rs.getString("nom"));
+				utilisateur.setPrenom(rs.getString("prenom"));
+				utilisateur.setPseudo(rs.getString("pseudo"));
+				utilisateur.setRue(rs.getString("rue"));
+				utilisateur.setTelephone(rs.getString("telephone"));
+				utilisateur.setVille(rs.getString("ville"));
+				utilisateur.setAdmin(rs.getBoolean("administrateur"));
+			}
+		} finally{
+			if (rs!=null) rs.close();
+			if (rqt!=null) rqt.close();
+			if (cnx!=null) cnx.close();
+		}
+		return utilisateur;
+	}
+
+	public static boolean passMatchId(String identifiant, String mdp) throws SQLException {
+		Connection cnx=null;
+		PreparedStatement rqt=null;
+		ResultSet rs=null;
+		boolean loginOK = false;
+		try {
+			cnx = DbConnection.seConnecter();
+			rqt = cnx.prepareStatement(CHECKLOGIN);
+			rqt.setString(1, identifiant);
+			rqt.setString(2, identifiant);
+			rqt.setString(3, mdp);
+			rs= rqt.executeQuery();			
+			while (rs.next()) {
+				loginOK = true;
+			}
+		} finally{
+			if (rs!=null) rs.close();
+			if (rqt!=null) rqt.close();
+			if (cnx!=null) cnx.close();
+		}
+		return loginOK;
 	}
 }

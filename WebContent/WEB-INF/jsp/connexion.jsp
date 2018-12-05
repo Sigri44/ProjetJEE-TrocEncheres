@@ -16,27 +16,38 @@
 		</c:if>		
 			<div class="row">
 	        	<div class="col-sm-3"></div>
-				<form class="col-sm-6">
+				<form action="connexion" method="post" class="col-sm-6">
 					<div class="form-group">
-					   <label>Identifiant :</label>
-					   <input type="text" class="form-control" maxlength="50">
+					   <label>Identifiant :</label>	
+					   <c:if test= "${not empty erreurs['wrongPass']}">
+							<c:set var="identifiant" value="${saisie['identifiant']}"/>
+						</c:if>		
+						<c:if test= "${empty erreurs['wrongPass']}">
+							<c:set var="identifiant" value=""/>
+						</c:if>					
+						<input name="identifiant" value="${identifiant}" type="text" class="form-control" maxlength="50">
+									   
+					   <c:if test= "${not empty erreurs['notExistIdentifiant']}">
+							<p class="alert alert-danger">${erreurs['notExistIdentifiant']}</p>
+						</c:if>
 					</div>
 					<div class="form-group">
 						<label>Mot de passe :</label>
-						<input type="password" class="form-control" maxlength="30">
+						<input name="password" type="password" class="form-control" maxlength="30">
+						<c:if test= "${not empty erreurs['wrongPass']}">
+							<p class="alert alert-danger">${erreurs['wrongPass']}</p>
+						</c:if>
 					</div>
+					<a class="btn btn-lg" href="listeEncheres">
+						<input type="submit"  class="btn btn-primary" style="background-color: #28a745;" />
+					</a>
 				</form>
 				<div class="col-sm-3"></div>
 			</div>
 			<div class="row">
 				<div class="col-sm-3"></div>
 				<div class="col-sm-3">
-					
-					<!--<a class="btn btn-lg" href="listeEncheres"><button type="button" class="btn btn-primary" style="background-color: #28a745; text-align: left; float: none;">Connexion</button></a>
-					-->
-					<a class="btn btn-lg" href="listeEncheres">
-						<input type="submit" value="Connexion" class="btn btn-primary" style="background-color: #28a745;" />
-					</a>
+					<!-- ancien emplacement du submit -->
 					
 				</div>
 				<div class="col-sm-3">
