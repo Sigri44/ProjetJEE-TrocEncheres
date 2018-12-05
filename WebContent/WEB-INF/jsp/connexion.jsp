@@ -25,8 +25,7 @@
 						<c:if test= "${empty erreurs['wrongPass']}">
 							<c:set var="identifiant" value=""/>
 						</c:if>					
-						<input name="identifiant" value="${identifiant}" type="text" class="form-control" maxlength="50">
-									   
+						<input name="identifiant" value="${identifiant}" type="text" class="form-control" maxlength="50">									   
 					   <c:if test= "${not empty erreurs['notExistIdentifiant']}">
 							<p class="alert alert-danger">${erreurs['notExistIdentifiant']}</p>
 						</c:if>

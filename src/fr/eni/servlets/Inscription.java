@@ -62,7 +62,6 @@ public class Inscription extends HttpServlet {
 		}
         try {
 			boolean exist = UtilisateurDAO.existByMail(email);
-			System.out.println(exist);
 			if(exist) {
 				erreurs = setErreur(erreurs, "existMail", "Cet email est déja utilisé");
 			}
@@ -71,7 +70,6 @@ public class Inscription extends HttpServlet {
 		}
         try {
 			boolean exist = UtilisateurDAO.existByTel(telephone);
-			System.out.println(exist);
 			if(exist) {
 				erreurs = setErreur(erreurs, "existTel", "Cet numéro de téléphone est déja utilisé");
 			}
