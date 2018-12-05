@@ -31,11 +31,13 @@ public class MonProfil extends HttpServlet {
 	    	  userInfos = (Map<String, Object>) request.getSession().getAttribute("utilisateur");
 	    	  try {
 				Utilisateur user = UtilisateurDAO.getUserByLogin((String) userInfos.get("pseudo"));
+				request.setAttribute("user", user);
+				this.getServletContext().getRequestDispatcher( "/WEB-INF/jsp/monProfil.jsp" ).forward( request, response );
 			} catch (SQLException e) {
 				// TODO Auto-generated catch block
 				e.printStackTrace();
 			}
-	    	  this.getServletContext().getRequestDispatcher( "/WEB-INF/jsp/monProfil.jsp" ).forward( request, response );
+	    	  
 	    }
 		
 	}

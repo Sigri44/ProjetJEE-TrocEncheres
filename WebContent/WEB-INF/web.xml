@@ -65,4 +65,12 @@
     <servlet-name>Deconnexion</servlet-name>
     <url-pattern>/deconnexion</url-pattern>
   </servlet-mapping>
+  <servlet>
+    <servlet-name>SupprProfil</servlet-name>
+    <servlet-class>fr.eni.servlets.SupprProfil</servlet-class>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>SupprProfil</servlet-name>
+    <url-pattern>/supprProfil</url-pattern>
+  </servlet-mapping>
 </web-app>

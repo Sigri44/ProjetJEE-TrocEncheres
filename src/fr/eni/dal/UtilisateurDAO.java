@@ -8,7 +8,7 @@ import java.util.*;
 
 public class UtilisateurDAO {
 	private static final String AJOUTER = "insert into UTILISATEURS (pseudo, nom, prenom, email, telephone, rue, code_postal, ville, mot_de_passe, credit, administrateur) values (?,?,?,?,?,?,?,?,?,?,?)";
-	private static final String SUPPRIMER 	= "delete from UTILISATEURS where id = ?";
+	private static final String SUPPRIMER 	= "delete from UTILISATEURS where pseudo = ?";
 	private static final String MODIFIER = "update UTILISATEURS set pseudo = ?, nom = ?, email = ?, telephone = ?, rue = ?, "
 			+ "code_postal = ?, ville = ?, mot_de_passe = ?, credit = ? , prenom = ? where id = ?";
 	private static final String SEARCHBYID ="select * from UTILISATEURS where id = ?";
@@ -67,14 +67,14 @@ public class UtilisateurDAO {
 			if (cnx!=null) cnx.close();
 		}
 	}
-	public static int supprimer (int id) throws SQLException {
+	public static int supprimer (Utilisateur user) throws SQLException {
 		Connection cnx=null;
 		PreparedStatement rqt=null;
 		int nbreEnrgt = 0;
 		try{
 			cnx=DbConnection.seConnecter();
 			rqt=cnx.prepareStatement(SUPPRIMER);
-			rqt.setInt(1, id);
+			rqt.setString(1, user.getPseudo());
 			nbreEnrgt= rqt.executeUpdate();
 		} catch (SQLException e) {
 			throw new SQLException(e.getMessage());

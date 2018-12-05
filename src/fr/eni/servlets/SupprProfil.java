@@ -14,14 +14,24 @@ import javax.servlet.http.HttpServletResponse;
 import fr.eni.dal.UtilisateurDAO;
 import fr.eni.model.Utilisateur;
 
-@WebServlet("/Profil")
-public class Profil extends HttpServlet {
+/**
+ * Servlet implementation class SupprProfil
+ */
+@WebServlet("/SupprProfil")
+public class SupprProfil extends HttpServlet {
 	private static final long serialVersionUID = 1L;
-
-    public Profil() {
-    	
+       
+    /**
+     * @see HttpServlet#HttpServlet()
+     */
+    public SupprProfil() {
+        super();
+        // TODO Auto-generated constructor stub
     }
 
+	/**
+	 * @see HttpServlet#doGet(HttpServletRequest request, HttpServletResponse response)
+	 */
 	@SuppressWarnings("unchecked")
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		if (request.getSession().getAttribute("utilisateur") == null){
@@ -32,8 +42,9 @@ public class Profil extends HttpServlet {
 	    	  userInfos = (Map<String, Object>) request.getSession().getAttribute("utilisateur");
 	    	  try {
 				Utilisateur user = UtilisateurDAO.getUserByLogin((String) userInfos.get("pseudo"));
-				request.setAttribute("user", user);
-				this.getServletContext().getRequestDispatcher( "/WEB-INF/jsp/profil.jsp" ).forward( request, response );
+				UtilisateurDAO.supprimer(user);
+				request.setAttribute("suppressionCompte", "Votre compte a bien été supprimé");
+				this.getServletContext().getRequestDispatcher( "/WEB-INF/jsp/connexion.jsp" ).forward( request, response );
 			} catch (SQLException e) {
 				// TODO Auto-generated catch block
 				e.printStackTrace();
@@ -42,7 +53,12 @@ public class Profil extends HttpServlet {
 	    }
 	}
 
+	/**
+	 * @see HttpServlet#doPost(HttpServletRequest request, HttpServletResponse response)
+	 */
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+		// TODO Auto-generated method stub
 		doGet(request, response);
 	}
+
 }

@@ -17,28 +17,28 @@
 		        	<div class="row">
 						<div class="col-sm-12">
 							<div class="form-group" style="display: block;"><label>Pseudo :<br></label>
-								#PseudoDuGeek
+								${user.pseudo}
 							</div>
 							<div class="form-group" style="display: block;"><label>Nom :<br></label>
-								#NomDuGeek
+								${user.nom}
 							</div>
 							<div class="form-group" style="display: block;"><label>Prénom :<br></label>
-								#PrénomDuGeek
+								${user.prenom}
 							</div>
 							<div class="form-group" style="display: block;"><label>Email :<br></label>
-								#EmailDuGeek
+								${user.mail}
 							</div>
 							<div class="form-group" style="display: block;"><label>Téléphone :<br></label>
-								#TéléphoneDuGeek
+								${user.telephone}
 							</div>
 							<div class="form-group" style="display: block;"><label>Rue :<br></label>
-								#RueDuGeek
+								${user.rue}
 							</div>
 							<div class="form-group" style="display: block;"><label>Code Postal :<br></label>
-								#CodePostalDuGeek
+								${user.codePostal}
 							</div>
 							<div class="form-group" style="display: block;"><label>Ville :<br></label>
-								#VilleDuGeek
+								${user.ville}
 							</div>
 						</div>
 					</div>
@@ -47,7 +47,7 @@
                       		<a class="btn btn-lg" href="monProfil"><button type="button" class="btn btn-primary" style="background-color: #0062cc; text-align: left;">Modifier</button></a>
                      	</div>
                      	<div class="col-sm-6">
-                           <a class="btn btn-lg" href="listEncheres"><button type="button" class="btn btn-primary" style="background-color: rgb(255, 0, 0); text-align: left; float: none;">Retour</button></a>
+                           <a class="btn btn-lg" href="listeEncheres"><button type="button" class="btn btn-primary" style="background-color: rgb(255, 0, 0); text-align: left; float: none;">Retour</button></a>
                      	</div>
                   </div>
 				</form>
