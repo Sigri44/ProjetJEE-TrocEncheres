@@ -14,6 +14,9 @@
 		<c:if test= "${not empty inscription}">
 			<p class="alert alert-success">${inscription}</p>
 		</c:if>		
+		<c:if test= "${not empty suppressionCompte}">
+			<p class="alert alert-success">${suppressionCompte}</p>
+		</c:if>	
 			<div class="row">
 	        	<div class="col-sm-3"></div>
 				<form action="connexion" method="post" class="col-sm-6">

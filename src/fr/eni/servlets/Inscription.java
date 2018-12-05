@@ -171,7 +171,7 @@ public class Inscription extends HttpServlet {
         	try {
     			UtilisateurDAO.ajouter(utilisateur);
     			request.setAttribute( "inscription", "Vous êtes inscrit" );
-            	RequestDispatcher dispatcher = getServletContext().getRequestDispatcher("/connexion");
+            	RequestDispatcher dispatcher = getServletContext().getRequestDispatcher("/WEB-INF/jsp/connexion.jsp");
     			dispatcher.forward(request,response);
     		} catch (SQLException e) {
     			e.printStackTrace();

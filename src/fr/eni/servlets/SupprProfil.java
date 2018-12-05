@@ -10,6 +10,7 @@ import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
 
 import fr.eni.dal.UtilisateurDAO;
 import fr.eni.model.Utilisateur;
@@ -44,6 +45,9 @@ public class SupprProfil extends HttpServlet {
 				Utilisateur user = UtilisateurDAO.getUserByLogin((String) userInfos.get("pseudo"));
 				UtilisateurDAO.supprimer(user);
 				request.setAttribute("suppressionCompte", "Votre compte a bien été supprimé");
+				HttpSession session = request.getSession();
+				session.removeAttribute("utilisateur");
+				session.invalidate();
 				this.getServletContext().getRequestDispatcher( "/WEB-INF/jsp/connexion.jsp" ).forward( request, response );
 			} catch (SQLException e) {
 				// TODO Auto-generated catch block
