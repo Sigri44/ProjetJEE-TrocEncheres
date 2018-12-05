@@ -14,7 +14,7 @@ import javax.servlet.http.HttpSession;
 import fr.eni.dal.UtilisateurDAO;
 import fr.eni.model.Utilisateur;
 
-@WebServlet("/Connexion")
+@WebServlet("/VendreUnArticle")
 public class VendreUnArticle extends HttpServlet {
 	private static final long serialVersionUID = 1L;
 

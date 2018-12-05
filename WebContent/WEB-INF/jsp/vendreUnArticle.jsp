@@ -74,13 +74,13 @@
 						</div>
 						<div class="row">
 							<div class="col-sm-3">
-								<a class="btn btn-lg" href="inscription"><button type="button" class="btn btn-primary" style="background-color: #0062cc; text-align: left; float: none;">Publier</button></a>
+								<a class="btn btn-lg" href="#"><button type="submit" class="btn btn-primary" style="background-color: #0062cc; text-align: left; float: none;">Publier</button></a>
 							</div>
 							<div class="col-sm-3">
-								<a class="btn btn-lg" href="inscription"><button type="button" class="btn btn-primary" style="background-color: rgb(0, 128, 255); text-align: left; float: none;">Enregistrer</button></a>
+								<a class="btn btn-lg" href="#"><button type="submit" class="btn btn-primary" style="background-color: rgb(0, 128, 255); text-align: left; float: none;">Enregistrer</button></a>
 							</div>
 							<div class="col-sm-3">
-								<a class="btn btn-lg" href="inscription"><button type="button" class="btn btn-primary" style="background-color: rgb(255,0,0); text-align: left; float: none;">Annuler</button></a>
+								<a class="btn btn-lg" href="listeEncheres"><button type="button" class="btn btn-primary" style="background-color: rgb(255,0,0); text-align: left; float: none;">Annuler</button></a>
 							</div>
 						</div>
 					</form>
