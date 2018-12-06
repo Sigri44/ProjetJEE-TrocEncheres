@@ -25,6 +25,26 @@ public class Vente {
 		this.dateFinEnchere = dateFinEnchere;
 		this.miseAPrix = miseAPrix;
 	}
+	
+
+
+	public Vente(String nomArticle, String description, Date dateFinEnchere, double miseAPrix, Categorie categorie,
+			Retrait retrait, Utilisateur acheteur) {
+		super();
+		this.nomArticle = nomArticle;
+		this.description = description;
+		this.dateFinEnchere = dateFinEnchere;
+		this.miseAPrix = miseAPrix;
+		this.categorie = categorie;
+		this.retrait = retrait;
+		this.acheteur = acheteur;
+	}
+
+
+	public Vente(String nomArticle) {
+		super();
+		this.nomArticle = nomArticle;
+	}
 
 
 	public Vente(int noVente, String nomArticle, String description, Date dateFinEnchere, double miseAPrix, Categorie categorie, Retrait retrait) {

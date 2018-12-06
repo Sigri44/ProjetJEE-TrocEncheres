@@ -52,6 +52,12 @@ public class Utilisateur{
 	public Utilisateur() {
 	}	
 
+	
+	public Utilisateur(String nom) {
+		super();
+		this.nom = nom;
+	}
+
 	public int getNoUtilisateur() {
 		return noUtilisateur;
 	}

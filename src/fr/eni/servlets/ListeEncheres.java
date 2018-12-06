@@ -1,12 +1,20 @@
 package fr.eni.servlets;
 
 import java.io.IOException;
+import java.sql.SQLException;
+import java.util.ArrayList;
+
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
+
+import fr.eni.dal.VenteDAO;
+import fr.eni.model.Vente;
+
+import java.sql.SQLException;
 
 @WebServlet("/ListeEncheres")
 public class ListeEncheres extends HttpServlet {
@@ -21,7 +29,16 @@ public class ListeEncheres extends HttpServlet {
 	    	this.getServletContext().getRequestDispatcher( "/WEB-INF/jsp/connexion.jsp" ).forward( request, response );
 	    	return;
 	      } else {
-	    	  this.getServletContext().getRequestDispatcher( "/WEB-INF/jsp/listeEncheres.jsp" ).forward( request, response );
+	    	  try {
+	    		  ArrayList<Vente>vente = VenteDAO.lister();
+	    		  request.setAttribute("touteVente", vente);
+	    		  this.getServletContext().getRequestDispatcher( "/WEB-INF/jsp/listeEncheres.jsp" ).forward( request, response );
+		    	  
+			} catch (SQLException e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+			}
+	    	  
 	    }		
 	}
 

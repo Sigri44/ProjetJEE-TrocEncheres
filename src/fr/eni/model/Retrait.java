@@ -9,6 +9,11 @@ public class Retrait {
 	
 	public Retrait() {
 	}
+	
+	public Retrait(String rue) {
+		this.rue = rue;
+	}
+
 	public Retrait(String rue, int codePostal, String ville) {
 		this.rue = rue;
 		this.codePostal = codePostal;
