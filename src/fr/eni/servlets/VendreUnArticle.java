@@ -2,6 +2,10 @@ package fr.eni.servlets;
 
 import java.io.IOException;
 import java.sql.SQLException;
+import java.text.SimpleDateFormat;
+import java.time.LocalDate;
+import java.util.Calendar;
+import java.util.Date;
 import java.util.HashMap;
 import java.util.Map;
 import javax.servlet.RequestDispatcher;
@@ -27,6 +31,13 @@ public class VendreUnArticle extends HttpServlet {
 			response.sendRedirect("connexion");
 	    	return;
 	    } else {
+	    	Calendar calendar = Calendar.getInstance();
+	    	calendar.set(Calendar.HOUR_OF_DAY, 0);
+	    	calendar.add(Calendar.DATE, 1);
+	    	Date tommorrow = calendar.getTime();
+	    	SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd");
+	    	String tommorowFormated = sdf.format(tommorrow);
+	    	request.setAttribute("dateJour", tommorowFormated);
 	    	this.getServletContext().getRequestDispatcher( "/WEB-INF/jsp/vendreUnArticle.jsp" ).forward( request, response );
 		}
 	}
