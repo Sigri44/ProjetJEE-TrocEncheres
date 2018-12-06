@@ -5,6 +5,7 @@ import java.sql.SQLException;
 import java.util.HashMap;
 import java.util.Map;
 
+import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
@@ -55,16 +56,6 @@ public class ModifProfil extends HttpServlet {
         String codePostal = request.getParameter("codePostal");
         String ville = request.getParameter("ville");
         
-        //Map des données saisies
-        Map<String, String> saisie = new HashMap<>();
-        saisie.put("email", email);
-        saisie.put("pseudo", pseudo);
-        saisie.put("prenom", prenom);
-        saisie.put("nom", nom);
-        saisie.put("telephone", telephone);
-        saisie.put("rue", rue);
-        saisie.put("codePostal", codePostal);
-        saisie.put("ville", ville);
         
         //Map d'erreurs
         Map<String, String> erreurs = new HashMap<>();
@@ -152,6 +143,14 @@ public class ModifProfil extends HttpServlet {
 	            erreurs = setErreur(erreurs, "rue", e.getMessage() );
 	        }
 	        
+	      //Vérification du code postal
+	        try {
+	            validationCodePostal(codePostal);
+	            connectedUser.setCodePostal(codePostal);
+	        } catch ( Exception e ) {
+	            erreurs = setErreur(erreurs, "codePostal", e.getMessage() );
+	        }
+	        
 	        //Vérification du mot de passe
 	        if(motDePasse.trim().length()<1) {
 	        	try {
@@ -165,6 +164,21 @@ public class ModifProfil extends HttpServlet {
 		            erreurs = setErreur(erreurs, "mdp", e.getMessage() );
 		            erreurs = setErreur(erreurs, "mdpConf", null );
 		        }
+	        }
+	        
+	        if(!erreurs.isEmpty()) {
+	        	request.setAttribute( "erreurs", erreurs );  
+	        	request.setAttribute("user", connectedUser);
+	        	request.getRequestDispatcher("/WEB-INF/jsp/monProfil.jsp").forward(request, response);		
+	        }else {
+	        	try {
+	    			UtilisateurDAO.modifier(connectedUser);;
+	    			request.setAttribute( "modification", "Vous avez modifié votre profil" );
+	            	RequestDispatcher dispatcher = getServletContext().getRequestDispatcher("/WEB-INF/jsp/profil.jsp");
+	    			dispatcher.forward(request,response);
+	    		} catch (SQLException e) {
+	    			e.printStackTrace();
+	    		}
 	        }
 	        
 	        
