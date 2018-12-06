@@ -24,7 +24,7 @@ public class MonProfil extends HttpServlet {
 	@SuppressWarnings("unchecked")
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		if (request.getSession().getAttribute("utilisateur") == null){
-	    	this.getServletContext().getRequestDispatcher( "/WEB-INF/jsp/connexion.jsp" ).forward( request, response );
+			response.sendRedirect("connexion");
 	    	return;
 	      } else {
 	    	  Map<String, Object> userInfos = new HashMap<String, Object>();
@@ -34,12 +34,9 @@ public class MonProfil extends HttpServlet {
 				request.setAttribute("user", user);
 				this.getServletContext().getRequestDispatcher( "/WEB-INF/jsp/monProfil.jsp" ).forward( request, response );
 			} catch (SQLException e) {
-				// TODO Auto-generated catch block
 				e.printStackTrace();
 			}
-	    	  
 	    }
-		
 	}
 
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
