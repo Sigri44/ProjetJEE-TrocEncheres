@@ -20,31 +20,31 @@
 								<input name="pseudo" value="${user.pseudo}" required type="text" class="form-control" style="position: static; display: block;">
 							</div>
 							<c:if test= "${not empty erreurs['pseudo']}">
-								<p class="alert alert-danger">${erreurs['pseudo']}</p>
+								<p class="alert alert-danger">${erreurs['pseudo']} : ${saisie['pseudo']}</p>
 							</c:if>
 							<c:if test= "${not empty erreurs['existPseudo']}">
-								<p class="alert alert-danger">${erreurs['existPseudo']}</p>
+								<p class="alert alert-danger">${erreurs['existPseudo']} : ${saisie['pseudo']}</p>
 							</c:if>
 							<div class="form-group" style="display: block;"><label>Prénom :<br></label>
 								<input name="prenom" value="${user.prenom}" type="text" class="form-control" style="position: static; display: block;" required>
 							</div>
 							<c:if test= "${not empty erreurs['prenom']}">
-								<p class="alert alert-danger">${erreurs['prenom']}</p>
+								<p class="alert alert-danger">${erreurs['prenom']} : ${saisie['prenom']}</p>
 							</c:if>
 							<div class="form-group" style="display: block;"><label>Téléphone :<br></label>
 								<input name="telephone" value="${user.telephone}" type="text" class="form-control" style="position: static; display: block;" required>
 							</div>
 							<c:if test= "${not empty erreurs['telephone']}">
-								<p class="alert alert-danger">${erreurs['telephone']} : </p>
+								<p class="alert alert-danger">${erreurs['telephone']} : ${saisie['telephone']}</p>
 							</c:if>
 							<c:if test= "${not empty erreurs['existTel']}">
-								<p class="alert alert-danger">${erreurs['existTel']} : ${saisie['telephone'] }</p>
+								<p class="alert alert-danger">${erreurs['existTel']} : ${saisie['telephone']}</p>
 							</c:if>
 							<div class="form-group" style="display: block;"><label>Code Postal :<br></label>
 								<input name="codePostal" value="${user.codePostal}" type="text" class="form-control" style="position: static; display: block;" required>
 							</div>
 							<c:if test= "${not empty erreurs['codePostal']}">
-								<p class="alert alert-danger">${erreurs['codePostal']}</p>
+								<p class="alert alert-danger">${erreurs['codePostal']} : ${saisie['codePostal']}</p>
 							</c:if>
 							<div class="form-group" style="display: block;"><label>Mot de passe :<br></label>
 								<input name="mdp" type="password" class="form-control" style="position: static; display: block;" >

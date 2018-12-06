@@ -178,8 +178,6 @@ public class ModifProfil extends HttpServlet {
 	        }
 	        
 	        if(!erreurs.isEmpty()) {
-	        	System.out.println(connectedUser);
-	        	System.out.println(erreurs);
 	        	request.setAttribute( "erreurs", erreurs );  
 	        	request.setAttribute("saisie", saisie);
 	        	request.setAttribute("user", connectedUser);
