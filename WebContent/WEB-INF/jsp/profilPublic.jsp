@@ -11,7 +11,7 @@
 		   <h3 class="text-muted">TrocEncheres.org</h3>
 		</div>
 		<div class="jumbotron">
-	      	<h1 style="text-align: center;">Profil de ${user.pseudo}</h1>
+	      	<h1 class="center">Profil de ${user.pseudo}</h1>
 	      	<div class="row">
 				<div class="col-sm-6 offset-sm-4">
 					<div class="row">
@@ -40,7 +40,7 @@
 					</div>
                   	<div class="row">
                      	<div class="col-sm-6">
-                           <a class="btn btn-lg" href="listeEncheres"><button type="button" class="btn btn-primary" style="background-color: rgb(255, 0, 0); text-align: left; float: none;">Back</button></a>
+                           <a class="btn btn-lg" href="listeEncheres"><button type="button" class="btn btn-primary lienBouton red">Back</button></a>
                      	</div>
                   </div>
 				</div>

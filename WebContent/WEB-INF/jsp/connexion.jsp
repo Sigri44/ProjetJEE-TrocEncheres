@@ -10,7 +10,7 @@
 		<div class="header clearfix">
 		   <h3 class="text-muted">TrocEncheres.org</h3>
 		</div>
-		<div class="jumbotron col-sm-12" style="display: block;">
+		<div class="jumbotron col-sm-12">
 		<c:if test= "${not empty inscription}">
 			<p class="alert alert-success">${inscription}</p>
 		</c:if>		
@@ -41,35 +41,26 @@
 						</c:if>
 					</div>
 					<a class="btn btn-lg" href="listeEncheres">
-						<input type="submit"  class="btn btn-primary" style="background-color: #28a745;" />
+						<input type="submit" class="btn vert lienBouton" />
 					</a>
 				</form>
-				<div class="col-sm-3"></div>
 			</div>
 			<div class="row">
-				<div class="col-sm-3"></div>
-				<div class="col-sm-3">
-					<!-- ancien emplacement du submit -->
-					
-				</div>
-				<div class="col-sm-3">
+				<div class="col-sm-3 offset-sm-6">
 					<div class="form-group">
-					   <label class="checkbox" style="position: static; display: inline-block; left: auto; right: auto; float: right;">
+					   <label class="checkbox">
 							<input type="checkbox">&nbsp;Se souvenir de moi
 						</label>
 					</div>
 					<div class="form-group">
-						<a style="top: auto; color: rgb(0, 128, 255); font-weight: 400; text-align: center; text-decoration-line: underline; margin-top: auto;">Mot de passe oublié</a>
+						<a class="mdpOublie link" href="#">Mot de passe oublié</a>
 					</div>
 				</div>
-				<div class="col-sm-3"></div>
 			</div>
 			<div class="row">
-				<div class="col-sm-3"></div>
-				<div class="col-sm-6">
-					<a class="btn btn-lg" href="inscription"><button type="button" class="btn btn-primary" style="background-color: #0062cc; text-align: left; float: none;">Créer un compte</button></a>
+				<div class="col-sm-6 offset-sm-3">
+					<a class="btn btn-lg" href="inscription"><button type="button" class="btn bleu lienBouton">Créer un compte</button></a>
 				</div>
-				<div class="col-sm-3"></div>
 			</div>
 		</div>
 		<jsp:include page="footer.jsp"/>
