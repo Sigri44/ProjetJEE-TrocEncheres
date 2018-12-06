@@ -14,7 +14,7 @@
 			<p class="alert alert-success">${modification}</p>
 		</c:if>	
 		<div class="jumbotron">
-	      	<h1 style="text-align: center">${user.pseudo}</h1>
+	      	<h1 class="center">${user.pseudo}</h1>
         	<div class="row">
 				<div class="col-sm-6 offset-sm-4">
 					<div class="row">
@@ -83,10 +83,10 @@
 					</div>
 					<div class="row">
 						<div class="col-sm-3">
-							<a class="btn btn-lg" href="monProfil"><button type="button" class="btn btn-primary" style="background-color: #0062cc; text-align: left;">Modifier</button></a>
+							<a class="btn btn-lg" href="monProfil"><button type="button" class="btn btn-primary bleu">Modifier</button></a>
 						</div>
 						<div class="col-sm-4 offset-sm-1">
-							<a class="btn btn-lg" href="listeEncheres"><button type="button" class="btn btn-primary" style="background-color: rgb(255, 0, 0); text-align: left; float: none;">Retour</button></a>
+							<a class="btn btn-lg" href="listeEncheres"><button type="button" class="btn btn-primary red">Retour</button></a>
 						</div>
 					</div>
 				</div>
