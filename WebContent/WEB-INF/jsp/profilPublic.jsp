@@ -40,7 +40,7 @@
 					</div>
                   	<div class="row">
                      	<div class="col-sm-6">
-                           <a class="btn btn-lg" href="listEncheres"><button type="button" class="btn btn-primary" style="background-color: rgb(255, 0, 0); text-align: left; float: none;">Back</button></a>
+                           <a class="btn btn-lg" href="listeEncheres"><button type="button" class="btn btn-primary" style="background-color: rgb(255, 0, 0); text-align: left; float: none;">Back</button></a>
                      	</div>
                   </div>
 				</div>
