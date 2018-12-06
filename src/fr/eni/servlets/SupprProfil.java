@@ -27,7 +27,6 @@ public class SupprProfil extends HttpServlet {
      */
     public SupprProfil() {
         super();
-        // TODO Auto-generated constructor stub
     }
 
 	/**
@@ -36,7 +35,7 @@ public class SupprProfil extends HttpServlet {
 	@SuppressWarnings("unchecked")
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		if (request.getSession().getAttribute("utilisateur") == null){
-	    	this.getServletContext().getRequestDispatcher( "/WEB-INF/jsp/connexion.jsp" ).forward( request, response );
+			response.sendRedirect("connexion");
 	    	return;
 	      } else {
 	    	  Map<String, Object> userInfos = new HashMap<String, Object>();
@@ -50,10 +49,8 @@ public class SupprProfil extends HttpServlet {
 				session.invalidate();
 				this.getServletContext().getRequestDispatcher( "/WEB-INF/jsp/connexion.jsp" ).forward( request, response );
 			} catch (SQLException e) {
-				// TODO Auto-generated catch block
 				e.printStackTrace();
 			}
-	    	  
 	    }
 	}
 
@@ -61,8 +58,6 @@ public class SupprProfil extends HttpServlet {
 	 * @see HttpServlet#doPost(HttpServletRequest request, HttpServletResponse response)
 	 */
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		// TODO Auto-generated method stub
 		doGet(request, response);
 	}
-
 }

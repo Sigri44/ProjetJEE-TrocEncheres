@@ -15,8 +15,6 @@ public class Utilisateur{
 	private String prenom;
 	private boolean admin;
 	
-	
-
 	public Utilisateur(String pseudo, String nom, String mail, String telephone, String rue, String codePostal, String ville,
 			String motDePasse, int credit, String prenom, boolean admin) {
 		super();
@@ -141,5 +139,4 @@ public class Utilisateur{
 	public void setAdmin(boolean admin) {
 		this.admin = admin;
 	}
-	
 }

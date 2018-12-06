@@ -47,7 +47,6 @@ public class Inscription extends HttpServlet {
         saisie.put("codePostal", codePostal);
         saisie.put("ville", ville);
         
-        
         //Map d'erreurs
         Map<String, String> erreurs = new HashMap<>();
         
@@ -88,7 +87,6 @@ public class Inscription extends HttpServlet {
             erreurs  = setErreur(erreurs, "email", e.getMessage() );
         }
         
-        
         //Vérification du mot de passe
         try {
             validationMotsDePasse( motDePasse, confirmation );
@@ -98,7 +96,6 @@ public class Inscription extends HttpServlet {
             erreurs = setErreur(erreurs, "mdpConf", null );
         }
         
-        
         //Vérification du pseudo
         try {
             validationPseudo( pseudo );
@@ -106,7 +103,6 @@ public class Inscription extends HttpServlet {
         } catch ( Exception e ) {
             erreurs = setErreur(erreurs, "pseudo", e.getMessage() );
         }
-        
         
         //Vérification du nom
         try {
@@ -116,7 +112,6 @@ public class Inscription extends HttpServlet {
             erreurs = setErreur(erreurs, "nom", e.getMessage() );
         }
         
-        
         //Vérification du prenom
         try {
             validationString( prenom );
@@ -124,7 +119,6 @@ public class Inscription extends HttpServlet {
         } catch ( Exception e ) {
             erreurs = setErreur(erreurs, "prenom", e.getMessage() );
         }
-        
         
         //Vérification de la ville
         try {
@@ -134,7 +128,6 @@ public class Inscription extends HttpServlet {
             erreurs = setErreur(erreurs, "ville", e.getMessage() );
         }
         
-        
         //Vérification de la rue
         try {
             validationString( rue );
@@ -142,7 +135,6 @@ public class Inscription extends HttpServlet {
         } catch ( Exception e ) {
             erreurs = setErreur(erreurs, "rue", e.getMessage() );
         }
-        
         
         //Vérification du telephone
         try {
@@ -152,8 +144,6 @@ public class Inscription extends HttpServlet {
             erreurs = setErreur(erreurs, "telephone", e.getMessage() );
         }
         
-        
-                
         //Vérification du code postal
         try {
             validationCodePostal(codePostal);
@@ -162,12 +152,11 @@ public class Inscription extends HttpServlet {
             erreurs = setErreur(erreurs, "codePostal", e.getMessage() );
         }
         
-       
         if(!erreurs.isEmpty()) {
         	request.setAttribute( "erreurs", erreurs );  
         	request.setAttribute("saisie", saisie);
         	request.getRequestDispatcher("/WEB-INF/jsp/inscription.jsp").forward(request, response);		
-        }else {
+        } else {
         	try {
     			UtilisateurDAO.ajouter(utilisateur);
     			request.setAttribute( "inscription", "Vous êtes inscrit" );

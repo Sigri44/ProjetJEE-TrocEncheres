@@ -26,7 +26,7 @@ public class ListeEncheres extends HttpServlet {
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		
 	    if (request.getSession().getAttribute("utilisateur") == null){
-	    	this.getServletContext().getRequestDispatcher( "/WEB-INF/jsp/connexion.jsp" ).forward( request, response );
+	    	response.sendRedirect("connexion");
 	    	return;
 	      } else {
 	    	  try {

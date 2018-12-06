@@ -59,7 +59,7 @@ public class Connexion extends HttpServlet {
         	request.setAttribute( "erreurs", erreurs );  
         	request.setAttribute("saisie", saisie);
         	request.getRequestDispatcher("/WEB-INF/jsp/connexion.jsp").forward(request, response);		
-        }else {
+        } else {
         	try {
     			Utilisateur user = UtilisateurDAO.getUserByLogin(identifiant);
     			HttpSession session = request.getSession();
