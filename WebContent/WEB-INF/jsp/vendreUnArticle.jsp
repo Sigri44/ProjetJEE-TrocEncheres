@@ -35,7 +35,7 @@
 							</div>
 						</div>
 						<div class="row">
-							<button type="button" class="btn btn-primary" style="">UPLOADER</button>
+							<a class="btn btn-lg" href="#"><button type="submit" class="btn btn-primary" style="background-color: rgb(0, 128, 255); text-align: left; float: none;">UPLOADER</button></a>
 						</div>
 						<div class="row">
 							<label>Mise à prix :</label>
@@ -53,28 +53,33 @@
 						<div class="row">
 							<h3>Retrait</h3>
 							<div class="row">
+								<div class="col-sm-12">
 									<div class="form-group">
-									<label>Rue :<br></label>
-									<input type="text" class="form-control">
+										<label>Rue :<br></label>
+										<input type="text" class="form-control">
+									</div>
 								</div>
 							</div>
 							<div class="row">
+								<div class="col-sm-12">
 									<div class="form-group">
-									<label>Code postal :<br></label>
-									<input type="text" class="form-control">
+										<label>Code postal :<br></label>
+										<input type="text" class="form-control">
+									</div>
 								</div>
 							</div>
 							<div class="row">
+								<div class="col-sm-12">
 									<div class="form-group">
-									<label>Ville :<br></label>
-									<input type="text" class="form-control">
+										<label>Ville :<br></label>
+										<input type="text" class="form-control">
+									</div>
 								</div>
 							</div>
-							
 						</div>
 						<div class="row">
 							<div class="col-sm-3">
-								<a class="btn btn-lg" href="#"><button type="submit" class="btn btn-primary" style="background-color: #0062cc; text-align: left; float: none;">Publier</button></a>
+								<a class="btn btn-lg" href="#"><button type="submit" class="btn btn-primary" style="background-color: #28a745; text-align: left; float: none;">Publier</button></a>
 							</div>
 							<div class="col-sm-3">
 								<a class="btn btn-lg" href="#"><button type="submit" class="btn btn-primary" style="background-color: rgb(0, 128, 255); text-align: left; float: none;">Enregistrer</button></a>
