@@ -11,8 +11,8 @@
 		   <h3 class="text-muted">TrocEncheres.org</h3>
 		</div>
 		<div class="jumbotron">
-	      	<h1 style="">Pseudo du Geek</h1>
-	      	<div class="form-group">
+	      	<h1 style="text-align: center">${user.pseudo}</h1>
+	      	<div class="form-group" style="text-align: center">
 	      		<form>
 		        	<div class="row">
 						<div class="col-sm-12">
