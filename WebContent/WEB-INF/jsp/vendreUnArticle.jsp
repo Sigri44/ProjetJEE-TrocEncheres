@@ -2,7 +2,24 @@
 <%@ taglib uri = "http://java.sun.com/jsp/jstl/core" prefix = "c" %>
 <!DOCTYPE html>
 <head>
+	<link class="jsbin" href="http://ajax.googleapis.com/ajax/libs/jqueryui/1/themes/base/jquery-ui.css" rel="stylesheet" type="text/css" />
+	<script class="jsbin" src="http://ajax.googleapis.com/ajax/libs/jquery/1/jquery.min.js"></script>
+	<script class="jsbin" src="http://ajax.googleapis.com/ajax/libs/jqueryui/1.8.0/jquery-ui.min.js"></script>
     <jsp:include page="header.jsp"/>
+    <script type="text/javascript">
+		function readURL(input) {
+		    if (input.files && input.files[0]) {
+		        var reader = new FileReader();
+		
+		        reader.onload = function (e) {
+		            $('#blah')
+		                .attr('src', e.target.result);
+		        };
+		
+		        reader.readAsDataURL(input.files[0]);
+		    }
+		}
+	</script>
 </head>
 
 <body>
@@ -13,8 +30,10 @@
 		<div class="jumbotron">
 			<div class="row">
 				<div class="col-sm-3">
-					<div class="row">
-						<img src="https://bootsnipp.com/bootstrap-builder/libs/builder/icons/image.svg" height="128" width="128" style="" />
+					<div class="row" >
+						<div style=" width: 230px; height: 230px;  border: 1px solid white;">
+							<img id="blah" style=" height: 230px; width:230px; object-fit: contain;"  src="#" alt="your image" />
+						</div>						
 					</div>
 				</div>
 				<div class="col-sm-6">
@@ -35,19 +54,16 @@
 							</div>
 						</div>
 						<div class="row">
-							<a class="btn btn-lg" href="#"><button type="submit" class="btn btn-primary" style="background-color: rgb(0, 128, 255); text-align: left; float: none;">UPLOADER</button></a>
+							<input type="file" onchange="readURL(this);" name="file" id="file" accept="image/*"/>
 						</div>
 						<div class="row">
-							<label>Mise à prix :</label>
-							<select class="form-control">
-								<option value="value1">Text 1</option>
-								<option value="value2">Text 2</option>
-							</select>
+							<label>Mise à prix : </label>
+								<input value="1" type="number" name="price" min="1" >							
 						</div>
 						<div class="row">
 							<div class="form-group">
 								<label>Fin de l'enchère :</label>
-								<input type="text" class="form-control">
+								<input type="date" id="start" name="trip-start" value="${dateJour}" min="${dateJour}" >
 							</div>
 						</div>
 						<div class="row">
@@ -90,9 +106,11 @@
 						</div>
 					</form>
 				</div>
+				
 			</div>
 		</div>
 		<jsp:include page="footer.jsp"/>
 	</div>
 </body>
+
 </html>
