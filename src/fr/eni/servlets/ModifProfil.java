@@ -4,17 +4,14 @@ import java.io.IOException;
 import java.sql.SQLException;
 import java.util.HashMap;
 import java.util.Map;
-
 import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
-
 import fr.eni.dal.UtilisateurDAO;
 import fr.eni.model.Utilisateur;
-import sun.security.util.Length;
 
 /**
  * Servlet implementation class ModifProfil
@@ -28,14 +25,12 @@ public class ModifProfil extends HttpServlet {
      */
     public ModifProfil() {
         super();
-        // TODO Auto-generated constructor stub
     }
 
 	/**
 	 * @see HttpServlet#doGet(HttpServletRequest request, HttpServletResponse response)
 	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		// TODO Auto-generated method stub
 		this.getServletContext().getRequestDispatcher("/profil").forward(request, response);
 	}
 
@@ -56,7 +51,7 @@ public class ModifProfil extends HttpServlet {
         String codePostal = request.getParameter("codePostal");
         String ville = request.getParameter("ville");
         
-      //Map des données saisies
+        //Map des données saisies
         Map<String, String> saisie = new HashMap<>();
         saisie.put("email", email);
         saisie.put("pseudo", pseudo);
@@ -66,7 +61,6 @@ public class ModifProfil extends HttpServlet {
         saisie.put("rue", rue);
         saisie.put("codePostal", codePostal);
         saisie.put("ville", ville);
-        
         
         //Map d'erreurs
         Map<String, String> erreurs = new HashMap<>();
@@ -82,7 +76,7 @@ public class ModifProfil extends HttpServlet {
 				exist = UtilisateurDAO.existByPseudo(pseudo);
 				if(exist) {
 					erreurs = setErreur(erreurs, "existPseudo", "Ce pseudo est déja pris");	
-				}else {
+				} else {
 					//Vérification de la conformité du pseudo
 			        try {
 			            validationPseudo( pseudo );
@@ -96,7 +90,7 @@ public class ModifProfil extends HttpServlet {
 				exist = UtilisateurDAO.existByMail(email);
 				if(exist) {
 					erreurs = setErreur(erreurs, "existMail", "Cet email est déja utilisé");
-				}else {
+				} else {
 					//Vérification de la conformité du mail
 			        try {
 			            validationEmail( email );
@@ -110,8 +104,7 @@ public class ModifProfil extends HttpServlet {
 				exist = UtilisateurDAO.existByTel(telephone);
 				if(exist) {
 					erreurs = setErreur(erreurs, "existTel", "Cet numéro de téléphone est déja utilisé");
-				}
-				else {
+				} else {
 					//Vérification du telephone
 			        try {
 			            validationTelephone(telephone);
@@ -168,7 +161,7 @@ public class ModifProfil extends HttpServlet {
 		            validationMotsDePasse( motDePasse, confirmation );
 		            if(!connectedUser.getMotDePasse().equals(motDePasse)) {	
 		            	connectedUser.setMotDePasse( motDePasse );
-		            }else {
+		            } else {
 		            	erreurs = setErreur(erreurs, "mdp", "Vous avez saisi votre mot de passe actuel");
 		            }		            
 		        } catch ( Exception e ) {
@@ -182,7 +175,7 @@ public class ModifProfil extends HttpServlet {
 	        	request.setAttribute("saisie", saisie);
 	        	request.setAttribute("user", connectedUser);
 	        	request.getRequestDispatcher("/WEB-INF/jsp/monProfil.jsp").forward(request, response);		
-	        }else {
+	        } else {
 	        	try {
 	    			UtilisateurDAO.modifier(connectedUser);;
 	    			request.setAttribute( "modification", "Vous avez modifié votre profil" );
@@ -192,8 +185,6 @@ public class ModifProfil extends HttpServlet {
 	    			e.printStackTrace();
 	    		}
 	        }
-	        
-	        
   	  	} catch (SQLException e) {
   	  		e.printStackTrace();
 		}
@@ -242,14 +233,12 @@ public class ModifProfil extends HttpServlet {
 	public void validationCodePostal(String codePostal) throws Exception{	
 		if(!codePostal.matches("[0-9]{5}")) {
 			throw new Exception("Code postal non valide");
-		}	 
+		}
 	}
 	
-	/*
-	 * Ajoute un message correspondant au champ spécifié à la map des erreurs.
-	 */
+	//Ajoute un message correspondant au champ spécifié à la map des erreurs.
 	private Map<String, String> setErreur(Map<String, String> erreurs, String champ, String message ) {
 	    erreurs.put( champ, message );
-		return erreurs;	    
+		return erreurs;
 	}
 }

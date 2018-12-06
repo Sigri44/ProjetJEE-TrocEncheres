@@ -40,3 +40,20 @@
 .red {
 	background-color: #ff0000;
 }
+
+#blah {
+	height: 230px;
+	width: 230px;
+	object-fit: contain;
+}
+
+textarea.noResize {
+  resize: none;
+  width: 100% !important;
+}
+
+#imageVente {
+	width: 230px;
+	height: 230px;
+	border: 1px solid white;
+}
