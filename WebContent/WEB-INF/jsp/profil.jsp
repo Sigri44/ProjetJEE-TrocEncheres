@@ -10,6 +10,9 @@
 		<div class="header clearfix">
 		   <h3 class="text-muted">TrocEncheres.org</h3>
 		</div>
+		<c:if test= "${not empty modification}">
+			<p class="alert alert-success">${modification}</p>
+		</c:if>	
 		<div class="jumbotron">
 	      	<h1 style="text-align: center">${user.pseudo}</h1>
         	<div class="row">

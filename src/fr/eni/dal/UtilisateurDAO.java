@@ -10,7 +10,7 @@ public class UtilisateurDAO {
 	private static final String AJOUTER = "insert into UTILISATEURS (pseudo, nom, prenom, email, telephone, rue, code_postal, ville, mot_de_passe, credit, administrateur) values (?,?,?,?,?,?,?,?,?,?,?)";
 	private static final String SUPPRIMER 	= "delete from UTILISATEURS where pseudo = ?";
 	private static final String MODIFIER = "update UTILISATEURS set pseudo = ?, nom = ?, email = ?, telephone = ?, rue = ?, "
-			+ "code_postal = ?, ville = ?, mot_de_passe = ?, credit = ? , prenom = ? where id = ?";
+			+ "code_postal = ?, ville = ?, mot_de_passe = ?, credit = ? , prenom = ? where no_utilisateur = ?";
 	private static final String SEARCHBYID ="select * from UTILISATEURS where id = ?";
 	private static final String SEARCHBYLOGIN ="select *  from UTILISATEURS where pseudo = ? or email = ?";
 	private static final String SEARCHBYPSEUDO ="select pseudo  from UTILISATEURS where pseudo = ?";
@@ -60,7 +60,7 @@ public class UtilisateurDAO {
 			rqt.setString(8, utilisateur.getMotDePasse());
 			rqt.setInt(9, utilisateur.getCredit());
 			rqt.setString(10, utilisateur.getPrenom());
-			rqt.setInt(10, utilisateur.getNoUtilisateur());
+			rqt.setInt(11, utilisateur.getNoUtilisateur());
 			rqt.executeUpdate();
 		} finally{
 			if (rqt!=null) rqt.close();
@@ -214,6 +214,7 @@ public class UtilisateurDAO {
 			rs= rqt.executeQuery();
 			while (rs.next()) {
 				if (utilisateur == null) utilisateur = new Utilisateur(); 
+				utilisateur.setNoUtilisateur(rs.getInt("no_utilisateur"));
 				utilisateur.setCodePostal(rs.getString("code_postal"));
 				utilisateur.setCredit(rs.getInt("credit"));
 				utilisateur.setMail(rs.getString("email"));
