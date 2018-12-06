@@ -12,45 +12,83 @@
 		</div>
 		<div class="jumbotron">
 	      	<h1 style="text-align: center">${user.pseudo}</h1>
-	      	<div class="form-group" style="text-align: center">
-	      		<form>
-		        	<div class="row">
-						<div class="col-sm-12">
-							<div class="form-group" style="display: block;"><label>Pseudo :<br></label>
+	      	<div class="form-group">
+	        	<div class="row">
+					<div class="col-sm-6 offset-sm-4">
+						<div class="row">
+							<div class="col-sm-3">
+								<label>Pseudo :<br></label>
+							</div>
+							<div class="col-sm-4 offset-sm-1">
 								${user.pseudo}
 							</div>
-							<div class="form-group" style="display: block;"><label>Nom :<br></label>
+						</div>
+						<div class="row">
+							<div class="col-sm-3">
+								<label>Nom :<br></label>
+							</div>
+							<div class="col-sm-4 offset-sm-1">
 								${user.nom}
 							</div>
-							<div class="form-group" style="display: block;"><label>Prénom :<br></label>
+						</div>
+						<div class="row">
+							<div class="col-sm-3">
+								<label>Prénom :<br></label>
+							</div>
+							<div class="col-sm-4 offset-sm-1">
 								${user.prenom}
 							</div>
-							<div class="form-group" style="display: block;"><label>Email :<br></label>
+						</div>
+						<div class="row">
+							<div class="col-sm-3">
+								<label>Email :<br></label>
+							</div>
+							<div class="col-sm-4 offset-sm-1">
 								${user.mail}
 							</div>
-							<div class="form-group" style="display: block;"><label>Téléphone :<br></label>
+						</div>
+						<div class="row">
+							<div class="col-sm-3">
+								<label>Téléphone :<br></label>
+							</div>
+							<div class="col-sm-4 offset-sm-1">
 								${user.telephone}
 							</div>
-							<div class="form-group" style="display: block;"><label>Rue :<br></label>
+						</div>
+						<div class="row">
+							<div class="col-sm-3">
+								<label>Rue :<br></label>
+							</div>
+							<div class="col-sm-4 offset-sm-1">
 								${user.rue}
 							</div>
-							<div class="form-group" style="display: block;"><label>Code Postal :<br></label>
+						</div>
+						<div class="row">
+							<div class="col-sm-3">
+								<label>Code Postal :<br></label>
+							</div>
+							<div class="col-sm-4 offset-sm-1">
 								${user.codePostal}
 							</div>
-							<div class="form-group" style="display: block;"><label>Ville :<br></label>
+						</div>
+						<div class="row">
+							<div class="col-sm-3">
+								<label>Ville :<br></label>
+							</div>
+							<div class="col-sm-4 offset-sm-1">
 								${user.ville}
 							</div>
 						</div>
+						<div class="row">
+							<div class="col-sm-3">
+								<a class="btn btn-lg" href="monProfil"><button type="button" class="btn btn-primary" style="background-color: #0062cc; text-align: left;">Modifier</button></a>
+							</div>
+							<div class="col-sm-4 offset-sm-1">
+								<a class="btn btn-lg" href="listeEncheres"><button type="button" class="btn btn-primary" style="background-color: rgb(255, 0, 0); text-align: left; float: none;">Retour</button></a>
+							</div>
+						</div>
 					</div>
-                  	<div class="row">
-                      	<div class="col-sm-6">
-                      		<a class="btn btn-lg" href="monProfil"><button type="button" class="btn btn-primary" style="background-color: #0062cc; text-align: left;">Modifier</button></a>
-                     	</div>
-                     	<div class="col-sm-6">
-                           <a class="btn btn-lg" href="listeEncheres"><button type="button" class="btn btn-primary" style="background-color: rgb(255, 0, 0); text-align: left; float: none;">Retour</button></a>
-                     	</div>
-                  </div>
-				</form>
+				</div>
 			</div>
 		</div>
 	    <jsp:include page="footer.jsp"/>
