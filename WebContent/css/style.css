@@ -1,0 +1,42 @@
+@charset "ISO-8859-1";
+
+.checkbox {
+	position: static;
+	display: inline-block;
+	left: auto;
+	right: auto;
+	float: right;
+}
+
+.mdpOublie {
+	top: auto;
+	font-weight: 400;
+	margin-top: auto;
+	text-align: center;
+	text-decoration-line: underline;
+}
+
+.center {
+	text-align: center;
+}
+
+.link {
+	text-decoration: underline !important;
+	color: #0089ff !important;
+}
+
+.lienBouton {
+	color: #fff;
+}
+
+.bleu {
+	background-color: #0080ff;
+}
+
+.vert {
+	 background-color: #28a745;
+}
+
+.red {
+	background-color: #ff0000;
+}

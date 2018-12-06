@@ -11,3 +11,4 @@
 		</li>
 	</ul>
 	</nav>
+	<h3 class="text-muted">TrocEncheres.org</h3>
