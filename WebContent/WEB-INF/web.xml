@@ -76,4 +76,12 @@
     <servlet-name>VendreUnArticle</servlet-name>
     <url-pattern>/vendreUnArticle</url-pattern>
   </servlet-mapping>
+  <servlet>
+    <servlet-name>ModifProfil</servlet-name>
+    <servlet-class>fr.eni.servlets.ModifProfil</servlet-class>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>ModifProfil</servlet-name>
+    <url-pattern>/modifProfil</url-pattern>
+  </servlet-mapping>
 </web-app>

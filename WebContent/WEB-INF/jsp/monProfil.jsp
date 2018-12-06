@@ -13,7 +13,7 @@
 		<div class="jumbotron">
 	      	<h1 style="">Mon Profil</h1>
 	      	<div class="form-group">
-	      		<form>
+	      		<form action="modifProfil" method="POST">
 		        	<div class="row">
 						<div class="col-sm-6">					
 							<div class="form-group" style="display: block;"><label>Pseudo :<br></label>

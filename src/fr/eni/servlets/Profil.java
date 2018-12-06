@@ -29,7 +29,7 @@ public class Profil extends HttpServlet {
 	    	return;
 	      } else {
 	    	  Map<String, Object> userInfos = new HashMap<String, Object>();
-	    	  userInfos = (Map<String, Object>) request.getSession().getAttribute("utilisateur");
+	    	  userInfos = (HashMap<String, Object>)request.getSession().getAttribute("utilisateur");
 	    	  try {
 				Utilisateur user = UtilisateurDAO.getUserByLogin((String) userInfos.get("pseudo"));
 				request.setAttribute("user", user);
@@ -41,7 +41,6 @@ public class Profil extends HttpServlet {
 	    	  
 	    }
 	}
-
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		doGet(request, response);
 	}
