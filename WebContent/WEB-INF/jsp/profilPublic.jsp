@@ -11,20 +11,31 @@
 		   <h3 class="text-muted">TrocEncheres.org</h3>
 		</div>
 		<div class="jumbotron">
-	      	<h1 style="">Profil de "Pseudo du Geek"</h1>
-	      	<div class="form-group">
-	      		<form>
-		        	<div class="row">
-						<div class="col-sm-12">
-							<div class="form-group" style="display: block;"><label>Pseudo :<br></label>
-								#PseudoDuGeek
-							</div>
-							<div class="form-group" style="display: block;"><label>Adresse :<br></label>
-								#AdresseDuGeek
-							</div>
-							<div class="form-group" style="display: block;"><label>Téléphone :<br></label>
-								#TéléphoneDuGeek
-							</div>
+	      	<h1 style="text-align: center;">Profil de ${user.pseudo}</h1>
+	      	<div class="row">
+				<div class="col-sm-6 offset-sm-4">
+					<div class="row">
+						<div class="col-sm-3">
+							<label>Pseudo :<br></label>
+						</div>
+						<div class="col-sm-4 offset-sm-1">
+							${user.pseudo}
+						</div>
+					</div>
+					<div class="row">
+						<div class="col-sm-3">
+							<label>Adresse :<br></label>
+						</div>
+						<div class="col-sm-4 offset-sm-1">
+							${user.rue} ${user.codePostal} ${user.ville}
+						</div>
+					</div>
+					<div class="row">
+						<div class="col-sm-3">
+							<label>Téléphone :<br></label>
+						</div>
+						<div class="col-sm-4 offset-sm-1">
+							${user.telephone}
 						</div>
 					</div>
                   	<div class="row">
@@ -32,7 +43,7 @@
                            <a class="btn btn-lg" href="listEncheres"><button type="button" class="btn btn-primary" style="background-color: rgb(255, 0, 0); text-align: left; float: none;">Back</button></a>
                      	</div>
                   </div>
-				</form>
+				</div>
 			</div>
 		</div>
 	    <jsp:include page="footer.jsp"/>

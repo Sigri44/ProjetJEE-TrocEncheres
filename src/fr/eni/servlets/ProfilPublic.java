@@ -15,7 +15,7 @@ public class ProfilPublic extends HttpServlet {
     }
 
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		this.getServletContext().getRequestDispatcher( "/WEB-INF/jsp/profilPublique.jsp" ).forward( request, response );
+		this.getServletContext().getRequestDispatcher( "/WEB-INF/jsp/profilPublic.jsp" ).forward( request, response );
 	}
 
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
