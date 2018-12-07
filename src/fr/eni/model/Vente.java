@@ -17,7 +17,6 @@ public class Vente {
 	public Vente() {
 	}
 
-	
 	public Vente(String nomArticle, String description, Date dateFinEnchere, int miseAPrix) {
 		super();
 		this.nomArticle = nomArticle;
@@ -26,8 +25,6 @@ public class Vente {
 		this.miseAPrix = miseAPrix;
 	}
 	
-
-
 	public Vente(String nomArticle, String description, Date dateFinEnchere, int miseAPrix, Categorie categorie,
 			Retrait retrait, Utilisateur acheteur,Utilisateur vendeur) {
 		super();
@@ -41,12 +38,10 @@ public class Vente {
 		this.vendeur= vendeur;
 	}
 
-
 	public Vente(String nomArticle) {
 		super();
 		this.nomArticle = nomArticle;
 	}
-
 
 	public Vente(int noVente, String nomArticle, String description, Date dateFinEnchere, int miseAPrix, Categorie categorie, Retrait retrait) {
 		this.noVente = noVente;

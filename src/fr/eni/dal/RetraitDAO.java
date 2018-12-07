@@ -61,7 +61,7 @@ public class RetraitDAO {
 			rqt.setInt(1, id);
 			rs = rqt.executeQuery();
 			while (rs.next()) {
-				if (retrait == null) retrait = new Retrait(); 
+				if (retrait == null) retrait = new Retrait();
 				retrait.setRue(rs.getString("rue"));
 				retrait.setCodePostal(rs.getString("code_postal"));
 				retrait.setVille(rs.getString("ville"));

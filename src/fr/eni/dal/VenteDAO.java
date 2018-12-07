@@ -3,9 +3,7 @@ package fr.eni.dal;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.SQLException;
-import java.sql.Connection;
 import java.sql.ResultSet;
-import java.sql.SQLException;
 import java.sql.Statement;
 import java.util.ArrayList;
 
@@ -29,7 +27,7 @@ public class VenteDAO {
 	private static final String LISTER 	= "select * from VENTES";	
 			
 	
-	public static int ajouter (Vente vente ) throws SQLException {
+	public static int ajouter (Vente vente) throws SQLException {
 		Connection cnx = null;
 		PreparedStatement rqt = null;
 		int nbre = 0 ;	
@@ -67,9 +65,9 @@ public class VenteDAO {
 			
 			while (rs.next()) {
 				Categorie categorie = CategorieDAO.recherche(Integer.parseInt(rs.getString("no_categorie")));
-				Retrait retrait = new Retrait(rs.getString("rue"));
+				Retrait retrait = RetraitDAO.rechercherParId(Integer.parseInt(rs.getString("no_vente")));
 				Utilisateur acheteur = new Utilisateur(rs.getString("pseudo"));
-				Utilisateur vendeur = new Utilisateur(rs.getString("pseudo"));
+				Utilisateur vendeur = UtilisateurDAO.rechercherParId(Integer.parseInt(rs.getString("no_utilisateur")));
 				vente = new Vente(rs.getString("nomArticle"), rs.getString("description"), rs.getDate("date_fin_encheres"), rs.getInt("prix_vente"), categorie, retrait, acheteur,vendeur);
 				listeVente.add(vente);
 			}
@@ -97,5 +95,11 @@ public class VenteDAO {
 			if (cnx!=null) cnx.close();
 		}
 		return nbreEnrgt;
+	}
+	
+	public static Utilisateur getAcheteurByVenteId(int venteId) {
+		Utilisateur acheteur = new Utilisateur();
+		
+		return acheteur;
 	}
 }
