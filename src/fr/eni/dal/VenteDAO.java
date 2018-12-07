@@ -52,8 +52,8 @@ public class VenteDAO {
 			if (cnx!=null) cnx.close();
 		}
 		return nbre;
-
 	}
+	
 	public static ArrayList<Vente> lister() throws SQLException{
 		Connection cnx = null;
 		Statement rqt = null;
@@ -66,14 +66,14 @@ public class VenteDAO {
 			Vente vente;
 			
 			while (rs.next()) {
-				Categorie categorie = new Categorie(rs.getString("libelle"));
+				Categorie categorie = CategorieDAO.recherche(Integer.parseInt(rs.getString("no_categorie")));
 				Retrait retrait = new Retrait(rs.getString("rue"));
 				Utilisateur acheteur = new Utilisateur(rs.getString("pseudo"));
 				Utilisateur vendeur = new Utilisateur(rs.getString("pseudo"));
 				vente = new Vente(rs.getString("nomArticle"), rs.getString("description"), rs.getDate("date_fin_encheres"), rs.getInt("prix_vente"), categorie, retrait, acheteur,vendeur);
 				listeVente.add(vente);
 			}
-		} finally{
+		} finally {
 			if (rs!=null) rs.close();
 			if (rqt!=null) rqt.close();
 			if (cnx!=null) cnx.close();
@@ -85,18 +85,17 @@ public class VenteDAO {
 		Connection cnx = null;
 		PreparedStatement rqt = null;
 		int nbreEnrgt = 0;
-		try{
+		try {
 			cnx=DbConnection.seConnecter();
 			rqt=cnx.prepareStatement(SUPPRIMER);
 			rqt.setInt(1, id);
 			nbreEnrgt= rqt.executeUpdate();
 		} catch (SQLException e) {
 			throw new SQLException(e.getMessage());
-		}finally{
+		} finally {
 			if (rqt!=null) rqt.close();
 			if (cnx!=null) cnx.close();
 		}
 		return nbreEnrgt;
 	}
-	/*Modifier le contenue à faire */	
 }
