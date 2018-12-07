@@ -20,7 +20,7 @@ public class VenteDAO {
 	private static final String AJOUTER = "insert into VENTES (nomarticle,description,date_fin_encheres,"
 			+ "prix_initial,prix_vente,no_utilisateur,no_categorie) "
 			+ "values (?,?,?,?,?,?,?)";
-	private static final String SUPPRIMER 	= "delete from VENTES where no_vente = ?";
+	private static final String SUPPRIMER = "delete from VENTES where no_vente = ?";
 	private static final String MODIFIER = "update VENTES set nomarticle =?, description = ?, date_fin_encheres = ?, prix_initial = ?, "
 			+ "prix_vente = ?, no_utilisateur = ?, "
 			+ "no_categorie = ? ,"
@@ -32,7 +32,7 @@ public class VenteDAO {
 	public static int ajouter (Vente vente ) throws SQLException {
 		Connection cnx = null;
 		PreparedStatement rqt = null;
-		int nbre =0 ;	
+		int nbre = 0 ;	
 		try {
 			cnx = DbConnection.seConnecter();
 			rqt = cnx.prepareStatement(AJOUTER);
@@ -55,9 +55,9 @@ public class VenteDAO {
 
 	}
 	public static ArrayList<Vente> lister() throws SQLException{
-		Connection cnx=null;
-		Statement rqt=null;
-		ResultSet rs=null;
+		Connection cnx = null;
+		Statement rqt = null;
+		ResultSet rs = null;
 		ArrayList<Vente> listeVente = new ArrayList<Vente>();
 		try {
 			cnx= DbConnection.seConnecter();
@@ -68,8 +68,8 @@ public class VenteDAO {
 			while (rs.next()) {
 				Categorie categorie = new Categorie(rs.getString("libelle"));
 				Retrait retrait = new Retrait(rs.getString("rue"));
-				 Utilisateur acheteur = new Utilisateur(rs.getString("pseudo"));
-				 Utilisateur vendeur = new Utilisateur(rs.getString("pseudo"));
+				Utilisateur acheteur = new Utilisateur(rs.getString("pseudo"));
+				Utilisateur vendeur = new Utilisateur(rs.getString("pseudo"));
 				vente = new Vente(rs.getString("nomArticle"), rs.getString("description"), rs.getDate("date_fin_encheres"), rs.getInt("prix_vente"), categorie, retrait, acheteur,vendeur);
 				listeVente.add(vente);
 			}
@@ -82,8 +82,8 @@ public class VenteDAO {
 	}
 
 	public static int supprimer (int id) throws SQLException {
-		Connection cnx=null;
-		PreparedStatement rqt=null;
+		Connection cnx = null;
+		PreparedStatement rqt = null;
 		int nbreEnrgt = 0;
 		try{
 			cnx=DbConnection.seConnecter();
