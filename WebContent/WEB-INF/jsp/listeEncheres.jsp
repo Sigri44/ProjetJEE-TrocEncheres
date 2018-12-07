@@ -46,8 +46,8 @@
 				<div class="row">
 					<%
 						DateFormat df = new SimpleDateFormat("dd/MM/yyyy");
-						ArrayList<Vente> listeVente = (ArrayList<Vente>) request.getAttribute("touteVente");
-						for (Vente v : listeVente) {
+						ArrayList<Vente> listeVentes = (ArrayList<Vente>) request.getAttribute("touteVentes");
+						for (Vente v : listeVentes) {
 					%>
 					<div class="col-md-6">
 						<div class="card flex-md-row mb-4 box-shadow h-md-250">

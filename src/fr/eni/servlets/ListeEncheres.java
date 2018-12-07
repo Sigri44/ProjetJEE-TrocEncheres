@@ -30,8 +30,8 @@ public class ListeEncheres extends HttpServlet {
 	    	return;
 	      } else {
 	    	  try {
-	    		  ArrayList<Vente>vente = VenteDAO.lister();
-	    		  request.setAttribute("touteVente", vente);
+	    		  ArrayList<Vente>ventes = VenteDAO.lister();
+	    		  request.setAttribute("toutesVentes", ventes);
 	    		  this.getServletContext().getRequestDispatcher( "/WEB-INF/jsp/listeEncheres.jsp" ).forward( request, response );
 		    	  
 			} catch (SQLException e) {

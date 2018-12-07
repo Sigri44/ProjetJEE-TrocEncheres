@@ -99,7 +99,7 @@ public class VenteDAO {
 	
 	public static Utilisateur getAcheteurByVenteId(int venteId) {
 		Utilisateur acheteur = new Utilisateur();
-		
+		acheteur=EnchereDAO.getWinnerByVenteId(venteId);
 		return acheteur;
 	}
 }
