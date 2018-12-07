@@ -19,17 +19,15 @@ import fr.eni.util.DbConnection;
 public class VenteDAO {
 	private static final String AJOUTER = "insert into VENTES (nomarticle,description,date_fin_encheres,"
 			+ "prix_initial,prix_vente,no_utilisateur,no_categorie) "
-			+ "values (?,?,?,?,?,?)";
-	private static final String SUPPRIMER 	= "delete from VENTES where id = ?";
+			+ "values (?,?,?,?,?,?,?)";
+	private static final String SUPPRIMER 	= "delete from VENTES where no_vente = ?";
 	private static final String MODIFIER = "update VENTES set nomarticle =?, description = ?, date_fin_encheres = ?, prix_initial = ?, "
 			+ "prix_vente = ?, no_utilisateur = ?, "
 			+ "no_categorie = ? ,"
-			+ "where id = ?";
-	private static final String RECHERCHER ="select nomarticle,description,date_fin_encheres,prix_initial,prix_vente,no_utilisateur,no_categorie from VENTES where id = ?";
-	private static final String LISTER 	= 
-		"select  nomarticle,description,date_fin_encheres,prix_vente,RETRAITS.rue,libelle,UTILISATEURS.pseudo from VENTES join UTILISATEURS on VENTES.no_utilisateur = UTILISATEURS.no_utilisateur join CATEGORIES on CATEGORIES.no_categorie = VENTES.no_categorie  join RETRAITS on RETRAITS.no_vente = VENTES.no_vente";	
+			+ "where no_vente = ?";
+	private static final String RECHERCHER ="select * from VENTES where no_vente = ?";
+	private static final String LISTER 	= "select * from VENTES";	
 			
-     private static final String ListerRetrit = "select rue,code_postal,ville from RETRAITS";
 	
 	public static int ajouter (Vente vente ) throws SQLException {
 		Connection cnx = null;
@@ -41,7 +39,7 @@ public class VenteDAO {
 			rqt.setString(1, vente.getNomArticle());
 			rqt.setString(2, vente.getDescription());
 			rqt.setDate(2, new java.sql.Date(vente.getDateFinEnchere().getTime()));
-			rqt.setDouble(4, vente.getMiseAPrix());
+			rqt.setInt(4, vente.getMiseAPrix());
 			rqt.setInt(5, vente.getCategorie().getNoCategorie());
 			rqt.setString(6, vente.getRetrait().getRue());
 			rqt.setInt(7, vente.getVendeur().getNoUtilisateur());
@@ -72,7 +70,7 @@ public class VenteDAO {
 				Retrait retrait = new Retrait(rs.getString("rue"));
 				 Utilisateur acheteur = new Utilisateur(rs.getString("pseudo"));
 				 Utilisateur vendeur = new Utilisateur(rs.getString("pseudo"));
-				vente = new Vente(rs.getString("nomArticle"), rs.getString("description"), rs.getDate("date_fin_encheres"), rs.getDouble("prix_vente"), categorie, retrait, acheteur,vendeur);
+				vente = new Vente(rs.getString("nomArticle"), rs.getString("description"), rs.getDate("date_fin_encheres"), rs.getInt("prix_vente"), categorie, retrait, acheteur,vendeur);
 				listeVente.add(vente);
 			}
 		} finally{

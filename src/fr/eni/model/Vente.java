@@ -8,7 +8,7 @@ public class Vente {
 	private String nomArticle;
 	private String description;
 	private Date dateFinEnchere;
-	private double miseAPrix;
+	private int miseAPrix;
 	private Categorie categorie;
 	private Retrait retrait;
 	private Utilisateur vendeur;
@@ -18,7 +18,7 @@ public class Vente {
 	}
 
 	
-	public Vente(String nomArticle, String description, Date dateFinEnchere, double miseAPrix) {
+	public Vente(String nomArticle, String description, Date dateFinEnchere, int miseAPrix) {
 		super();
 		this.nomArticle = nomArticle;
 		this.description = description;
@@ -28,7 +28,7 @@ public class Vente {
 	
 
 
-	public Vente(String nomArticle, String description, Date dateFinEnchere, double miseAPrix, Categorie categorie,
+	public Vente(String nomArticle, String description, Date dateFinEnchere, int miseAPrix, Categorie categorie,
 			Retrait retrait, Utilisateur acheteur,Utilisateur vendeur) {
 		super();
 		this.nomArticle = nomArticle;
@@ -48,7 +48,7 @@ public class Vente {
 	}
 
 
-	public Vente(int noVente, String nomArticle, String description, Date dateFinEnchere, double miseAPrix, Categorie categorie, Retrait retrait) {
+	public Vente(int noVente, String nomArticle, String description, Date dateFinEnchere, int miseAPrix, Categorie categorie, Retrait retrait) {
 		this.noVente = noVente;
 		this.nomArticle = nomArticle;
 		this.description = description;
@@ -81,10 +81,10 @@ public class Vente {
 	public void setDateFinEnchere(Date dateFinEnchere) {
 		this.dateFinEnchere = dateFinEnchere;
 	}
-	public double getMiseAPrix() {
+	public int getMiseAPrix() {
 		return miseAPrix;
 	}
-	public void setMiseAPrix(double miseAPrix) {
+	public void setMiseAPrix(int miseAPrix) {
 		this.miseAPrix = miseAPrix;
 	}	
 	public Categorie getCategorie() {
