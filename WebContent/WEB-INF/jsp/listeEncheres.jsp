@@ -58,7 +58,9 @@
 								<%=v.getRetrait().getVille()%>
 								</p>
 								<p>Prix : <%=v.getMiseAPrix()%></p>
-								<p>Vendeur : <a href="profil"><%=v.getAcheteur().getNom()%></a></p>
+								<input name="pseudo" value="${user['pseudo']}" required type="hidden" class="form-control">
+								
+								<p>Vendeur : <a  href="detailVendeur?="><%=v.getAcheteur().getPseudo()%></a></p>
 							
 							
 							</div>

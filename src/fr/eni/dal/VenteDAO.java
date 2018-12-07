@@ -27,8 +27,8 @@ public class VenteDAO {
 			+ "where id = ?";
 	private static final String RECHERCHER ="select nomarticle,description,date_fin_encheres,prix_initial,prix_vente,no_utilisateur,no_categorie from VENTES where id = ?";
 	private static final String LISTER 	= 
-			"select nomarticle,description,date_fin_encheres,prix_vente,RETRAITS.rue,libelle,UTILISATEURS.pseudo from VENTES,UTILISATEURS,CATEGORIES,RETRAITS  where VENTES.no_utilisateur = UTILISATEURS.no_utilisateur and VENTES.no_categorie = CATEGORIES.no_categorie and VENTES.no_vente= RETRAITS.no_vente;";
-
+		"select  nomarticle,description,date_fin_encheres,prix_vente,RETRAITS.rue,libelle,UTILISATEURS.pseudo from VENTES join UTILISATEURS on VENTES.no_utilisateur = UTILISATEURS.no_utilisateur join CATEGORIES on CATEGORIES.no_categorie = VENTES.no_categorie  join RETRAITS on RETRAITS.no_vente = VENTES.no_vente";	
+			
      private static final String ListerRetrit = "select rue,code_postal,ville from RETRAITS";
 	
 	public static int ajouter (Vente vente ) throws SQLException {
@@ -71,7 +71,8 @@ public class VenteDAO {
 				Categorie categorie = new Categorie(rs.getString("libelle"));
 				Retrait retrait = new Retrait(rs.getString("rue"));
 				 Utilisateur acheteur = new Utilisateur(rs.getString("pseudo"));
-				vente = new Vente(rs.getString("nomArticle"), rs.getString("description"), rs.getDate("date_fin_encheres"), rs.getDouble("prix_vente"), categorie, retrait, acheteur);
+				 Utilisateur vendeur = new Utilisateur(rs.getString("pseudo"));
+				vente = new Vente(rs.getString("nomArticle"), rs.getString("description"), rs.getDate("date_fin_encheres"), rs.getDouble("prix_vente"), categorie, retrait, acheteur,vendeur);
 				listeVente.add(vente);
 			}
 		} finally{

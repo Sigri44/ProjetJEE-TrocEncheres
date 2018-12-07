@@ -84,4 +84,12 @@
     <servlet-name>ModifProfil</servlet-name>
     <url-pattern>/modifProfil</url-pattern>
   </servlet-mapping>
+  <servlet>
+    <servlet-name>DetailVendeur</servlet-name>
+    <servlet-class>fr.eni.servlets.DetailVendeur</servlet-class>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>DetailVendeur</servlet-name>
+    <url-pattern>/detailVendeur</url-pattern>
+  </servlet-mapping>
 </web-app>

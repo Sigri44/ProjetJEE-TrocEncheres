@@ -51,9 +51,11 @@ public class Utilisateur{
 	}	
 
 	
-	public Utilisateur(String nom) {
+	
+
+	public Utilisateur(String pseudo) {
 		super();
-		this.nom = nom;
+		this.pseudo = pseudo;
 	}
 
 	public int getNoUtilisateur() {
