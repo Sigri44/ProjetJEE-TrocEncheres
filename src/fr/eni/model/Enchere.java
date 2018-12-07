@@ -3,12 +3,9 @@ package fr.eni.model;
 import java.util.Date;
 
 public class Enchere {
-
 	private Utilisateur encherisseur;
 	private Vente vente;
 	private Date dateEnchere;
-	
-	
 	
 	public Enchere() {
 	}
