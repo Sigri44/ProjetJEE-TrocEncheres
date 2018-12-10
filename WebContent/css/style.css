@@ -78,10 +78,7 @@ button.fatBoutonHalf {
 	padding: 10% 60%;
 }
 
-.navPc {
-	display: flex;
-}
-
-.navMobile {
-	display: flex;
+.dropdown {
+	float: right;
+	padding-bottom: 20px;
 }
