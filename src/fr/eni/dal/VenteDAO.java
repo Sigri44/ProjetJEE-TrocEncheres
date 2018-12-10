@@ -25,8 +25,8 @@ public class VenteDAO {
 			+ "where no_vente = ?";
 	private static final String RECHERCHER ="select * from VENTES where no_vente = ?";
 	private static final String LISTER 	= "select * from VENTES";	
-			
-	
+
+
 	public static int ajouter (Vente vente) throws SQLException {
 		Connection cnx = null;
 		PreparedStatement rqt = null;
@@ -51,7 +51,7 @@ public class VenteDAO {
 		}
 		return nbre;
 	}
-	
+
 	public static ArrayList<Vente> lister() throws SQLException{
 		Connection cnx = null;
 		Statement rqt = null;
@@ -62,13 +62,13 @@ public class VenteDAO {
 			rqt = cnx.createStatement();
 			rs = rqt.executeQuery(LISTER);
 			Vente vente;
-			
+
 			while (rs.next()) {
 				Categorie categorie = CategorieDAO.recherche(Integer.parseInt(rs.getString("no_categorie")));
 				Retrait retrait = RetraitDAO.rechercherParId(Integer.parseInt(rs.getString("no_vente")));
 				Utilisateur acheteur = new Utilisateur();
 				Utilisateur vendeur = UtilisateurDAO.rechercherParId(Integer.parseInt(rs.getString("no_utilisateur")));
-				vente = new Vente(rs.getString("nomArticle"), rs.getString("description"), rs.getDate("date_fin_encheres"), rs.getInt("prix_vente"), categorie, retrait, acheteur,vendeur);
+				vente = new Vente(rs.getInt("no_vente"),rs.getString("nomArticle"), rs.getString("description"), rs.getDate("date_fin_encheres"), rs.getInt("prix_vente"), categorie, retrait, acheteur,vendeur);
 				listeVente.add(vente);
 			}
 		} finally {
@@ -95,6 +95,44 @@ public class VenteDAO {
 			if (cnx!=null) cnx.close();
 		}
 		return nbreEnrgt;
+	}
+	public static Vente getVenteById(int id) throws SQLException{
+		Connection cnx = null;
+		PreparedStatement rqt = null;
+		ResultSet rs = null;
+		Vente vente = null;
+		try {
+			cnx =DbConnection.seConnecter();
+			rqt = cnx.prepareStatement(RECHERCHER);
+			rqt.setInt(1, id);
+			rs = rqt.executeQuery();
+			
+			while (rs.next()) {
+				if (vente == null)vente = new Vente();
+				Categorie categorie = CategorieDAO.recherche(Integer.parseInt(rs.getString("no_categorie")));
+				Retrait retrait = RetraitDAO.rechercherParId(Integer.parseInt(rs.getString("no_vente")));
+				Utilisateur acheteur = new Utilisateur();
+				Utilisateur vendeur = UtilisateurDAO.rechercherParId(Integer.parseInt(rs.getString("no_utilisateur")));
+				vente.setNoVente(rs.getInt("no_vente"));
+				vente.setNomArticle(rs.getString("nomArticle"));
+				vente.setDescription(rs.getString("description"));
+				vente.setDateFinEnchere(rs.getDate("date_fin_encheres"));
+				vente.setMiseAPrix(rs.getInt("prix_vente"));
+				vente.setCategorie(categorie);
+				vente.setAcheteur(acheteur);
+				vente.setVendeur(vendeur);
+				vente.setRetrait(retrait);
+			}
+		} 
+		finally {
+			if (rs!=null) rs.close();
+			if (rqt!=null) rqt.close();
+			if (cnx!=null) cnx.close();
+		}
+
+		return vente;
+
+
 	}
 	/*
 	public static Utilisateur getAcheteurByVenteId(int venteId) {

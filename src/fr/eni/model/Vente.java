@@ -31,9 +31,10 @@ public class Vente {
 		this.miseAPrix = miseAPrix;
 	}
 	
-	public Vente(String nomArticle, String description, Date dateFinEnchere, int miseAPrix, Categorie categorie,
+	public Vente(int noVente,String nomArticle, String description, Date dateFinEnchere, int miseAPrix, Categorie categorie,
 			Retrait retrait, Utilisateur acheteur,Utilisateur vendeur) {
 		super();
+		this.noVente = noVente;
 		this.nomArticle = nomArticle;
 		this.description = description;
 		this.dateFinEnchere = dateFinEnchere;

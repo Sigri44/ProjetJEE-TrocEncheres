@@ -47,14 +47,14 @@
 				        <div class="col-md-6">
 								<div class="card flex-md-row mb-4 box-shadow h-md-250">
 									<div class="card-body d-flex flex-column align-items-start">
-										<strong class="d-inline-block mb-2 text-primary">${vente.nomArticle}</strong>
+										<a  href="detailVente?vente=${vente.noVente}"><strong class="d-inline-block mb-2 text-primary">${vente.nomArticle}</strong></a>
 										<p>Fin de l'enchère : ${vente.dateFinEnchere}</p>
 										<p>Retrait : ${vente.retrait.rue}
 										${vente.retrait.ville}
 										</p>
 										<p>Prix : ${vente.miseAPrix}</p>
 										
-										<p>Vendeur : <a  href="detailVendeur?=">${vente.vendeur.pseudo}</a></p>
+										<p>Vendeur : <a  href="detailVendeur?pseudo=${vente.vendeur.pseudo}">${vente.vendeur.pseudo}<a  href="detailVendeur?pseudo=${vente.vendeur.pseudo}"></p>
 									
 									
 									</div>

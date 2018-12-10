@@ -12,19 +12,21 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
 import fr.eni.dal.UtilisateurDAO;
+import fr.eni.dal.VenteDAO;
 import fr.eni.model.Utilisateur;
+import fr.eni.model.Vente;
 
 /**
  * Servlet implementation class DetailVendeur
  */
-@WebServlet("/DetailVendeur")
-public class DetailVendeur extends HttpServlet {
+@WebServlet("/DetailVente")
+public class DetailVente extends HttpServlet {
 	private static final long serialVersionUID = 1L;
        
     /**
      * @see HttpServlet#HttpServlet()
      */
-    public DetailVendeur() {
+    public DetailVente() {
         super();
         // TODO Auto-generated constructor stub
     }
@@ -37,12 +39,13 @@ public class DetailVendeur extends HttpServlet {
 			response.sendRedirect("connexion");
 	    	return;
 	      } else {
-	    	  String pseudo = request.getParameter("pseudo");
+	    	  int id = Integer.parseInt(request.getParameter("vente"));
+	    	
 	    	  try {
-				Utilisateur user = UtilisateurDAO.getUserByLogin(pseudo);
-				System.out.println(pseudo);
-				request.setAttribute("user", user);
-				this.getServletContext().getRequestDispatcher( "/WEB-INF/jsp/detailVendeur.jsp" ).forward( request, response );
+	    		  Vente vente =  VenteDAO.getVenteById(id);
+			
+				request.setAttribute("vente", vente);
+				this.getServletContext().getRequestDispatcher( "/WEB-INF/jsp/detailVente.jsp" ).forward( request, response );
 			} catch (SQLException e) {
 				e.printStackTrace();
 			}

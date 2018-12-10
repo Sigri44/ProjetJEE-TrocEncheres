@@ -92,4 +92,12 @@
     <servlet-name>DetailVendeur</servlet-name>
     <url-pattern>/detailVendeur</url-pattern>
   </servlet-mapping>
+  <servlet>
+    <servlet-name>DetailVente</servlet-name>
+    <servlet-class>fr.eni.servlets.DetailVente</servlet-class>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>DetailVente</servlet-name>
+    <url-pattern>/detailVente</url-pattern>
+  </servlet-mapping>
 </web-app>
