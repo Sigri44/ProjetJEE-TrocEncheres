@@ -42,8 +42,8 @@
 }
 
 #blah {
-	height: 230px;
-	width: 230px;
+	height: 200px;
+	width: 200px;
 	object-fit: contain;
 }
 
@@ -53,7 +53,8 @@ textarea.noResize {
 }
 
 #imageVente {
-	width: 230px;
-	height: 230px;
+	width: 200px;
+	height: 200px;
 	border: 1px solid white;
+	display: none;
 }

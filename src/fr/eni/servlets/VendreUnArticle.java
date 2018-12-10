@@ -43,6 +43,13 @@ public class VendreUnArticle extends HttpServlet {
 	}
 
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		
+		//Récupération des éléments du formulaire
+		String nomArticle = request.getParameter("nomArticle");
+        String description = request.getParameter("desc");
+        String prix = request.getParameter("price");
+        String dateFinEnchere = request.getParameter("finEnchere");
+        // todo 
+        String prenom = request.getParameter("prenom");
+        String nom = request.getParameter("nom");
 	}
 }

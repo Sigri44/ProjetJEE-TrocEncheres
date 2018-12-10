@@ -8,7 +8,7 @@
 <body>
 	<div class="container">
 		<div class="header clearfix">
-		   <h3 class="text-muted">TrocEncheres.org</h3>
+		   <jsp:include page="menu.jsp" />
 		</div>
 		<div class="jumbotron">
 	      	<h1 style="">Mon Profil</h1>

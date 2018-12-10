@@ -4,6 +4,12 @@ import java.util.Date;
 
 public class Vente {
 
+	@Override
+	public String toString() {
+		return "Vente [noVente=" + noVente + ", nomArticle=" + nomArticle + ", description=" + description
+				+ ", dateFinEnchere=" + dateFinEnchere + ", miseAPrix=" + miseAPrix + ", categorie=" + categorie
+				+ ", retrait=" + retrait + ", vendeur=" + vendeur + ", acheteur=" + acheteur + "]";
+	}
 	private int noVente;
 	private String nomArticle;
 	private String description;

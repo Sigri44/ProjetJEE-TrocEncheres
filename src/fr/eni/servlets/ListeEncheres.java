@@ -32,6 +32,7 @@ public class ListeEncheres extends HttpServlet {
 	    	  try {
 	    		  ArrayList<Vente>ventes = VenteDAO.lister();
 	    		  request.setAttribute("toutesVentes", ventes);
+	    		  System.out.println(ventes.get(0).toString());
 	    		  this.getServletContext().getRequestDispatcher( "/WEB-INF/jsp/listeEncheres.jsp" ).forward( request, response );
 		    	  
 			} catch (SQLException e) {

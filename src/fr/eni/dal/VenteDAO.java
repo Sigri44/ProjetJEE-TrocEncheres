@@ -66,7 +66,7 @@ public class VenteDAO {
 			while (rs.next()) {
 				Categorie categorie = CategorieDAO.recherche(Integer.parseInt(rs.getString("no_categorie")));
 				Retrait retrait = RetraitDAO.rechercherParId(Integer.parseInt(rs.getString("no_vente")));
-				Utilisateur acheteur = new Utilisateur(rs.getString("pseudo"));
+				Utilisateur acheteur = new Utilisateur();
 				Utilisateur vendeur = UtilisateurDAO.rechercherParId(Integer.parseInt(rs.getString("no_utilisateur")));
 				vente = new Vente(rs.getString("nomArticle"), rs.getString("description"), rs.getDate("date_fin_encheres"), rs.getInt("prix_vente"), categorie, retrait, acheteur,vendeur);
 				listeVente.add(vente);
@@ -96,10 +96,10 @@ public class VenteDAO {
 		}
 		return nbreEnrgt;
 	}
-	
+	/*
 	public static Utilisateur getAcheteurByVenteId(int venteId) {
 		Utilisateur acheteur = new Utilisateur();
 		acheteur=EnchereDAO.getWinnerByVenteId(venteId);
 		return acheteur;
-	}
+	}*/
 }

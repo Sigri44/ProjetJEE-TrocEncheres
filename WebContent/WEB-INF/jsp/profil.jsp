@@ -8,7 +8,7 @@
 <body>
 	<div class="container">
 		<div class="header clearfix">
-		   <h3 class="text-muted">TrocEncheres.org</h3>
+		   <jsp:include page="menu.jsp" />
 		</div>
 		<c:if test= "${not empty modification}">
 			<p class="alert alert-success">${modification}</p>
