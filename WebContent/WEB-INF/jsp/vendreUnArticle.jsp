@@ -7,21 +7,19 @@
 	<script class="jsbin" src="http://ajax.googleapis.com/ajax/libs/jqueryui/1.8.0/jquery-ui.min.js" type="text/javascript"></script>
     <jsp:include page="header.jsp"/>
     <script type="text/javascript" async>
-		function readURL(input) {
-	        $("#imageVente").show();
-		
+		function readURL(input) {	
+			$("#imageVente").slideToggle(1000);
+			$("#imageVente").show();
+			
 		    if (input.files && input.files[0]) {
 		        var reader = new FileReader();
 		
 		        reader.onload = function (e) {
-		            $('#blah').attr('src');
+		            $('#blah').attr('src', e.target.result);
 		        };		        
 		        reader.readAsDataURL(input.files[0]);
 		    }
-		    
-		        
-		
-		
+		}
 	</script>
 </head>
 
@@ -33,7 +31,9 @@
 		<div class="jumbotron">
 			<div class="row">
 				<div class="col-sm-3">
-					
+				<div id="imageVente" >
+									<img id="blah" src="#" alt="image" />
+								</div>		
 				</div>
 				<div class="col-sm-6">
 					<form action="vendreUnArticle">
@@ -50,12 +50,9 @@
 							<div class="row">
 								<label>Photo de l'article</label>
 								<input type="file" onchange="readURL(this);" name="file" id="file" accept="image/*"/>
-							</div>	
-							<div class="row">	
-								<div id="imageVente" >
-									<img id="blah" src="#"  />
-								</div>									
-							</div>
+							</div>		
+																
+							
 						</div>
 						
 						<div class="form-group">
