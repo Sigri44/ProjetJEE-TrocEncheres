@@ -12,7 +12,7 @@
 			<a class="nav-link navPc d-none d-lg-block" href="deconnexion">Déconnexion</a>
 		</li>
 	</ul>
-	<div class="dropdown d-block d-lg-none">
+	<div class="dropleft d-block d-lg-none">
 		<button class="btn btn-primary dropdown-toggle" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
 			Menu
 		<span class="caret"></span>
