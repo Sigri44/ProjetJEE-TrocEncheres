@@ -8,12 +8,9 @@
     <jsp:include page="header.jsp"/>
     <script type="text/javascript" async>
 		function readURL(input) {	
-			$("#imageVente").slideToggle(1000);
-			$("#imageVente").show();
-			
+			$("#imageVente").show();			
 		    if (input.files && input.files[0]) {
-		        var reader = new FileReader();
-		
+		        var reader = new FileReader();		
 		        reader.onload = function (e) {
 		            $('#blah').attr('src', e.target.result);
 		        };		        
@@ -51,8 +48,6 @@
 								<label>Photo de l'article</label>
 								<input type="file" onchange="readURL(this);" name="file" id="file" accept="image/*"/>
 							</div>		
-																
-							
 						</div>
 						
 						<div class="form-group">
