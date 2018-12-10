@@ -11,7 +11,7 @@ import fr.eni.model.Retrait;
 import fr.eni.util.DbConnection;
 
 public class RetraitDAO {
-	private static final String AJOUTER = "INSERT INTO RETRAITS (rue, code_postal, ville) VALUES (?,?,?)";
+	private static final String AJOUTER = "INSERT INTO RETRAITS (no_vente, rue, code_postal, ville) VALUES (?,?,?,?)";
 	private static final String SUPPRIMER = "DELETE FROM RETRAITS WHERE no_vente = ?";
 	private static final String MODIFIER = "UPDATE RETRAITS SET rue = ?, code_postal = ?, ville = ? WHERE no_vente = ?";
 	private static final String SEARCHBYID = "SELECT * FROM RETRAITS WHERE no_vente = ?";
@@ -23,9 +23,11 @@ public class RetraitDAO {
 		try {
 			cnx = DbConnection.seConnecter();
 			rqt = cnx.prepareStatement(AJOUTER);
-			rqt.setString(1, retrait.getRue());
-			rqt.setString(2, retrait.getCodePostal());
-			rqt.setString(3, retrait.getVille());
+			rqt.setInt(1, retrait.getNoVente());
+			rqt.setString(2, retrait.getRue());
+			rqt.setString(3, retrait.getCodePostal());
+			rqt.setString(4, retrait.getVille());
+			rqt.executeUpdate();
 		} catch (SQLException e) {
 			new SQLException(e.getMessage());
 		} finally {
@@ -85,7 +87,7 @@ public class RetraitDAO {
 			rs = rqt.executeQuery(LISTER);
 			Retrait retrait;
 			while (rs.next()) {
-				retrait = new Retrait(rs.getString("rue"), rs.getString("code_postal"), rs.getString("ville"));
+				retrait = new Retrait(rs.getInt("no_Vente"),rs.getString("rue"), rs.getString("code_postal"), rs.getString("ville"));
 				listeRetraits.add(retrait);
 			}
 		} finally {

@@ -1,7 +1,8 @@
 package fr.eni.model;
 
-public class Retrait {
-
+public class Retrait {	
+	
+	private int noVente;
 	private String rue;
 	private String codePostal;
 	private String ville;
@@ -13,7 +14,8 @@ public class Retrait {
 		this.rue = rue;
 	}
 
-	public Retrait(String rue, String codePostal, String ville) {
+	public Retrait(int noVente, String rue, String codePostal, String ville) {
+		this.noVente = noVente;
 		this.rue = rue;
 		this.codePostal = codePostal;
 		this.ville = ville;
@@ -36,4 +38,19 @@ public class Retrait {
 	public void setVille(String ville) {
 		this.ville = ville;
 	}
+
+	public int getNoVente() {
+		return noVente;
+	}
+
+	public void setNoVente(int noVente) {
+		this.noVente = noVente;
+	}
+
+	@Override
+	public String toString() {
+		return "Retrait [noVente=" + noVente + ", rue=" + rue + ", codePostal=" + codePostal + ", ville=" + ville + "]";
+	}
+	
+	
 }

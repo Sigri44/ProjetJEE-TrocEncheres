@@ -44,6 +44,19 @@ public class Vente {
 		this.acheteur = acheteur;
 		this.vendeur= vendeur;
 	}
+	
+	public Vente(String nomArticle, String description, Date dateFinEnchere, int miseAPrix, Categorie categorie,
+			Retrait retrait, Utilisateur acheteur,Utilisateur vendeur) {
+		super();
+		this.nomArticle = nomArticle;
+		this.description = description;
+		this.dateFinEnchere = dateFinEnchere;
+		this.miseAPrix = miseAPrix;
+		this.categorie = categorie;
+		this.retrait = retrait;
+		this.acheteur = acheteur;
+		this.vendeur= vendeur;
+	}
 
 	public Vente(String nomArticle) {
 		super();

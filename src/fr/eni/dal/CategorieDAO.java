@@ -68,7 +68,7 @@ public class CategorieDAO {
 			rs = rqt.executeQuery(LISTER);
 			Categorie categorie;
 			while (rs.next()) {
-				categorie = new Categorie(rs.getString("libelle"));
+				categorie = new Categorie(rs.getInt("no_Categorie"),rs.getString("libelle"));
 				listeCategorie.add(categorie);
 			}
 		} finally {

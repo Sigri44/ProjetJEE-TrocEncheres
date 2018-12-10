@@ -41,14 +41,20 @@
 							<input type="text" name="nomArticle" class="form-control" required>
 						</div>
 						<div class="form-group">
+							<label>Categorie : </label>
+							<select name="categorie">
+							<c:forEach items="${categories}" var="categorie">
+								<option value="${categorie.noCategorie}">${categorie.libelle}</option>
+							</c:forEach>
+							</select>
+						</div>
+						<div class="form-group">
 							<label>Description :<br></label>
 							<textarea name="desc" class="form-control noResize" required></textarea>
 						</div>
 						<div class="form-group">
-							<div class="row">
 								<label>Photo de l'article</label>
-								<input type="file" onchange="readURL(this);" name="file" id="file" accept="image/*"/>
-							</div>		
+								<input type="file" onchange="readURL(this);" name="file" id="file" accept="image/*"/>	
 						</div>
 						
 						<div class="form-group">
