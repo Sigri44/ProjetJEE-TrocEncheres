@@ -31,11 +31,12 @@ public class VenteDAO {
 	public static int ajouter (Vente vente) throws SQLException {
 		Connection cnx = null;
 		PreparedStatement rqt = null;
+		long key = -1L;
 		ResultSet rs = null;
 		int nbre = 0 ;	
 		try {
 			cnx = DbConnection.seConnecter();
-			rqt = cnx.prepareStatement(AJOUTER);
+			rqt = cnx.prepareStatement(AJOUTER, Statement.RETURN_GENERATED_KEYS);
 			rqt.setString(1, vente.getNomArticle());
 			rqt.setString(2, vente.getDescription());
 			rqt.setDate(3, new java.sql.Date(vente.getDateFinEnchere().getTime()));
@@ -43,6 +44,16 @@ public class VenteDAO {
 			rqt.setInt(5, vente.getVendeur().getNoUtilisateur());
 			rqt.setInt(6, vente.getCategorie().getNoCategorie());
 			rqt.executeUpdate();
+			rs = rqt.getGeneratedKeys();
+
+			if (rs.next()) {
+			    key = rs.getLong(1);
+			    Retrait retrait = vente.getRetrait();
+			    
+			    retrait.setNoVente((int) key);
+			    System.out.println(retrait.toString());
+			    RetraitDAO.ajouter(retrait);
+			}
 			/*
 			Retrait retrait = vente.getRetrait();
 			RetraitDAO.ajouter(retrait);

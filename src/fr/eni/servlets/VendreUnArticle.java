@@ -54,6 +54,7 @@ public class VendreUnArticle extends HttpServlet {
 				categories = CategorieDAO.lister();
 				request.setAttribute("categories", categories);
 			} catch (SQLException e1) {
+				// TODO Auto-generated catch block
 				e1.printStackTrace();
 			}
 	    	@SuppressWarnings("unchecked")
@@ -62,6 +63,7 @@ public class VendreUnArticle extends HttpServlet {
 				Utilisateur user = UtilisateurDAO.getUserByLogin(userInfos.get("pseudo"));
 				request.setAttribute("utilisateur", user);
 			} catch (SQLException e) {
+				// TODO Auto-generated catch block
 				e.printStackTrace();
 			}	    	
 	    	request.setAttribute("dateJour", tommorowFormated);
@@ -80,12 +82,21 @@ public class VendreUnArticle extends HttpServlet {
         String boxRetrait = request.getParameter("boxRetrait");
         Retrait retrait = new Retrait();
         if(boxRetrait !=null) {
-        	String rue = request.getParameter("rueH");
-            String codePostal = request.getParameter("codePostalH");
-            String ville = request.getParameter("villeH");
-            retrait.setRue(rue);
-            retrait.setCodePostal(codePostal);
-            retrait.setVille(ville);
+        	@SuppressWarnings("unchecked")
+			Map<String, String> userInfos= (HashMap<String, String>)request.getSession().getAttribute("utilisateur");
+        	try {
+				Utilisateur user = UtilisateurDAO.getUserByLogin(userInfos.get("pseudo"));
+				String rue = user.getRue();
+	            String codePostal = user.getCodePostal();
+	            String ville = user.getVille();
+	            retrait.setRue(rue);
+	            retrait.setCodePostal(codePostal);
+	            retrait.setVille(ville);
+			} catch (SQLException e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+			}
+        	
         }else {
         	String rue = request.getParameter("rue");
             String codePostal = request.getParameter("codePostal");
@@ -104,9 +115,11 @@ public class VendreUnArticle extends HttpServlet {
         try {
 			vente.setDateFinEnchere(formatter.parse(dateFinEnchere));
 		} catch (ParseException e) {
+			// TODO Auto-generated catch block
 			e.printStackTrace();
 		} 
         vente.setRetrait(retrait);
+        System.out.println("getRetrait dans la servlet : "+vente.getRetrait().toString());
         
         @SuppressWarnings("unchecked")
 		Map<String, String> userInfos= (HashMap<String, String>)request.getSession().getAttribute("utilisateur");
@@ -115,6 +128,7 @@ public class VendreUnArticle extends HttpServlet {
 			vendeur = UtilisateurDAO.getUserByLogin(userInfos.get("pseudo"));
 			vente.setVendeur(vendeur);
 		} catch (SQLException e) {
+			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
         
@@ -123,8 +137,10 @@ public class VendreUnArticle extends HttpServlet {
 			categorie = CategorieDAO.recherche(Integer.parseInt(request.getParameter("categorie")));
 			vente.setCategorie(categorie);
 		} catch (NumberFormatException e) {
+			// TODO Auto-generated catch block
 			e.printStackTrace();
 		} catch (SQLException e) {
+			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
 		
@@ -136,5 +152,8 @@ public class VendreUnArticle extends HttpServlet {
 		} catch (SQLException e) {
 			e.printStackTrace();
 		}
+		
+        
+        
 	}
 }
