@@ -65,3 +65,23 @@ textarea.noResize {
 	height: 200px;
 	display: none;
 }
+
+.checkbox {
+	float: none !important;
+}
+
+button.fatBoutonHalf {
+	padding: 10% 45%;
+}
+
+.fatBoutonFull {
+	padding: 10% 60%;
+}
+
+.navPc {
+	display: flex;
+}
+
+.navMobile {
+	display: flex;
+}

@@ -40,26 +40,34 @@
 							<p class="alert alert-danger">${erreurs['wrongPass']}</p>
 						</c:if>
 					</div>
-					<a class="btn btn-lg" href="listeEncheres">
-						<input type="submit" class="btn vert lienBouton" />
-					</a>
+					<div class="row">
+						<div class="col-sm-3 col-md-4 offset-sm-1 offset-md-0">
+							<a class="btn btn-lg" href="listeEncheres">
+								<button type="submit" class="btn vert lienBouton fatBoutonHalf">Connexion</button>
+							</a>
+						</div>
+						<div class="col-sm-3 col-md-6 offset-md-2">
+							<div class="row">
+								<div class="col-sm-12 col-md-12">
+									<label class="checkbox">
+										<input type="checkbox">&nbsp;Se souvenir de moi
+									</label>
+								</div>
+							</div>
+							<div class="row">
+								<div class="col-sm-12 col-md-12">
+									<a class="mdpOublie link" href="#">Mot de passe oublié</a>
+								</div>
+							</div>
+						</div>
+					</div>
 				</form>
 			</div>
 			<div class="row">
-				<div class="col-sm-3 offset-sm-6">
-					<div class="form-group">
-					   <label class="checkbox">
-							<input type="checkbox">&nbsp;Se souvenir de moi
-						</label>
-					</div>
-					<div class="form-group">
-						<a class="mdpOublie link" href="#">Mot de passe oublié</a>
-					</div>
-				</div>
-			</div>
-			<div class="row">
-				<div class="col-sm-6 offset-sm-3">
-					<a class="btn btn-lg" href="inscription"><button type="button" class="btn bleu lienBouton">Créer un compte</button></a>
+				<div class="col-sm-12 offset-sm-3">
+					<a class="btn btn-lg" href="inscription">
+						<button type="button" class="btn bleu lienBouton fatBoutonFull">Créer un compte</button>
+					</a>
 				</div>
 			</div>
 		</div>

@@ -134,8 +134,12 @@
 								<p class="alert alert-danger">${erreurs['mdp']}</p>
 							</c:if>
 						</div>
-						<a class="btn btn-lg" href="#"><button type="submit" class="btn lienBouton bleu">Créer</button></a>
-						<a class="btn btn-lg" href="connexion"><button type="button" class="btn lienBouton red">Annuler</button></a>
+						<div class="form-group col-xs-6 col-sm-6 col-md-6 col-lg-6">
+							<a class="btn btn-lg" href="#"><button type="submit" class="btn lienBouton bleu fatBoutonHalf">Créer</button></a>
+						</div>
+						<div class="form-group col-xs-6 col-sm-6 col-md-6 col-lg-6">
+							<a class="btn btn-lg" href="connexion"><button type="button" class="btn lienBouton red fatBoutonHalf">Annuler</button></a>
+						</div>
 					</div>
 				</form>
 			</div>
