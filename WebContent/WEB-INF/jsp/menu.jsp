@@ -11,4 +11,4 @@
 		</li>
 	</ul>
 	</nav>
-	<h3 class="text-muted">TrocEncheres.org</h3>
+	<a class="nolink" href="listeEncheres"><h3 class="text-muted">TrocEncheres.org</h3></a>

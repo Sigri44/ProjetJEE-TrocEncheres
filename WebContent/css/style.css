@@ -20,6 +20,14 @@
 	text-align: center;
 }
 
+.nolink {
+	text-decoration: none;
+}
+
+.nolink:hover {
+	text-decoration: none;
+}
+
 .link {
 	text-decoration: underline !important;
 	color: #0089ff !important;
