@@ -47,16 +47,17 @@
 				        <div class="col-md-6">
 								<div class="card flex-md-row mb-4 box-shadow h-md-250">
 									<div class="card-body d-flex flex-column align-items-start">
-										<a  href="detailVente?vente=${vente.noVente}"><strong class="d-inline-block mb-2 text-primary">${vente.nomArticle}</strong></a>
+										<a href="detailVente?vente=${vente.noVente}">
+											<strong class="d-inline-block mb-2 text-primary">${vente.nomArticle}</strong>
+										</a>
 										<p>Fin de l'enchère : ${vente.dateFinEnchere}</p>
-										<p>Retrait : ${vente.retrait.rue}
-										${vente.retrait.ville}
+										<p>
+											Retrait :
+											${vente.retrait.rue}
+											${vente.retrait.ville}
 										</p>
 										<p>Prix : ${vente.miseAPrix}</p>
-										
-										<p>Vendeur : <a  href="detailVendeur?pseudo=${vente.vendeur.pseudo}">${vente.vendeur.pseudo}<a  href="detailVendeur?pseudo=${vente.vendeur.pseudo}"></p>
-									
-									
+										<p>Vendeur : <a href="detailVendeur?pseudo=${vente.vendeur.pseudo}">${vente.vendeur.pseudo}</a></p>
 									</div>
 									<img class="card-img-left flex-auto d-none d-lg-block"
 										data-src="holder.js/200x250?theme=thumb"
@@ -66,7 +67,6 @@
 								</div>
 							</div>
 				    </c:forEach>
-					
 				</div>
 			</div>
 		</div>
