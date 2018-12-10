@@ -16,7 +16,7 @@ import fr.eni.model.Vente;
 
 import java.sql.SQLException;
 
-@WebServlet("/ListeEncheres")
+@WebServlet("/listeEncheres")
 public class ListeEncheres extends HttpServlet {
 	private static final long serialVersionUID = 1L;
 

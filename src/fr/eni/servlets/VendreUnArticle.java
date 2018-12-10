@@ -30,7 +30,7 @@ import fr.eni.model.Utilisateur;
 import fr.eni.model.Vente;
 import javafx.scene.shape.Arc;
 
-@WebServlet("/VendreUnArticle")
+@WebServlet("/vendreUnArticle")
 public class VendreUnArticle extends HttpServlet {
 	private static final long serialVersionUID = 1L;
 
@@ -54,7 +54,6 @@ public class VendreUnArticle extends HttpServlet {
 				categories = CategorieDAO.lister();
 				request.setAttribute("categories", categories);
 			} catch (SQLException e1) {
-				// TODO Auto-generated catch block
 				e1.printStackTrace();
 			}
 	    	@SuppressWarnings("unchecked")
@@ -63,7 +62,6 @@ public class VendreUnArticle extends HttpServlet {
 				Utilisateur user = UtilisateurDAO.getUserByLogin(userInfos.get("pseudo"));
 				request.setAttribute("utilisateur", user);
 			} catch (SQLException e) {
-				// TODO Auto-generated catch block
 				e.printStackTrace();
 			}	    	
 	    	request.setAttribute("dateJour", tommorowFormated);
@@ -106,7 +104,6 @@ public class VendreUnArticle extends HttpServlet {
         try {
 			vente.setDateFinEnchere(formatter.parse(dateFinEnchere));
 		} catch (ParseException e) {
-			// TODO Auto-generated catch block
 			e.printStackTrace();
 		} 
         vente.setRetrait(retrait);
@@ -118,7 +115,6 @@ public class VendreUnArticle extends HttpServlet {
 			vendeur = UtilisateurDAO.getUserByLogin(userInfos.get("pseudo"));
 			vente.setVendeur(vendeur);
 		} catch (SQLException e) {
-			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
         
@@ -127,10 +123,8 @@ public class VendreUnArticle extends HttpServlet {
 			categorie = CategorieDAO.recherche(Integer.parseInt(request.getParameter("categorie")));
 			vente.setCategorie(categorie);
 		} catch (NumberFormatException e) {
-			// TODO Auto-generated catch block
 			e.printStackTrace();
 		} catch (SQLException e) {
-			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
 		
@@ -142,8 +136,5 @@ public class VendreUnArticle extends HttpServlet {
 		} catch (SQLException e) {
 			e.printStackTrace();
 		}
-		
-        
-        
 	}
 }

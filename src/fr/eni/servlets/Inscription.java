@@ -15,7 +15,7 @@ import javax.servlet.http.HttpServletResponse;
 import fr.eni.dal.UtilisateurDAO;
 import fr.eni.model.Utilisateur;
 
-@WebServlet("/Inscription")
+@WebServlet("/inscription")
 public class Inscription extends HttpServlet {
 	private static final long serialVersionUID = 1L;
 

@@ -18,7 +18,7 @@ import fr.eni.model.Utilisateur;
 /**
  * Servlet implementation class SupprProfil
  */
-@WebServlet("/SupprProfil")
+@WebServlet("/supprProfil")
 public class SupprProfil extends HttpServlet {
 	private static final long serialVersionUID = 1L;
        

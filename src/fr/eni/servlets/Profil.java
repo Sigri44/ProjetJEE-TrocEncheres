@@ -14,7 +14,7 @@ import javax.servlet.http.HttpServletResponse;
 import fr.eni.dal.UtilisateurDAO;
 import fr.eni.model.Utilisateur;
 
-@WebServlet("/Profil")
+@WebServlet("/profil")
 public class Profil extends HttpServlet {
 	private static final long serialVersionUID = 1L;
 

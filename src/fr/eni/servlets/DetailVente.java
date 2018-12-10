@@ -19,7 +19,7 @@ import fr.eni.model.Vente;
 /**
  * Servlet implementation class DetailVendeur
  */
-@WebServlet("/DetailVente")
+@WebServlet("/detailVente")
 public class DetailVente extends HttpServlet {
 	private static final long serialVersionUID = 1L;
        

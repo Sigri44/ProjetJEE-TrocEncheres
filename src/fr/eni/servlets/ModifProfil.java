@@ -16,7 +16,7 @@ import fr.eni.model.Utilisateur;
 /**
  * Servlet implementation class ModifProfil
  */
-@WebServlet("/ModifProfil")
+@WebServlet("/modifProfil")
 public class ModifProfil extends HttpServlet {
 	private static final long serialVersionUID = 1L;
        

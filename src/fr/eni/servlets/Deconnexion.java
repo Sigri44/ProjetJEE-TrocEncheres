@@ -11,7 +11,7 @@ import javax.servlet.http.HttpSession;
 /**
  * Servlet implementation class deconnexion
  */
-@WebServlet("/Deconnexion")
+@WebServlet("/deconnexion")
 public class Deconnexion extends HttpServlet {
 	private static final long serialVersionUID = 1L;
        
