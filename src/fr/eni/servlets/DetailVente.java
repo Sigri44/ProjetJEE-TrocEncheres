@@ -40,7 +40,7 @@ public class DetailVente extends HttpServlet {
 	    	return;
 	      } else {
 	    	  int id = Integer.parseInt(request.getParameter("vente"));
-	    	
+	    	System.out.println(id);
 	    	  try {
 	    		  Vente vente =  VenteDAO.getVenteById(id);
 			
