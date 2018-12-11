@@ -28,7 +28,7 @@ public class VenteDAO {
 	private static final String LASTID 	= "SELECT TOP 1 no_vente from VENTES ORDER BY no_vente DESC";
 			
 	
-	public static int ajouter (Vente vente) throws SQLException {
+	public static long ajouter (Vente vente) throws SQLException {
 		Connection cnx = null;
 		PreparedStatement rqt = null;
 		long key = -1L;
@@ -45,10 +45,9 @@ public class VenteDAO {
 			rqt.setInt(6, vente.getCategorie().getNoCategorie());
 			rqt.executeUpdate();
 			rs = rqt.getGeneratedKeys();
-			if (rs.next()) {
-			    key = rs.getLong(1);
+			if (rs.next()) {	
+				key=rs.getInt(1);
 			    Retrait retrait = vente.getRetrait();
-			    
 			    retrait.setNoVente((int) key);
 			    RetraitDAO.ajouter(retrait);
 			}				
@@ -59,7 +58,7 @@ public class VenteDAO {
 			if (rqt!=null) rqt.close();
 			if (cnx!=null) cnx.close();
 		}
-		return nbre;
+		return key;
 	}
 	
 	public static ArrayList<Vente> lister() throws SQLException{

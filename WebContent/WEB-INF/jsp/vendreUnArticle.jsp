@@ -33,7 +33,7 @@
 					</div>
 				</div>
 				<div class="col-sm-12 col-md-12 col-lg-6">
-					<form action="vendreUnArticle" method="POST">
+					<form enctype="multipart/form-data" action="vendreUnArticle" method="POST">
 					<h1 class="center">Nouvelle vente</h1>
 						<div class="form-group row">
 							<label class="col-sm-3 col-md-3 col-lg-3">Article :<br></label>
