@@ -41,12 +41,12 @@
 						</c:if>
 					</div>
 					<div class="row">
-						<div class="col-sm-3 col-md-4 offset-sm-1 offset-md-0">
+						<div class="col-sm-3 col-md-5 offset-sm-1 offset-md-6 offset-lg-0">
 							<a class="btn btn-lg" href="listeEncheres">
 								<button type="submit" class="btn vert lienBouton fatBoutonHalf">Connexion</button>
 							</a>
 						</div>
-						<div class="col-sm-3 col-md-6 offset-md-2">
+						<div class="col-sm-3 col-md-7 offset-md-7 offset-lg-0">
 							<div class="row">
 								<div class="col-sm-12 col-md-12">
 									<label class="checkbox">
