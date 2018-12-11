@@ -39,7 +39,7 @@ import fr.eni.model.Vente;
 import javafx.scene.shape.Arc;
 
 @WebServlet("/vendreUnArticle")
-@MultipartConfig(location="imgUpload", maxFileSize=1048576L) // 10Mo.
+@MultipartConfig(location="C:\\repupload", maxFileSize=1048576L) // 10Mo.
 public class VendreUnArticle extends HttpServlet {
 	private static final long serialVersionUID = 1L;
 
@@ -169,6 +169,7 @@ public class VendreUnArticle extends HttpServlet {
 				// parcourir chaque paramètre reçu
 				for (Part p: request.getParts())
 				{
+					
 					String typeContenu=p.getContentType();				
 					if(typeContenu!=null)
 					{
