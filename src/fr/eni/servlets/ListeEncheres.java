@@ -11,7 +11,9 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
+import fr.eni.dal.CategorieDAO;
 import fr.eni.dal.VenteDAO;
+import fr.eni.model.Categorie;
 import fr.eni.model.Vente;
 
 import java.sql.SQLException;
@@ -30,6 +32,8 @@ public class ListeEncheres extends HttpServlet {
 	    	return;
 	      } else {
 	    	  try {
+	    		  ArrayList<Categorie>categorie = CategorieDAO.lister();
+					request.setAttribute("toutesCategorie", categorie);
 	    		  ArrayList<Vente>ventes = VenteDAO.lister();
 	    		  request.setAttribute("toutesVentes", ventes);
 	    		  this.getServletContext().getRequestDispatcher( "/WEB-INF/jsp/listeEncheres.jsp" ).forward( request, response );
