@@ -24,7 +24,7 @@ public class VenteDAO {
 			+ "no_categorie = ? ,"
 			+ "where no_vente = ?";
 	private static final String RECHERCHER ="select * from VENTES where no_vente = ?";
-	private static final String LISTER 	= "select * from VENTES";
+	private static final String LISTER 	= "select * from VENTES ORDER BY no_vente DESC";
 	private static final String LASTID 	= "SELECT TOP 1 no_vente from VENTES ORDER BY no_vente DESC";
 			
 	
@@ -45,20 +45,13 @@ public class VenteDAO {
 			rqt.setInt(6, vente.getCategorie().getNoCategorie());
 			rqt.executeUpdate();
 			rs = rqt.getGeneratedKeys();
-
 			if (rs.next()) {
 			    key = rs.getLong(1);
 			    Retrait retrait = vente.getRetrait();
 			    
 			    retrait.setNoVente((int) key);
-			    System.out.println(retrait.toString());
 			    RetraitDAO.ajouter(retrait);
-			}
-			/*
-			Retrait retrait = vente.getRetrait();
-			RetraitDAO.ajouter(retrait);
-			*/
-				
+			}				
 		}  catch (SQLException e) {
 			new SQLException(e.getMessage());
 		}

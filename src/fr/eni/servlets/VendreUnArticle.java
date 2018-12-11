@@ -146,8 +146,8 @@ public class VendreUnArticle extends HttpServlet {
 		
 		try {
 			VenteDAO.ajouter(vente);
-			request.setAttribute( "inscription", "Vous êtes inscrit" );
-        	RequestDispatcher dispatcher = getServletContext().getRequestDispatcher("/WEB-INF/jsp/connexion.jsp");
+			request.setAttribute( "publication", "Votre annonce a bien été publiée" );
+        	RequestDispatcher dispatcher = getServletContext().getRequestDispatcher("/listeEncheres");
 			dispatcher.forward(request,response);
 		} catch (SQLException e) {
 			e.printStackTrace();

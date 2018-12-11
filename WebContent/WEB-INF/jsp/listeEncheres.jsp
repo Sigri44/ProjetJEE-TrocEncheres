@@ -15,6 +15,9 @@
 			<jsp:include page="menu.jsp" />
 		</div>
 		<div class="jumbotron">
+		<c:if test= "${not empty publication}">
+			<p class="alert alert-success">${publication}</p>
+		</c:if>	
 			<div class="jumbotron">
 				<div class="row">
 					<div class="col-sm-3"></div>
