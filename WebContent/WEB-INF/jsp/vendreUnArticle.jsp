@@ -54,7 +54,7 @@
 						<div class="form-group row">
 							<label class="col-sm-3 col-md-3 col-lg-3">Description :<br></label>
 							<div class="col-sm-6 col-md-9 col-lg-8">
-								<textarea name="desc" class="form-control noResize" required></textarea>
+								<textarea name="description" class="form-control noResize" required></textarea>
 							</div>
 						</div>
 						<div class="form-group row">
@@ -66,7 +66,7 @@
 						<div class="form-group row">
 							<label class="col-sm-3 col-md-3 col-lg-3">Mise à prix : </label>
 							<div class="col-sm-6 col-md-9 col-lg-8">
-								<input value="1" type="number" id="price" name="price" min="1" required >	
+								<input value="1" type="number" id="prix" name="prix" min="1" required >	
 							</div>
 						</div>
 						<div class="form-group row">

@@ -10,7 +10,6 @@ import java.io.OutputStream;
 import java.sql.SQLException;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
-import java.time.LocalDate;
 import java.util.ArrayList;
 import java.util.Calendar;
 import java.util.Date;
@@ -24,9 +23,15 @@ import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
-import javax.servlet.http.HttpSession;
 import javax.servlet.http.Part;
 
+import org.apache.tomcat.util.http.fileupload.FileItem;
+import org.apache.tomcat.util.http.fileupload.FileItemFactory;
+import org.apache.tomcat.util.http.fileupload.FileUploadException;
+import org.apache.tomcat.util.http.fileupload.RequestContext;
+import org.apache.tomcat.util.http.fileupload.disk.DiskFileItemFactory;
+import org.apache.tomcat.util.http.fileupload.servlet.ServletFileUpload;
+import org.apache.tomcat.util.http.fileupload.servlet.ServletRequestContext;
 import org.eclipse.jdt.internal.compiler.ast.ArrayAllocationExpression;
 
 import fr.eni.dal.CategorieDAO;
@@ -39,12 +44,10 @@ import fr.eni.model.Vente;
 import javafx.scene.shape.Arc;
 
 @WebServlet("/vendreUnArticle")
-@MultipartConfig(location="C:\\repupload", maxFileSize=1048576L) // 10Mo.
 public class VendreUnArticle extends HttpServlet {
+	private final String UPLOAD_DIRECTORY = "C:\\repupload";
 	private static final long serialVersionUID = 1L;
 
-    public VendreUnArticle() {
-    }
 
     // parametres de l’upload
  	private static final int TAILLE_BUFFER=10240;
@@ -94,13 +97,36 @@ public class VendreUnArticle extends HttpServlet {
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		//Récupération des éléments du formulaire
 		if (request.getSession().getAttribute("recordInsertedSuccessfully") == null ){
+			Map<String, String> parametres = new HashMap<>();
+			if(ServletFileUpload.isMultipartContent(request)) {
+				try {
+					List<FileItem> multiparts = new ServletFileUpload(new DiskFileItemFactory()).parseRequest(new ServletRequestContext(request));
+					for(FileItem item : multiparts) {
+						if(!item.isFormField()) {
+							String name = new File(item.getName()).getName();
+							item.write(new File(UPLOAD_DIRECTORY + File.separator + name));
+							request.setAttribute("photoname", name);
+						}
+						else {
+							System.out.println(item.getFieldName()+" = "+item.getString());
+							parametres.put(item.getFieldName(), item.getString());
+						}
+					}
+				} catch (FileUploadException e) {
+					// TODO Auto-generated catch block
+					e.printStackTrace();
+				} catch (Exception e) {
+					// TODO Auto-generated catch block
+					e.printStackTrace();
+				}
+			}
+		
 			
-			String nomArticle = request.getParameter("nomArticle");
-	        String description = request.getParameter("desc");
-	        String prix = request.getParameter("price");
-	        String dateFinEnchere = request.getParameter("finEnchere");
-	        
-	        String boxRetrait = request.getParameter("boxRetrait");
+			String nomArticle = parametres.get("nomArticle");
+	        String description = parametres.get("description");
+	        String prix = parametres.get("prix");
+	        String dateFinEnchere = parametres.get("finEnchere");	        
+	        String boxRetrait = parametres.get("boxRetrait");
 	        Retrait retrait = new Retrait();
 	        if(boxRetrait !=null) {
 	        	@SuppressWarnings("unchecked")
@@ -154,7 +180,7 @@ public class VendreUnArticle extends HttpServlet {
 	        
 			Categorie categorie;
 			try {
-				categorie = CategorieDAO.recherche(Integer.parseInt(request.getParameter("categorie")));
+				categorie = CategorieDAO.recherche(Integer.parseInt(parametres.get("categorie")));
 				vente.setCategorie(categorie);
 			} catch (NumberFormatException e) {
 				// TODO Auto-generated catch block
@@ -167,24 +193,14 @@ public class VendreUnArticle extends HttpServlet {
 			try {
 				long key = VenteDAO.ajouter(vente);
 				// parcourir chaque paramètre reçu
-				for (Part p: request.getParts())
-				{
-					
-					String typeContenu=p.getContentType();				
-					if(typeContenu!=null)
-					{
-					  // upload
-						Part part=this.uploadFichier(p, key);
-						request.setAttribute("part", part);
-					}
-				}
+				
 				request.setAttribute( "publication", "Votre annonce a bien été publiée" );
 				request.getSession().setAttribute("recordInsertedSuccessfully","true");
 	        	RequestDispatcher dispatcher = getServletContext().getRequestDispatcher("/listeEncheres");
 				dispatcher.forward(request,response);
 			} catch (SQLException e) {
 				e.printStackTrace();
-			}		
+			}	
 		} else {
 			request.setAttribute( "publication", "Cette annonce est déja publiée" );			
         	RequestDispatcher dispatcher = getServletContext().getRequestDispatcher("/listeEncheres");
