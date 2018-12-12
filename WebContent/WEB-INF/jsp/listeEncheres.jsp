@@ -14,42 +14,42 @@
 				<p class="alert alert-success">${publication}</p>
 			</c:if>
 			<div class="jumbotron">
-				<form action="recherche" method="post" class="col-sm-12">
+				<form action="recherche" method="POST" class="col-sm-12 col-md-12 col-lg-12">
 					<div class="row">
-						<div class="form-group col-sm-4">
+						<div class="form-group col-sm-12 col-md-5 col-lg-4">
 							<h4>Filtres :</h4>
 							<div class="row">
-								<div class="col-sm-12 col-md-12">
+								<div class="col-sm-12 col-md-12 col-lg-12">
 									<label class="checkbox">
 										<input type="checkbox" name="mySales">&nbsp;Mes ventes
 									</label>
 								</div>
 							</div>
 							<div class="row">
-								<div class="col-sm-12 col-md-12">
+								<div class="col-sm-12 col-md-12 col-lg-12">
 									<label class="checkbox">
 										<input type="checkbox" name="ongoingAuctions">&nbsp;Mes enchères en cours
 									</label>
 								</div>
 							</div>
 							<div class="row">
-								<div class="col-sm-12 col-md-12">
+								<div class="col-sm-12 col-md-12 col-lg-12">
 									<label class="checkbox">
 										<input type="checkbox" name="myPurchases">&nbsp;Mes acquisitions
 									</label>
 								</div>
 							</div>
 							<div class="row">
-								<div class="col-sm-12 col-md-12">
+								<div class="col-sm-12 col-md-12 col-lg-12">
 									<label class="checkbox">
 										<input type="checkbox" name="otherAuctions">&nbsp;Autres enchères
 									</label>
 								</div>
 							</div>
 						</div>
-						<div class="col-sm-5">
+						<div class="col-sm-12 col-md-7 col-lg-5">
 							<div class="row">
-								<div class="form-group col-sm-12">
+								<div class="form-group col-sm-12 col-md-12 col-lg-12">
 									<input class="form-control form-control-sm ml-3 w-90" name="nomArticle" type="text" placeholder="Le nom de l'article contient" aria-label="Search">
 									<div class="form-inline">
 										<i class="fa fa-search" aria-hidden="true"></i>
@@ -57,10 +57,10 @@
 								</div>
 							</div>
 							<div class="row">
-								<div class="col-sm-4">
+								<div class="col-sm-12 col-md-12 col-lg-4">
 									<label style="display: inline-block;">Catégories :</label>
 								</div>
-								<div class="form-group col-sm-8">
+								<div class="form-group col-sm-12 col-md-12 col-lg-12">
 									<select class="form-control">
 										<option value="value1">Toutes</option>
 										<c:forEach items="${toutesCategorie}" var="cat">
@@ -73,7 +73,7 @@
 						
 					</div>
 					<div class="row">
-						<div class=" col-sm-12">
+						<div class=" col-sm-12 col-md-12 col-lg-12">
 							<a class="btn btn-lg" href="recherche">
 								<button type="submit" class="btn btn-primary bleu fatBoutonHalf">Recherche</button>
 							</a>
@@ -85,7 +85,7 @@
 						<div class="col-md-6">
 							<div class="card flex-md-row mb-4 box-shadow h-md-250">
 								<div class="card-body d-flex flex-column align-items-start">
-									<a href="detailVente?vente=${vente.noVente}">
+									<a href="detailVente?noVente=${vente.noVente}">
 										<strong class="d-inline-block mb-2 text-primary">
 											${vente.nomArticle}
 										</strong>
