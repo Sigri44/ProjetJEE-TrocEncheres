@@ -59,7 +59,7 @@ public class Connexion extends HttpServlet {
 			}
 		} catch (SQLException e1) {
 			e1.printStackTrace();
-		}      
+		}
         
         if(!erreurs.isEmpty()) {
         	request.setAttribute( "erreurs", erreurs );  

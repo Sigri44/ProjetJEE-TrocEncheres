@@ -70,7 +70,7 @@ public class Inscription extends HttpServlet {
         try {
 			boolean exist = UtilisateurDAO.existByTel(telephone);
 			if(exist) {
-				erreurs = setErreur(erreurs, "existTel", "Cet numéro de téléphone est déja utilisé");
+				erreurs = setErreur(erreurs, "existTel", "Ce numéro de téléphone est déja utilisé");
 			}
 		} catch (SQLException e1) {
 			e1.printStackTrace();

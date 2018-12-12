@@ -11,7 +11,6 @@ public class EnchereDAO {
 	private static final String AJOUTER = "INSERT INTO ENCHERES (date_enchere, no_utilisateur, no_vente) VALUES (?,?,?)";
 	private static final String MODIFIER = "UPDATE ENCHERES SET date_enchere = ?, no_utilisateur = ?, no_vente = ?";
 	private static final String SUPPRIMER = "DELETE FROM ENCHERES WHERE no_vente = ?";
-	private static final String SEARCHBYUSER = "SELECT * FROM ENCHERES WHERE no_utilisateur = ?";
 	private static final String SEARCHBYVENTE = "SELECT * FROM ENCHERES WHERE no_vente = ?";
 
 	public static void ajouter (Enchere enchere) throws SQLException {		

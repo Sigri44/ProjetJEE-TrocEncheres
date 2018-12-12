@@ -50,13 +50,13 @@
 							<div class="row">
 								<div class="col-sm-12 col-md-12">
 									<label class="checkbox">
-										<input type="checkbox">&nbsp;Se souvenir de moi
+										<input type="checkbox" name="alzheimer">&nbsp;Se souvenir de moi
 									</label>
 								</div>
 							</div>
 							<div class="row">
 								<div class="col-sm-12 col-md-12">
-									<a class="mdpOublie link" href="#">Mot de passe oublié</a>
+									<a class="mdpOublie link" href="#" name="forgotPassword">Mot de passe oublié</a>
 								</div>
 							</div>
 						</div>
