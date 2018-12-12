@@ -36,14 +36,16 @@ public class ListeEncheres extends HttpServlet {
 				ArrayList<Categorie>categorie = CategorieDAO.lister();
 				request.setAttribute("toutesCategorie", categorie);
 
-				if (request.getAttribute("filtres").equals("oui")) {
+				/*if (request.getAttribute("filtres").equals("oui")) {
 					@SuppressWarnings("unchecked")
 					Map<String, List<Vente>> ventesMap = (Map<String, List<Vente>>) request.getAttribute("ventesMap");
 					
-				} else {
+				} else {*/
 					ArrayList<Vente>ventes = VenteDAO.lister();
 					request.setAttribute("toutesVentes", ventes);
-				}
+					
+				/*}*/
+				this.getServletContext().getRequestDispatcher( "/WEB-INF/jsp/listeEncheres.jsp" ).forward( request, response );
 				
 			} catch (SQLException e) {
 				e.printStackTrace();

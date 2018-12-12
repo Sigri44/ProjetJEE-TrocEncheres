@@ -42,8 +42,7 @@ public class DetailVente extends HttpServlet {
 	    	  int id = Integer.parseInt(request.getParameter("vente"));
 	    	System.out.println(id);
 	    	  try {
-	    		  Vente vente =  VenteDAO.getVenteById(id);
-			
+	    		Vente vente =  VenteDAO.getVenteById(id);			
 				request.setAttribute("vente", vente);
 				this.getServletContext().getRequestDispatcher( "/WEB-INF/jsp/detailVente.jsp" ).forward( request, response );
 			} catch (SQLException e) {

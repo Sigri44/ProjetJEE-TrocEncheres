@@ -48,12 +48,6 @@ public class VendreUnArticle extends HttpServlet {
 	private final String UPLOAD_DIRECTORY = "C:\\repupload";
 	private static final long serialVersionUID = 1L;
 
-
-    // parametres de l’upload
- 	private static final int TAILLE_BUFFER=10240;
- 	private static final String TYPE_CONTENU="content-disposition";
- 	private static final String NOM_TYPE_CONTENU="filename";
- 	private static final boolean MODE_MULTIPART=true;
     
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		
@@ -89,27 +83,97 @@ public class VendreUnArticle extends HttpServlet {
 	    	this.getServletContext().getRequestDispatcher( "/WEB-INF/jsp/vendreUnArticle.jsp" ).forward( request, response );
 		}
 	}
-
-	
-	
-	
 	
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		//Récupération des éléments du formulaire
 		if (request.getSession().getAttribute("recordInsertedSuccessfully") == null ){
 			Map<String, String> parametres = new HashMap<>();
+			long key = 0;
 			if(ServletFileUpload.isMultipartContent(request)) {
 				try {
 					List<FileItem> multiparts = new ServletFileUpload(new DiskFileItemFactory()).parseRequest(new ServletRequestContext(request));
+					
+					for(FileItem item : multiparts) {
+						if (item.isFormField()){							
+							parametres.put(item.getFieldName(), item.getString());							
+						}
+					}
+					String nomArticle = parametres.get("nomArticle");
+			        String description = parametres.get("description");
+			        String prix = parametres.get("prix");					        
+			        String dateFinEnchere = parametres.get("finEnchere");	        
+			        String boxRetrait = parametres.get("boxRetrait");
+			        Retrait retrait = new Retrait();
+			        if(boxRetrait !=null) {
+			        	@SuppressWarnings("unchecked")
+						Map<String, String> userInfos= (HashMap<String, String>)request.getSession().getAttribute("utilisateur");
+			        	try {
+							Utilisateur user = UtilisateurDAO.getUserByLogin(userInfos.get("pseudo"));
+							String rue = user.getRue();
+				            String codePostal = user.getCodePostal();
+				            String ville = user.getVille();
+				            retrait.setRue(rue);
+				            retrait.setCodePostal(codePostal);
+				            retrait.setVille(ville);
+						} catch (SQLException e) {
+							// TODO Auto-generated catch block
+							e.printStackTrace();
+						}
+			        	
+			        }else {
+			        	String rue = parametres.get("rue");
+			            String codePostal = parametres.get("codePostal");
+			            String ville = parametres.get("ville");
+			            retrait.setRue(rue);
+			            retrait.setCodePostal(codePostal);
+			            retrait.setVille(ville);
+			        }
+			        
+			        Vente vente = new Vente();
+			        vente.setNomArticle(nomArticle);
+			        vente.setDescription(description);
+			        vente.setMiseAPrix(Integer.parseInt(prix));
+			        
+			        SimpleDateFormat formatter = new SimpleDateFormat("yyyy-MM-dd");
+			        try {
+						vente.setDateFinEnchere(formatter.parse(dateFinEnchere));
+					} catch (ParseException e) {
+						// TODO Auto-generated catch block
+						e.printStackTrace();
+					} 
+			        vente.setRetrait(retrait);
+			        
+			        @SuppressWarnings("unchecked")
+					Map<String, String> userInfos= (HashMap<String, String>)request.getSession().getAttribute("utilisateur");
+			        Utilisateur vendeur;
+					try {
+						vendeur = UtilisateurDAO.getUserByLogin(userInfos.get("pseudo"));
+						vente.setVendeur(vendeur);
+					} catch (SQLException e) {
+						// TODO Auto-generated catch block
+						e.printStackTrace();
+					}
+			        
+					Categorie categorie;
+					try {
+						categorie = CategorieDAO.recherche(Integer.parseInt(parametres.get("categorie")));
+						vente.setCategorie(categorie);
+					} catch (NumberFormatException e) {
+						// TODO Auto-generated catch block
+						e.printStackTrace();
+					} catch (SQLException e) {
+						// TODO Auto-generated catch block
+						e.printStackTrace();
+					}					
+					key = VenteDAO.ajouter(vente);
+					// Récupération de l'image si uploadée
 					for(FileItem item : multiparts) {
 						if(!item.isFormField()) {
 							String name = new File(item.getName()).getName();
+							if(name != "") {
+								name = key +"_"+ name;							}
 							item.write(new File(UPLOAD_DIRECTORY + File.separator + name));
 							request.setAttribute("photoname", name);
-						}
-						else {
-							System.out.println(item.getFieldName()+" = "+item.getString());
-							parametres.put(item.getFieldName(), item.getString());
 						}
 					}
 				} catch (FileUploadException e) {
@@ -122,85 +186,15 @@ public class VendreUnArticle extends HttpServlet {
 			}
 		
 			
-			String nomArticle = parametres.get("nomArticle");
-	        String description = parametres.get("description");
-	        String prix = parametres.get("prix");
-	        String dateFinEnchere = parametres.get("finEnchere");	        
-	        String boxRetrait = parametres.get("boxRetrait");
-	        Retrait retrait = new Retrait();
-	        if(boxRetrait !=null) {
-	        	@SuppressWarnings("unchecked")
-				Map<String, String> userInfos= (HashMap<String, String>)request.getSession().getAttribute("utilisateur");
-	        	try {
-					Utilisateur user = UtilisateurDAO.getUserByLogin(userInfos.get("pseudo"));
-					String rue = user.getRue();
-		            String codePostal = user.getCodePostal();
-		            String ville = user.getVille();
-		            retrait.setRue(rue);
-		            retrait.setCodePostal(codePostal);
-		            retrait.setVille(ville);
-				} catch (SQLException e) {
-					// TODO Auto-generated catch block
-					e.printStackTrace();
-				}
-	        	
-	        }else {
-	        	String rue = request.getParameter("rue");
-	            String codePostal = request.getParameter("codePostal");
-	            String ville = request.getParameter("ville");
-	            retrait.setRue(rue);
-	            retrait.setCodePostal(codePostal);
-	            retrait.setVille(ville);
-	        }
-	        
-	        Vente vente = new Vente();
-	        vente.setNomArticle(nomArticle);
-	        vente.setDescription(description);
-	        vente.setMiseAPrix(Integer.parseInt(prix));
-	        
-	        SimpleDateFormat formatter = new SimpleDateFormat("yyyy-MM-dd");
-	        try {
-				vente.setDateFinEnchere(formatter.parse(dateFinEnchere));
-			} catch (ParseException e) {
-				// TODO Auto-generated catch block
-				e.printStackTrace();
-			} 
-	        vente.setRetrait(retrait);
-	        
-	        @SuppressWarnings("unchecked")
-			Map<String, String> userInfos= (HashMap<String, String>)request.getSession().getAttribute("utilisateur");
-	        Utilisateur vendeur;
-			try {
-				vendeur = UtilisateurDAO.getUserByLogin(userInfos.get("pseudo"));
-				vente.setVendeur(vendeur);
-			} catch (SQLException e) {
-				// TODO Auto-generated catch block
-				e.printStackTrace();
-			}
-	        
-			Categorie categorie;
-			try {
-				categorie = CategorieDAO.recherche(Integer.parseInt(parametres.get("categorie")));
-				vente.setCategorie(categorie);
-			} catch (NumberFormatException e) {
-				// TODO Auto-generated catch block
-				e.printStackTrace();
-			} catch (SQLException e) {
-				// TODO Auto-generated catch block
-				e.printStackTrace();
-			}
 			
-			try {
-				long key = VenteDAO.ajouter(vente);
-				// parcourir chaque paramètre reçu
-				
-				request.setAttribute( "publication", "Votre annonce a bien été publiée" );
-				request.getSession().setAttribute("recordInsertedSuccessfully","true");
-	        	RequestDispatcher dispatcher = getServletContext().getRequestDispatcher("/listeEncheres");
-				dispatcher.forward(request,response);
-			} catch (SQLException e) {
-				e.printStackTrace();
-			}	
+			
+			
+			
+			request.setAttribute( "publication", "Votre annonce a bien été publiée" );
+			request.getSession().setAttribute("recordInsertedSuccessfully","true");
+        	RequestDispatcher dispatcher = getServletContext().getRequestDispatcher("/listeEncheres");
+			dispatcher.forward(request,response);
+			
 		} else {
 			request.setAttribute( "publication", "Cette annonce est déja publiée" );			
         	RequestDispatcher dispatcher = getServletContext().getRequestDispatcher("/listeEncheres");
@@ -208,59 +202,5 @@ public class VendreUnArticle extends HttpServlet {
 		}
 	}	
 	
-	private Part uploadFichier(Part part, long key) throws IOException
-	{
-		// retrouver le nom du fichier uploadé
-		String filename=this.getNomFichier(part);
-		// mise en forme du nom
-		String sKey = Long.toString(key);
-		String prefix=sKey;
-		String suffix="";
-		if (filename.contains(".")) {
-			suffix=filename.substring(filename.lastIndexOf('.'));
-		}
-		// écrire le fichier
-		File file=File.createTempFile(prefix + "_", suffix, new File(this.getClass().getAnnotation(MultipartConfig.class).location()));
-		
-		// copie simple
-		if (MODE_MULTIPART) {
-			part.write(file.getName());
-		}
-		// copie streaming
-		else
-		{
-			InputStream input = null;
-			OutputStream output = null;
-			try {
-				input = new BufferedInputStream(part.getInputStream(), 
-					TAILLE_BUFFER);
-				output = new BufferedOutputStream(new FileOutputStream(file), TAILLE_BUFFER);
-				byte[] buffer = new byte[TAILLE_BUFFER];
-				for (int length = 0; ((length = input.read(buffer)) > 0);) 
-				{
-					output.write(buffer, 0, length);
-				}
-			} finally {
-				if (output != null) try { output.close(); } catch 
-			(IOException e1) { /**/ }
-			if (input != null) try { input.close(); } catch 
-				(IOException e2) { /**/ }
-			}
-		}
-		// détruire la copie de l’objet
-		part.delete();
-			// retourner l’objet
-	return part;
-	}
 	
-	// retourner le nom d’un fichier envoyé
-	private String getNomFichier(Part part) {
-		for (String cd : part.getHeader(TYPE_CONTENU).split(";")) {
-			if (cd.trim().startsWith(NOM_TYPE_CONTENU)) {
-				return cd.substring(cd.indexOf('=') + 
-					1).trim().replace("\"", "");
-			}
-		}
-		return null;
-	}
 }

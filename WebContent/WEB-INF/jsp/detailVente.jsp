@@ -68,7 +68,6 @@
 						<div class="col-sm-3">
 							<label>Vendeur :<br></label>
 						</div>
-
 						<div class="col-sm-4 offset-sm-1">${vente.vendeur.pseudo}</div>
 					</div>
 					<div class="row">
@@ -79,7 +78,7 @@
 						<div class="col-sm-4 offset-sm-1">
 							<input type="number" id="b" name="b" value="50"> <br>
 							<br>
-							<button type="button" class="btn btn-primary lienBouton blue">Enchèrir</button>
+							<button type="button" class="btn btn-primary lienBouton blue">Enchérir</button>
 						</div>
 					</div>
 
