@@ -23,6 +23,7 @@ public class VenteDAO {
 			+ "prix_vente = ?, no_utilisateur = ?, "
 			+ "no_categorie = ? ,"
 			+ "where no_vente = ?";
+	private static final String MODIFIERPRIXVENTE = "update VENTES set prix_vente =? where no_vente = ?";
 	private static final String RECHERCHER = "select * from VENTES where no_vente = ?";
 	private static final String SEARCHBYNAME = "SELECT * FROM VENTES WHERE nomarticle LIKE ('%?%')";
 	private static final String SEARCHBYIDUSER = "SELECT * FROM VENTES WHERE no_utilisateur = ? AND no_vente = ?";
@@ -30,6 +31,27 @@ public class VenteDAO {
 	private static final String SEARCHMYOLDAUCTIONS = "SELECT v.no_vente, v.nomarticle, v.description, v.date_fin_encheres, v.prix_initial, v.prix_vente, v.no_utilisateur, v.no_categorie FROM VENTES v JOIN ENCHERES e ON (v.no_vente = e.no_vente) WHERE e.no_utilisateur = ? AND e.date_enchere < GETDATE()";
 	private static final String LISTER = "select * from VENTES ORDER BY no_vente DESC";
 	private static final String LASTID = "SELECT TOP 1 no_vente from VENTES ORDER BY no_vente DESC";
+	
+	public static long modifierPrixVente (Vente vente, int proposition) throws SQLException {
+		Connection cnx = null;
+		PreparedStatement rqt = null;
+		int nbr = 0;
+		ResultSet rs = null;
+		try {
+			cnx = DbConnection.seConnecter();
+			rqt = cnx.prepareStatement(MODIFIERPRIXVENTE);
+			rqt.setInt(1, proposition);
+			rqt.setInt(2, vente.getNoVente());
+			nbr = rqt.executeUpdate();			
+		}  catch (SQLException e) {
+			new SQLException(e.getMessage());
+		}
+		finally{
+			if (rqt!=null) rqt.close();
+			if (cnx!=null) cnx.close();
+		}
+		return nbr;
+	}
 	
 	public static long ajouter (Vente vente) throws SQLException {
 		Connection cnx = null;
@@ -80,7 +102,7 @@ public class VenteDAO {
 				Retrait retrait = RetraitDAO.rechercherParId(Integer.parseInt(rs.getString("no_vente")));
 				Utilisateur acheteur = new Utilisateur();
 				Utilisateur vendeur = UtilisateurDAO.rechercherParId(Integer.parseInt(rs.getString("no_utilisateur")));
-				vente = new Vente(rs.getInt("no_vente"), rs.getString("nomArticle"), rs.getString("description"), rs.getDate("date_fin_encheres"), rs.getInt("prix_vente"), categorie, retrait, acheteur, vendeur);
+				vente = new Vente(rs.getInt("no_vente"), rs.getString("nomArticle"), rs.getString("description"), rs.getDate("date_fin_encheres"), rs.getInt("prix_initial"), rs.getInt("prix_vente"), categorie, retrait, acheteur, vendeur);
 				listeVente.add(vente);
 			}
 		} finally {
@@ -130,7 +152,8 @@ public class VenteDAO {
 				vente.setNomArticle(rs.getString("nomArticle"));
 				vente.setDescription(rs.getString("description"));
 				vente.setDateFinEnchere(rs.getDate("date_fin_encheres"));
-				vente.setMiseAPrix(rs.getInt("prix_vente"));
+				vente.setMiseAPrix(rs.getInt("prix_initial"));
+				vente.setPrixVente(rs.getInt("prix_vente"));
 				vente.setCategorie(categorie);
 				vente.setAcheteur(acheteur);
 				vente.setVendeur(vendeur);
@@ -160,7 +183,7 @@ public class VenteDAO {
 				Retrait retrait = RetraitDAO.rechercherParId(Integer.parseInt(rs.getString("no_vente")));
 				Utilisateur acheteur = new Utilisateur();
 				Utilisateur vendeur = UtilisateurDAO.rechercherParId(Integer.parseInt(rs.getString("no_utilisateur")));
-				vente = new Vente(rs.getInt("no_vente"), rs.getString("nomArticle"), rs.getString("description"), rs.getDate("date_fin_encheres"), rs.getInt("prix_vente"), categorie, retrait, acheteur, vendeur);
+				vente = new Vente(rs.getInt("no_vente"), rs.getString("nomArticle"), rs.getString("description"), rs.getDate("date_fin_encheres"), rs.getInt("prix_initial"),rs.getInt("prix_vente"), categorie, retrait, acheteur, vendeur);
 				listeVenteByName.add(vente);
 			}
 		} finally {
@@ -188,7 +211,7 @@ public class VenteDAO {
 				Retrait retrait = RetraitDAO.rechercherParId(Integer.parseInt(rs.getString("no_vente")));
 				Utilisateur acheteur = new Utilisateur();
 				Utilisateur vendeur = UtilisateurDAO.rechercherParId(Integer.parseInt(rs.getString("no_utilisateur")));
-				vente = new Vente(rs.getInt("no_vente"), rs.getString("nomArticle"), rs.getString("description"), rs.getDate("date_fin_encheres"), rs.getInt("prix_vente"), categorie, retrait, acheteur, vendeur);
+				vente = new Vente(rs.getInt("no_vente"), rs.getString("nomArticle"), rs.getString("description"), rs.getDate("date_fin_encheres"),rs.getInt("prix_initial"), rs.getInt("prix_vente"), categorie, retrait, acheteur, vendeur);
 				listeMesVentes.add(vente);
 			}
 		} finally {
@@ -216,7 +239,7 @@ public class VenteDAO {
 				Retrait retrait = RetraitDAO.rechercherParId(Integer.parseInt(rs.getString("no_vente")));
 				Utilisateur acheteur = new Utilisateur();
 				Utilisateur vendeur = UtilisateurDAO.rechercherParId(Integer.parseInt(rs.getString("no_utilisateur")));
-				vente = new Vente(rs.getInt("no_vente"), rs.getString("nomArticle"), rs.getString("description"), rs.getDate("date_fin_encheres"), rs.getInt("prix_vente"), categorie, retrait, acheteur, vendeur);
+				vente = new Vente(rs.getInt("no_vente"), rs.getString("nomArticle"), rs.getString("description"), rs.getDate("date_fin_encheres"),rs.getInt("prix_initial"), rs.getInt("prix_vente"), categorie, retrait, acheteur, vendeur);
 				listeMesEncheres.add(vente);
 			}
 		} finally {
@@ -244,7 +267,7 @@ public class VenteDAO {
 				Retrait retrait = RetraitDAO.rechercherParId(Integer.parseInt(rs.getString("no_vente")));
 				Utilisateur acheteur = new Utilisateur();
 				Utilisateur vendeur = UtilisateurDAO.rechercherParId(Integer.parseInt(rs.getString("no_utilisateur")));
-				vente = new Vente(rs.getInt("no_vente"), rs.getString("nomArticle"), rs.getString("description"), rs.getDate("date_fin_encheres"), rs.getInt("prix_vente"), categorie, retrait, acheteur, vendeur);
+				vente = new Vente(rs.getInt("no_vente"), rs.getString("nomArticle"), rs.getString("description"), rs.getDate("date_fin_encheres"),rs.getInt("prix_initial"), rs.getInt("prix_vente"), categorie, retrait, acheteur, vendeur);
 				listeMesAcquisitions.add(vente);
 			}
 		} finally {

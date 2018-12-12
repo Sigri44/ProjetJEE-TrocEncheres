@@ -4,17 +4,22 @@ import java.util.Date;
 
 public class Vente {
 
+	
+	
 	@Override
 	public String toString() {
 		return "Vente [noVente=" + noVente + ", nomArticle=" + nomArticle + ", description=" + description
-				+ ", dateFinEnchere=" + dateFinEnchere + ", miseAPrix=" + miseAPrix + ", categorie=" + categorie
-				+ ", retrait=" + retrait + ", vendeur=" + vendeur + ", acheteur=" + acheteur + "]";
+				+ ", dateFinEnchere=" + dateFinEnchere + ", miseAPrix=" + miseAPrix + ", prixVente=" + prixVente
+				+ ", categorie=" + categorie + ", retrait=" + retrait + ", vendeur=" + vendeur + ", acheteur="
+				+ acheteur + "]";
 	}
+
 	private int noVente;
 	private String nomArticle;
 	private String description;
 	private Date dateFinEnchere;
 	private int miseAPrix;
+	private int prixVente;
 	private Categorie categorie;
 	private Retrait retrait;
 	private Utilisateur vendeur;
@@ -31,7 +36,7 @@ public class Vente {
 		this.miseAPrix = miseAPrix;
 	}
 	
-	public Vente(int noVente,String nomArticle, String description, Date dateFinEnchere, int miseAPrix, Categorie categorie,
+	public Vente(int noVente,String nomArticle, String description, Date dateFinEnchere, int miseAPrix, int prixVente, Categorie categorie,
 			Retrait retrait, Utilisateur acheteur,Utilisateur vendeur) {
 		super();
 		this.noVente = noVente;
@@ -39,6 +44,7 @@ public class Vente {
 		this.description = description;
 		this.dateFinEnchere = dateFinEnchere;
 		this.miseAPrix = miseAPrix;
+		this.setPrixVente(prixVente);
 		this.categorie = categorie;
 		this.retrait = retrait;
 		this.acheteur = acheteur;
@@ -125,6 +131,14 @@ public class Vente {
 	}
 	public void setAcheteur(Utilisateur acheteur) {
 		this.acheteur = acheteur;
+	}
+
+	public int getPrixVente() {
+		return prixVente;
+	}
+
+	public void setPrixVente(int prixVente) {
+		this.prixVente = prixVente;
 	}
 	
 	
