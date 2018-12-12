@@ -1,12 +1,7 @@
 package fr.eni.servlets;
 
-import java.io.BufferedInputStream;
-import java.io.BufferedOutputStream;
 import java.io.File;
-import java.io.FileOutputStream;
 import java.io.IOException;
-import java.io.InputStream;
-import java.io.OutputStream;
 import java.sql.SQLException;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
@@ -18,21 +13,16 @@ import java.util.List;
 import java.util.Map;
 import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
-import javax.servlet.annotation.MultipartConfig;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
-import javax.servlet.http.Part;
 
 import org.apache.tomcat.util.http.fileupload.FileItem;
-import org.apache.tomcat.util.http.fileupload.FileItemFactory;
 import org.apache.tomcat.util.http.fileupload.FileUploadException;
-import org.apache.tomcat.util.http.fileupload.RequestContext;
 import org.apache.tomcat.util.http.fileupload.disk.DiskFileItemFactory;
 import org.apache.tomcat.util.http.fileupload.servlet.ServletFileUpload;
 import org.apache.tomcat.util.http.fileupload.servlet.ServletRequestContext;
-import org.eclipse.jdt.internal.compiler.ast.ArrayAllocationExpression;
 
 import fr.eni.dal.CategorieDAO;
 import fr.eni.dal.UtilisateurDAO;
@@ -41,14 +31,12 @@ import fr.eni.model.Categorie;
 import fr.eni.model.Retrait;
 import fr.eni.model.Utilisateur;
 import fr.eni.model.Vente;
-import javafx.scene.shape.Arc;
 
 @WebServlet("/vendreUnArticle")
 public class VendreUnArticle extends HttpServlet {
 	private final String UPLOAD_DIRECTORY = "C:\\repupload";
 	private static final long serialVersionUID = 1L;
 
-    
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		
 		if (request.getSession().getAttribute("utilisateur") == null){
@@ -67,7 +55,6 @@ public class VendreUnArticle extends HttpServlet {
 				categories = CategorieDAO.lister();
 				request.setAttribute("categories", categories);
 			} catch (SQLException e1) {
-				// TODO Auto-generated catch block
 				e1.printStackTrace();
 			}
 	    	@SuppressWarnings("unchecked")
@@ -76,7 +63,6 @@ public class VendreUnArticle extends HttpServlet {
 				Utilisateur user = UtilisateurDAO.getUserByLogin(userInfos.get("pseudo"));
 				request.setAttribute("utilisateur", user);
 			} catch (SQLException e) {
-				// TODO Auto-generated catch block
 				e.printStackTrace();
 			}	    	
 	    	request.setAttribute("dateJour", tommorowFormated);
@@ -116,11 +102,9 @@ public class VendreUnArticle extends HttpServlet {
 				            retrait.setCodePostal(codePostal);
 				            retrait.setVille(ville);
 						} catch (SQLException e) {
-							// TODO Auto-generated catch block
 							e.printStackTrace();
 						}
-			        	
-			        }else {
+			        } else {
 			        	String rue = parametres.get("rue");
 			            String codePostal = parametres.get("codePostal");
 			            String ville = parametres.get("ville");
@@ -138,7 +122,6 @@ public class VendreUnArticle extends HttpServlet {
 			        try {
 						vente.setDateFinEnchere(formatter.parse(dateFinEnchere));
 					} catch (ParseException e) {
-						// TODO Auto-generated catch block
 						e.printStackTrace();
 					} 
 			        vente.setRetrait(retrait);
@@ -150,7 +133,6 @@ public class VendreUnArticle extends HttpServlet {
 						vendeur = UtilisateurDAO.getUserByLogin(userInfos.get("pseudo"));
 						vente.setVendeur(vendeur);
 					} catch (SQLException e) {
-						// TODO Auto-generated catch block
 						e.printStackTrace();
 					}
 			        
@@ -159,10 +141,8 @@ public class VendreUnArticle extends HttpServlet {
 						categorie = CategorieDAO.recherche(Integer.parseInt(parametres.get("categorie")));
 						vente.setCategorie(categorie);
 					} catch (NumberFormatException e) {
-						// TODO Auto-generated catch block
 						e.printStackTrace();
 					} catch (SQLException e) {
-						// TODO Auto-generated catch block
 						e.printStackTrace();
 					}					
 					key = VenteDAO.ajouter(vente);
@@ -177,30 +157,20 @@ public class VendreUnArticle extends HttpServlet {
 						}
 					}
 				} catch (FileUploadException e) {
-					// TODO Auto-generated catch block
 					e.printStackTrace();
 				} catch (Exception e) {
-					// TODO Auto-generated catch block
 					e.printStackTrace();
 				}
 			}
-		
-			
-			
-			
-			
 			
 			request.setAttribute( "publication", "Votre annonce a bien été publiée" );
 			request.getSession().setAttribute("recordInsertedSuccessfully","true");
         	RequestDispatcher dispatcher = getServletContext().getRequestDispatcher("/listeEncheres");
 			dispatcher.forward(request,response);
-			
 		} else {
 			request.setAttribute( "publication", "Cette annonce est déja publiée" );			
         	RequestDispatcher dispatcher = getServletContext().getRequestDispatcher("/listeEncheres");
 			dispatcher.forward(request,response);
 		}
-	}	
-	
-	
+	}
 }
