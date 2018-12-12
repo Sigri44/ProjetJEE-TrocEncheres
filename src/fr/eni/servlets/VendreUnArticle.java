@@ -34,11 +34,11 @@ import fr.eni.model.Vente;
 
 @WebServlet("/vendreUnArticle")
 public class VendreUnArticle extends HttpServlet {
-	private final String UPLOAD_DIRECTORY = "C:\\repupload";
+	//private final String UPLOAD_DIRECTORY = "C:\\repupload";
+	private final String UPLOAD_DIRECTORY = System.getProperty("user.home") + File.separator + "git" + File.separator + "ProjetJEE-TrocEncheres" + File.separator + "WebContent" + File.separator + "WEB-INF" + File.separator + "upload";
 	private static final long serialVersionUID = 1L;
 
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		
 		if (request.getSession().getAttribute("utilisateur") == null){
 			response.sendRedirect("connexion");
 	    	return;
@@ -75,7 +75,7 @@ public class VendreUnArticle extends HttpServlet {
 		if (request.getSession().getAttribute("recordInsertedSuccessfully") == null ){
 			Map<String, String> parametres = new HashMap<>();
 			long key = 0;
-			if(ServletFileUpload.isMultipartContent(request)) {
+			if (ServletFileUpload.isMultipartContent(request)) {
 				try {
 					List<FileItem> multiparts = new ServletFileUpload(new DiskFileItemFactory()).parseRequest(new ServletRequestContext(request));
 					

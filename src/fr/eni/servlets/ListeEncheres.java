@@ -1,5 +1,6 @@
 package fr.eni.servlets;
 
+import java.io.File;
 import java.io.IOException;
 import java.sql.SQLException;
 import java.util.ArrayList;
@@ -22,6 +23,7 @@ import fr.eni.model.Vente;
 
 @WebServlet("/listeEncheres")
 public class ListeEncheres extends HttpServlet {
+	private final String UPLOAD_DIRECTORY = System.getProperty("user.home") + File.separator + "git" + File.separator + "ProjetJEE-TrocEncheres" + File.separator + "WebContent" + File.separator + "WEB-INF" + File.separator + "upload";
 	private static final long serialVersionUID = 1L;
 
     public ListeEncheres() {
@@ -35,7 +37,7 @@ public class ListeEncheres extends HttpServlet {
 			try {
 				ArrayList<Categorie>categorie = CategorieDAO.lister();
 				request.setAttribute("toutesCategorie", categorie);
-
+				
 				/*if (request.getAttribute("filtres").equals("oui")) {
 					@SuppressWarnings("unchecked")
 					Map<String, List<Vente>> ventesMap = (Map<String, List<Vente>>) request.getAttribute("ventesMap");
@@ -44,8 +46,24 @@ public class ListeEncheres extends HttpServlet {
 					ArrayList<Vente>ventes = VenteDAO.lister();
 					request.setAttribute("toutesVentes", ventes);
 					
+					/*
+					// Lister toutes les images dans le folder
+					Map<String, String> fichiers = new HashMap<>();
+					File folder = new File(UPLOAD_DIRECTORY);
+					File[] listOfFiles = folder.listFiles();
+					for (int i = 0; i < listOfFiles.length; i++) {
+					    if (listOfFiles[i].isFile()) {					    	
+						    fichiers.add(listOfFiles[i].getName());
+					    }
+					}
+					
+					for(Vente v : ventes) {
+						int id = v.getNoVente();						
+					}
+					*/
+					
 				/*}*/
-				this.getServletContext().getRequestDispatcher( "/WEB-INF/jsp/listeEncheres.jsp" ).forward( request, response );
+				this.getServletContext().getRequestDispatcher("/WEB-INF/jsp/listeEncheres.jsp").forward(request, response);
 				
 			} catch (SQLException e) {
 				e.printStackTrace();
@@ -54,69 +72,6 @@ public class ListeEncheres extends HttpServlet {
 	}
 
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		// Récupération des éléments du formulaire
-		Map<String, String> parametres = new HashMap<>();
-		String nomArticle = parametres.get("nomArticle");
-		// Récupération des checkbox
-		String boxMesVentes = parametres.get("mySales");
-		String boxMesEncheres = parametres.get("ongoingAuctions");
-		String boxMesAcquisitions = parametres.get("myPurchases");
-		String boxAutresEncheres = parametres.get("otherAuctions");
-		//Vente vente = new Vente();
-		
-		// Récupération de l'id user
-		@SuppressWarnings("unchecked")
-		Map<String, String> userInfos = (HashMap<String, String>)request.getSession().getAttribute("utilisateur");
-		
-		// Initialisation des Ventes
-		Map<String, List<Vente>> resultVentes = new HashMap<>();
-		ArrayList<Vente>ventesByNom = null;
-		ArrayList<Vente>mesVentes = null;
-		ArrayList<Vente>mesEncheres = null;
-		ArrayList<Vente>mesAcquisitions = null;
-		// Vérification de l'existence des critères définis
-		try {
-			Utilisateur user = UtilisateurDAO.getUserByLogin(userInfos.get("no_utilisateur"));
-			// Recherche par nom d'article
-			if (nomArticle != null) {
-        		ventesByNom = VenteDAO.listVenteByName(nomArticle);
-        		resultVentes.put("ventesByNom", ventesByNom);
-        	} else {
-        		System.out.println("Aucun nom d'article n'as été écrit !");
-        	}
-			// Lister mes ventes
-			if(boxMesVentes != null) {
-				mesVentes = VenteDAO.getVenteByIdUser(user.getNoUtilisateur());
-				resultVentes.put("mesVentes", mesVentes);
-        	} else {
-        		System.out.println("Le choix 'Mes Ventes' n'as pas été choisi !");
-        	}
-			// Lister mes enchères
-			if(boxMesEncheres != null) {
-				mesEncheres = VenteDAO.getEnchereByIdUser(user.getNoUtilisateur());
-				resultVentes.put("mesEncheres", mesEncheres);
-			} else {
-        		System.out.println("Le choix 'Mes Enchères' n'as pas été choisi !");
-        	}
-			// Lister mes acquisitions
-			if(boxMesAcquisitions != null) {
-				mesAcquisitions = VenteDAO.getAcquisitionByIdUser(user.getNoUtilisateur());
-				resultVentes.put("mesAcquisitions", mesAcquisitions);
-			} else {
-        		System.out.println("Le choix 'Mes Acquisitions' n'as pas été choisi !");
-        		
-        	}
-			// Lister les autres enchères 
-			if(boxAutresEncheres != null) {
-				System.out.println("Coucou tu as selectionné les autres enchères !");
-			} else {
-        		System.out.println("Le choix 'Autres Enchères' n'as pas été choisi !");
-        	}
-		} catch (SQLException e1) {
-			e1.printStackTrace();
-		}
-		String filtre = "oui";
-		request.setAttribute("filtres", filtre);
-		request.setAttribute("ventesMap", resultVentes);
+		doGet(request, response);
 	}
 }

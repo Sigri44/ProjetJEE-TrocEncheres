@@ -19,7 +19,7 @@
 				<div class="col-sm-12 col-md-8 col-lg-6 offset-md-2 offset-lg-4">
 					<div class="row">
 						<div class="col-sm-6 col-md-4 col-lg-4">
-							<label>Pseudo :<br></label>
+							<label>Pseudo :</label>
 						</div>
 						<div class="col-sm-6 col-md-8 col-lg-6">
 							${user.pseudo}
@@ -27,7 +27,7 @@
 					</div>
 					<div class="row">
 						<div class="col-sm-6 col-md-4 col-lg-4">
-							<label>Nom :<br></label>
+							<label>Nom :</label>
 						</div>
 						<div class="col-sm-6 col-md-8 col-lg-6">
 							${user.nom}
@@ -35,7 +35,7 @@
 					</div>
 					<div class="row">
 						<div class="col-sm-6 col-md-4 col-lg-4">
-							<label>Prénom :<br></label>
+							<label>Prénom :</label>
 						</div>
 						<div class="col-sm-6 col-md-8 col-lg-6">
 							${user.prenom}
@@ -43,7 +43,7 @@
 					</div>
 					<div class="row">
 						<div class="col-sm-6 col-md-4 col-lg-4">
-							<label>Email :<br></label>
+							<label>Email :</label>
 						</div>
 						<div class="col-sm-6 col-md-8 col-lg-6">
 							${user.mail}
@@ -51,7 +51,7 @@
 					</div>
 					<div class="row">
 						<div class="col-sm-6 col-md-4 col-lg-4">
-							<label>Téléphone :<br></label>
+							<label>Téléphone :</label>
 						</div>
 						<div class="col-sm-6 col-md-8 col-lg-6">
 							${user.telephone}
@@ -59,7 +59,7 @@
 					</div>
 					<div class="row">
 						<div class="col-sm-6 col-md-4 col-lg-4">
-							<label>Rue :<br></label>
+							<label>Rue :</label>
 						</div>
 						<div class="col-sm-6 col-md-8 col-lg-6">
 							${user.rue}
@@ -67,7 +67,7 @@
 					</div>
 					<div class="row">
 						<div class="col-sm-6 col-md-4 col-lg-4">
-							<label>Code Postal :<br></label>
+							<label>Code Postal :</label>
 						</div>
 						<div class="col-sm-6 col-md-8 col-lg-6">
 							${user.codePostal}
@@ -75,7 +75,7 @@
 					</div>
 					<div class="row">
 						<div class="col-sm-6 col-md-4 col-lg-4">
-							<label>Ville :<br></label>
+							<label>Ville :</label>
 						</div>
 						<div class="col-sm-6 col-md-8 col-lg-6">
 							${user.ville}
