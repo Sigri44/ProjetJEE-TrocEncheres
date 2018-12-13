@@ -28,14 +28,14 @@
 						<c:if test= "${empty erreurs['wrongPass']}">
 							<c:set var="identifiant" value=""/>
 						</c:if>					
-						<input name="identifiant" value="${identifiant}" type="text" class="form-control" maxlength="50">									   
+						<input name="identifiant" placeholder="Entrez votre identifiant" value="${identifiant}" type="text" class="form-control" maxlength="50">									   
 					   <c:if test= "${not empty erreurs['notExistIdentifiant']}">
 							<p class="alert alert-danger">${erreurs['notExistIdentifiant']}</p>
 						</c:if>
 					</div>
 					<div class="form-group">
 						<label>Mot de passe :</label>
-						<input name="password" type="password" class="form-control" maxlength="30">
+						<input name="password" placeholder="Entrez votre mot de passe" type="password" class="form-control" maxlength="30">
 						<c:if test= "${not empty erreurs['wrongPass']}">
 							<p class="alert alert-danger">${erreurs['wrongPass']}</p>
 						</c:if>

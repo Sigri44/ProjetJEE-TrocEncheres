@@ -39,7 +39,7 @@
 							<div class="col-sm-4 col-md-4 col-lg-4">
 								<label>Meilleure offre :</label>
 							</div>
-							<div class="col-sm-12 col-md-8 col-lg-8">${vente.prixVente }</div>
+							<div class="col-sm-12 col-md-8 col-lg-8">${vente.prixVente}</div>
 						</div>
 						<div class="row">
 							<div class="col-sm-4 col-md-4 col-lg-4">
