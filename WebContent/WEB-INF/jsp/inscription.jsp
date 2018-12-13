@@ -12,7 +12,7 @@
 		<div class="jumbotron">
 	      	<h1 class="center">Créer un compte</h1>
 	      	<div class="form-group">
-	      		<form action="Inscription" method="post">
+	      		<form action="inscription" method="post">
 		        	<div class="row">
 						<div class="form-group col-xs-6 col-sm-6 col-md-6 col-lg-6">
 							<label>Pseudo :<br></label>
@@ -89,7 +89,7 @@
 								<input name="codePostal" type="text" value="${saisie['codePostal']}" class="form-control" required>
 							</c:if>
 							<c:if test= "${empty saisie['telephone']}">
-								<input name="codePostal" type="text" class="form-control" required  tabindex="7" maxlength="10">
+								<input name="codePostal" type="text" class="form-control" required  tabindex="6" maxlength="10">
 							</c:if>
 							<c:if test= "${not empty erreurs['codePostal']}">
 								<p class="alert alert-danger">${erreurs['codePostal']}</p>
@@ -102,7 +102,7 @@
 								<input name="rue" type="text" value="${saisie['rue'] }" class="form-control" required>
 							</c:if>
 							<c:if test= "${empty saisie['rue']}">
-								<input name="rue" type="text"  class="form-control" required tabindex="6" maxlength="30">
+								<input name="rue" type="text"  class="form-control" required tabindex="7" maxlength="30">
 							</c:if>
 							<c:if test= "${not empty erreurs['rue']}">
 								<p class="alert alert-danger">${erreurs['rue']}</p>

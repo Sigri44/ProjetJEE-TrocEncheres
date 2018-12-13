@@ -111,3 +111,19 @@ legend {
 	height: 200px;
 	object-fit: contain;
 }
+
+.cardbottom {
+	margin-bottom: .5rem !important;
+}
+
+.alignCP {
+	margin-left: 2.8rem !important;
+}
+
+.alignCPdetail {
+	margin-left: 13.4rem !important;
+}
+
+.center {
+	text-align: center;
+}
