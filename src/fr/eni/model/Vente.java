@@ -4,8 +4,6 @@ import java.util.Date;
 
 public class Vente {
 
-	
-	
 	@Override
 	public String toString() {
 		return "Vente [noVente=" + noVente + ", nomArticle=" + nomArticle + ", description=" + description
@@ -150,7 +148,4 @@ public class Vente {
 	public void setImage(String image) {
 		this.image = image;
 	}
-	
-	
-	
 }
