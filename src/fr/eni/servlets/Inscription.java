@@ -12,6 +12,7 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
+import fr.eni.dal.HashMdpDAO;
 import fr.eni.dal.UtilisateurDAO;
 import fr.eni.model.Utilisateur;
 
@@ -89,8 +90,9 @@ public class Inscription extends HttpServlet {
         
         //Vérification du mot de passe
         try {
-            validationMotsDePasse( motDePasse, confirmation );
-            utilisateur.setMotDePasse( motDePasse );
+            validationMotsDePasse(motDePasse, confirmation);
+            String mdpHash = HashMdpDAO.hasherMdp(motDePasse);
+            utilisateur.setMotDePasse(mdpHash);
         } catch ( Exception e ) {
             erreurs = setErreur(erreurs, "mdp", e.getMessage() );
             erreurs = setErreur(erreurs, "mdpConf", null );

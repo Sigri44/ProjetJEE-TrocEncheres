@@ -4,13 +4,14 @@ import java.io.IOException;
 import java.sql.SQLException;
 import java.util.HashMap;
 import java.util.Map;
-import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
+
+import fr.eni.dal.HashMdpDAO;
 import fr.eni.dal.UtilisateurDAO;
 import fr.eni.model.Utilisateur;
 
@@ -52,13 +53,17 @@ public class Connexion extends HttpServlet {
 				erreurs = setErreur(erreurs, "notExistIdentifiant", "L'identifiant saisi n'existe pas");											
 			}
 			else {
-				boolean checkLogin = UtilisateurDAO.passMatchId(identifiant,mdp);
+				// Hash du mdp
+				String mdpHash = HashMdpDAO.hasherMdp(mdp);
+				boolean checkLogin = UtilisateurDAO.passMatchId(identifiant,mdpHash);
 				if(!checkLogin) {
 					erreurs = setErreur(erreurs, "wrongPass", "Mauvais mot de passe");
 				}
 			}
 		} catch (SQLException e1) {
 			e1.printStackTrace();
+		} catch (Exception e) {
+			e.printStackTrace();
 		}
         
         if(!erreurs.isEmpty()) {
