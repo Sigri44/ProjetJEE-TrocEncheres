@@ -40,7 +40,6 @@ public class CategorieListe extends HttpServlet {
 			 try {
 				ArrayList<Categorie>categorie = CategorieDAO.lister();
 				request.setAttribute("toutesCategorie", categorie);
-				System.out.println(categorie.get(0).toString());
 				this.getServletContext().getRequestDispatcher( "/WEB-INF/jsp/listeEncheres.jsp" ).forward( request, response ); 
 			} catch (SQLException e) {
 				e.printStackTrace();
