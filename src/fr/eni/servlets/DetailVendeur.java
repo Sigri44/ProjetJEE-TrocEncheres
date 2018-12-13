@@ -2,8 +2,6 @@ package fr.eni.servlets;
 
 import java.io.IOException;
 import java.sql.SQLException;
-import java.util.HashMap;
-import java.util.Map;
 
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
@@ -26,7 +24,6 @@ public class DetailVendeur extends HttpServlet {
      */
     public DetailVendeur() {
         super();
-        // TODO Auto-generated constructor stub
     }
 
 	/**
@@ -52,7 +49,6 @@ public class DetailVendeur extends HttpServlet {
 	 * @see HttpServlet#doPost(HttpServletRequest request, HttpServletResponse response)
 	 */
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		// TODO Auto-generated method stub
 		doGet(request, response);
 	}
 

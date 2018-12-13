@@ -1,12 +1,8 @@
 package fr.eni.servlets;
 
-import java.io.File;
 import java.io.IOException;
 import java.sql.SQLException;
 import java.util.ArrayList;
-import java.util.HashMap;
-import java.util.List;
-import java.util.Map;
 
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
@@ -15,15 +11,13 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
 import fr.eni.dal.CategorieDAO;
-import fr.eni.dal.UtilisateurDAO;
 import fr.eni.dal.VenteDAO;
 import fr.eni.model.Categorie;
-import fr.eni.model.Utilisateur;
 import fr.eni.model.Vente;
 
 @WebServlet("/listeEncheres")
 public class ListeEncheres extends HttpServlet {
-	private final String UPLOAD_DIRECTORY = System.getProperty("user.home") + File.separator + "git" + File.separator + "ProjetJEE-TrocEncheres" + File.separator + "WebContent" + File.separator + "upload";
+	//private final String UPLOAD_DIRECTORY = System.getProperty("user.home") + File.separator + "git" + File.separator + "ProjetJEE-TrocEncheres" + File.separator + "WebContent" + File.separator + "upload";
 	private static final long serialVersionUID = 1L;
 
     public ListeEncheres() {

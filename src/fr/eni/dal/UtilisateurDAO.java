@@ -17,8 +17,8 @@ public class UtilisateurDAO {
 	private static final String SEARCHBYMAIL = "select email from UTILISATEURS where email = ?";
 	private static final String SEARCHBYTEL = "select telephone from UTILISATEURS where telephone = ?";
 	private static final String LISTER 	= "select * from UTILISATEURS";
-	private static final String LOGINMAIL = "select * from UTILISATEURS where email=? and mot_de_passe=?";
-	private static final String LOGINPSEUDO = "select * from UTILISATEURS where pseudo=? and mot_de_passe=?";
+	//private static final String LOGINMAIL = "select * from UTILISATEURS where email=? and mot_de_passe=?";
+	//private static final String LOGINPSEUDO = "select * from UTILISATEURS where pseudo=? and mot_de_passe=?";
 	private static final String CHECKLOGIN = "select *  from UTILISATEURS where (pseudo = ? or email = ?) and mot_de_passe=?";
 	
 	public static void ajouter (Utilisateur utilisateur) throws SQLException {		

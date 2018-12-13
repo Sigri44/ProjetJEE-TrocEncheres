@@ -1,23 +1,19 @@
 package fr.eni.dal;
 
 import java.sql.Connection;
-import java.util.Calendar;
-import java.util.Date;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
-import java.sql.Timestamp;
 
-import fr.eni.model.Categorie;
 import fr.eni.model.Enchere;
 import fr.eni.util.DbConnection;
 
 public class EnchereDAO {
 	private static final String AJOUTER = "INSERT INTO ENCHERES (date_enchere, no_utilisateur, no_vente) VALUES (?,?,?)";
 	private static final String MODIFIER = "UPDATE ENCHERES SET date_enchere = ? WHERE no_vente = ? AND no_utilisateur = ?";
-	private static final String SUPPRIMER = "DELETE FROM ENCHERES WHERE no_vente = ?";
+	//private static final String SUPPRIMER = "DELETE FROM ENCHERES WHERE no_vente = ?";
 	private static final String SEARCHBYVENTEIDANDUSERID = "SELECT * FROM ENCHERES WHERE no_vente = ? AND no_utilisateur = ?";
-	private static final String SEARCHBESTBIDDER = "SELECT UTILISATEURS.no_utilisateur FROM UTILISATEURS  join ENCHERES on UTILISATEURS.no_utilisateur=ENCHERES.no_utilisateur WHERE no_vente = 88 ORDER BY ENCHERES.date_enchere DESC";
+	//private static final String SEARCHBESTBIDDER = "SELECT UTILISATEURS.no_utilisateur FROM UTILISATEURS  join ENCHERES on UTILISATEURS.no_utilisateur=ENCHERES.no_utilisateur WHERE no_vente = 88 ORDER BY ENCHERES.date_enchere DESC";
 	
 	public static void ajouter (Enchere enchere) throws SQLException {		
 		Connection cnx = null;
@@ -76,7 +72,6 @@ public class EnchereDAO {
 	}
 	
 	public static int supprimer (Enchere enchere) throws SQLException {
-		
 		return 1;
 	}
 }

@@ -13,16 +13,15 @@ import fr.eni.model.Utilisateur;
 import fr.eni.model.Vente;
 import fr.eni.util.DbConnection;
 
-
 public class VenteDAO {
 	private static final String AJOUTER = "insert into VENTES (nomarticle,description,date_fin_encheres,"
 			+ "prix_initial,prix_vente,no_utilisateur,no_categorie, image) "
 			+ "values (?,?,?,?,?,?,?,?)";
 	private static final String SUPPRIMER = "delete from VENTES where no_vente = ?";
-	private static final String MODIFIER = "update VENTES set nomarticle =?, description = ?, date_fin_encheres = ?, prix_initial = ?, "
+	/*private static final String MODIFIER = "update VENTES set nomarticle =?, description = ?, date_fin_encheres = ?, prix_initial = ?, "
 			+ "prix_vente = ?, no_utilisateur = ?, "
 			+ "no_categorie = ? ,"
-			+ "where no_vente = ?";
+			+ "where no_vente = ?";*/
 	private static final String MODIFIERPRIXVENTE = "update VENTES set prix_vente =? where no_vente = ?";
 	private static final String MODIFIERIMAGE = "update VENTES set image =? where no_vente = ?";
 	private static final String RECHERCHER = "select * from VENTES where no_vente = ?";
@@ -31,13 +30,12 @@ public class VenteDAO {
 	private static final String SEARCHMYAUCTIONS = "SELECT v.no_vente, v.nomarticle, v.description, v.date_fin_encheres, v.prix_initial, v.prix_vente, v.no_utilisateur, v.no_categorie FROM VENTES v JOIN ENCHERES e ON (v.no_vente = e.no_vente) WHERE e.no_utilisateur = ? AND e.date_enchere > GETDATE()";
 	private static final String SEARCHMYOLDAUCTIONS = "SELECT v.no_vente, v.nomarticle, v.description, v.date_fin_encheres, v.prix_initial, v.prix_vente, v.no_utilisateur, v.no_categorie FROM VENTES v JOIN ENCHERES e ON (v.no_vente = e.no_vente) WHERE e.no_utilisateur = ? AND e.date_enchere < GETDATE()";
 	private static final String LISTER = "select * from VENTES ORDER BY no_vente DESC";
-	private static final String LASTID = "SELECT TOP 1 no_vente from VENTES ORDER BY no_vente DESC";
+	//private static final String LASTID = "SELECT TOP 1 no_vente from VENTES ORDER BY no_vente DESC";
 	
 	public static long modifierPrixVente (Vente vente, int proposition) throws SQLException {
 		Connection cnx = null;
 		PreparedStatement rqt = null;
 		int nbr = 0;
-		ResultSet rs = null;
 		try {
 			cnx = DbConnection.seConnecter();
 			rqt = cnx.prepareStatement(MODIFIERPRIXVENTE);
@@ -58,7 +56,6 @@ public class VenteDAO {
 		Connection cnx = null;
 		PreparedStatement rqt = null;
 		int nbr = 0;
-		ResultSet rs = null;
 		try {
 			cnx = DbConnection.seConnecter();
 			rqt = cnx.prepareStatement(MODIFIERIMAGE);
@@ -301,11 +298,4 @@ public class VenteDAO {
 		}
 		return listeMesAcquisitions;
 	}
-	
-	/*
-	public static Utilisateur getAcheteurByVenteId(int venteId) {
-		Utilisateur acheteur = new Utilisateur();
-		acheteur=EnchereDAO.getWinnerByVenteId(venteId);
-		return acheteur;
-	}*/
 }

@@ -11,9 +11,7 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
 import fr.eni.dal.CategorieDAO;
-import fr.eni.dal.VenteDAO;
 import fr.eni.model.Categorie;
-import fr.eni.model.Vente;
 
 /**
  * Servlet implementation class CategirieListe
