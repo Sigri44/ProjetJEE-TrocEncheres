@@ -102,7 +102,7 @@ public class VenteDAO {
 				Retrait retrait = RetraitDAO.rechercherParId(Integer.parseInt(rs.getString("no_vente")));
 				Utilisateur acheteur = new Utilisateur();
 				Utilisateur vendeur = UtilisateurDAO.rechercherParId(Integer.parseInt(rs.getString("no_utilisateur")));
-				vente = new Vente(rs.getInt("no_vente"), rs.getString("nomArticle"), rs.getString("description"), rs.getDate("date_fin_encheres"), rs.getInt("prix_initial"), rs.getInt("prix_vente"), categorie, retrait, acheteur, vendeur);
+				vente = new Vente(rs.getInt("no_vente"), rs.getString("nomArticle"), rs.getString("description"), rs.getDate("date_fin_encheres"), rs.getInt("prix_initial"), rs.getInt("prix_vente"), categorie, retrait, acheteur, vendeur, rs.getString("image"));
 				listeVente.add(vente);
 			}
 		} finally {
@@ -183,7 +183,7 @@ public class VenteDAO {
 				Retrait retrait = RetraitDAO.rechercherParId(Integer.parseInt(rs.getString("no_vente")));
 				Utilisateur acheteur = new Utilisateur();
 				Utilisateur vendeur = UtilisateurDAO.rechercherParId(Integer.parseInt(rs.getString("no_utilisateur")));
-				vente = new Vente(rs.getInt("no_vente"), rs.getString("nomArticle"), rs.getString("description"), rs.getDate("date_fin_encheres"), rs.getInt("prix_initial"),rs.getInt("prix_vente"), categorie, retrait, acheteur, vendeur);
+				vente = new Vente(rs.getInt("no_vente"), rs.getString("nomArticle"), rs.getString("description"), rs.getDate("date_fin_encheres"), rs.getInt("prix_initial"),rs.getInt("prix_vente"), categorie, retrait, acheteur, vendeur, rs.getString("image"));
 				listeVenteByName.add(vente);
 			}
 		} finally {
@@ -211,7 +211,7 @@ public class VenteDAO {
 				Retrait retrait = RetraitDAO.rechercherParId(Integer.parseInt(rs.getString("no_vente")));
 				Utilisateur acheteur = new Utilisateur();
 				Utilisateur vendeur = UtilisateurDAO.rechercherParId(Integer.parseInt(rs.getString("no_utilisateur")));
-				vente = new Vente(rs.getInt("no_vente"), rs.getString("nomArticle"), rs.getString("description"), rs.getDate("date_fin_encheres"),rs.getInt("prix_initial"), rs.getInt("prix_vente"), categorie, retrait, acheteur, vendeur);
+				vente = new Vente(rs.getInt("no_vente"), rs.getString("nomArticle"), rs.getString("description"), rs.getDate("date_fin_encheres"),rs.getInt("prix_initial"), rs.getInt("prix_vente"), categorie, retrait, acheteur, vendeur, rs.getString("image"));
 				listeMesVentes.add(vente);
 			}
 		} finally {
@@ -239,7 +239,7 @@ public class VenteDAO {
 				Retrait retrait = RetraitDAO.rechercherParId(Integer.parseInt(rs.getString("no_vente")));
 				Utilisateur acheteur = new Utilisateur();
 				Utilisateur vendeur = UtilisateurDAO.rechercherParId(Integer.parseInt(rs.getString("no_utilisateur")));
-				vente = new Vente(rs.getInt("no_vente"), rs.getString("nomArticle"), rs.getString("description"), rs.getDate("date_fin_encheres"),rs.getInt("prix_initial"), rs.getInt("prix_vente"), categorie, retrait, acheteur, vendeur);
+				vente = new Vente(rs.getInt("no_vente"), rs.getString("nomArticle"), rs.getString("description"), rs.getDate("date_fin_encheres"),rs.getInt("prix_initial"), rs.getInt("prix_vente"), categorie, retrait, acheteur, vendeur, rs.getString("image"));
 				listeMesEncheres.add(vente);
 			}
 		} finally {
@@ -267,7 +267,7 @@ public class VenteDAO {
 				Retrait retrait = RetraitDAO.rechercherParId(Integer.parseInt(rs.getString("no_vente")));
 				Utilisateur acheteur = new Utilisateur();
 				Utilisateur vendeur = UtilisateurDAO.rechercherParId(Integer.parseInt(rs.getString("no_utilisateur")));
-				vente = new Vente(rs.getInt("no_vente"), rs.getString("nomArticle"), rs.getString("description"), rs.getDate("date_fin_encheres"),rs.getInt("prix_initial"), rs.getInt("prix_vente"), categorie, retrait, acheteur, vendeur);
+				vente = new Vente(rs.getInt("no_vente"), rs.getString("nomArticle"), rs.getString("description"), rs.getDate("date_fin_encheres"),rs.getInt("prix_initial"), rs.getInt("prix_vente"), categorie, retrait, acheteur, vendeur, rs.getString("image"));
 				listeMesAcquisitions.add(vente);
 			}
 		} finally {

@@ -24,6 +24,7 @@ public class Vente {
 	private Retrait retrait;
 	private Utilisateur vendeur;
 	private Utilisateur acheteur;
+	private String image;
 	
 	public Vente() {
 	}
@@ -37,7 +38,7 @@ public class Vente {
 	}
 	
 	public Vente(int noVente,String nomArticle, String description, Date dateFinEnchere, int miseAPrix, int prixVente, Categorie categorie,
-			Retrait retrait, Utilisateur acheteur,Utilisateur vendeur) {
+			Retrait retrait, Utilisateur acheteur,Utilisateur vendeur, String image) {
 		super();
 		this.noVente = noVente;
 		this.nomArticle = nomArticle;
@@ -49,6 +50,7 @@ public class Vente {
 		this.retrait = retrait;
 		this.acheteur = acheteur;
 		this.vendeur= vendeur;
+		this.setImage(image);
 	}
 	
 	public Vente(String nomArticle, String description, Date dateFinEnchere, int miseAPrix, Categorie categorie,
@@ -139,6 +141,14 @@ public class Vente {
 
 	public void setPrixVente(int prixVente) {
 		this.prixVente = prixVente;
+	}
+
+	public String getImage() {
+		return image;
+	}
+
+	public void setImage(String image) {
+		this.image = image;
 	}
 	
 	

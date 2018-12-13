@@ -23,7 +23,7 @@ import fr.eni.model.Vente;
 
 @WebServlet("/listeEncheres")
 public class ListeEncheres extends HttpServlet {
-	private final String UPLOAD_DIRECTORY = System.getProperty("user.home") + File.separator + "git" + File.separator + "ProjetJEE-TrocEncheres" + File.separator + "WebContent" + File.separator + "WEB-INF" + File.separator + "upload";
+	private final String UPLOAD_DIRECTORY = System.getProperty("user.home") + File.separator + "git" + File.separator + "ProjetJEE-TrocEncheres" + File.separator + "WebContent" + File.separator + "upload";
 	private static final long serialVersionUID = 1L;
 
     public ListeEncheres() {
