@@ -32,7 +32,6 @@ public class DetailVente extends HttpServlet {
      */
     public DetailVente() {
         super();
-        // TODO Auto-generated constructor stub
     }
 
 	/**
@@ -100,7 +99,6 @@ public class DetailVente extends HttpServlet {
 				request.setAttribute("failEnchere", "l'enchère n'a pas pu être enregistrée (proposition trop basse)");
 			}
 		} catch (SQLException e) {
-			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
 	}

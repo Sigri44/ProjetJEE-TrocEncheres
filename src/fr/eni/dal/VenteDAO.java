@@ -181,6 +181,7 @@ public class VenteDAO {
 				vente.setAcheteur(acheteur);
 				vente.setVendeur(vendeur);
 				vente.setRetrait(retrait);
+				vente.setImage(rs.getString("image"));
 			}
 		} finally {
 			if (rs!=null) rs.close();

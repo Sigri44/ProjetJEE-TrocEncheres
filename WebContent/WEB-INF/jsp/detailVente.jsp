@@ -22,7 +22,10 @@
 			</c:if>	
 			<form action="detailVente" method="POST">
 				<div class="row">
-					<div class="col-md-11 col-lg-6 offset-md-1 offset-lg-3">
+					<div class="col-sm-12 col-md-12 col-lg-3">
+						<img class="thumbnail" alt="image" src="upload/${vente.image}">
+					</div>
+					<div class="col-sm-11 col-md-11 col-lg-6">
 						<div class="row">
 							<input type="hidden" id="hiddenId" name="hiddenId" value="${vente.noVente}"/>
 							<h2 class="center">
@@ -64,8 +67,8 @@
 									</div>
 								</div>
 							</div>
-							<div class="col-sm-12 col-md-8 col-lg-8 offset-md-4 offset-lg-4 alignCPdetail">
-								<div class="row">${vente.retrait.codePostal} ${vente.retrait.ville}</div>
+							<div class="col-sm-12 col-md-8 col-lg-8 offset-md-4 offset-lg-4">
+								${vente.retrait.codePostal} ${vente.retrait.ville}
 							</div>					
 						</div>
 						<div class="row">

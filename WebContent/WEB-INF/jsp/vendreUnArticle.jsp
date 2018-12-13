@@ -27,7 +27,7 @@
 		<div class="jumbotron">
 			<div class="row">
 				<div class="col-sm-3">
-					<div id="imageVente" >
+					<div id="imageVente">
 						<img id="blah" src="#" alt="image" />
 					</div>
 				</div>
