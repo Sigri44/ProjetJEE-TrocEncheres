@@ -138,10 +138,12 @@
 							<div class="col-sm-4">
 								<a class="btn btn-lg" ><button type="submit" class="btn lienBouton vert">Publier</button></a>
 							</div>
+							<%--
 							<div class="col-sm-4">
 								<a class="btn btn-lg" href="#"><button type="submit" class="btn lienBouton bleu">Enregistrer</button></a>
 							</div>
-							<div class="col-sm-4">
+							--%>
+							<div class="col-sm-4 offset-sm-4">
 								<a class="btn btn-lg" href="listeEncheres"><button type="button" class="btn lienBouton red">Annuler</button></a>
 							</div>
 						</div>
