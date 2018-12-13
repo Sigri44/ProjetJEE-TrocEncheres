@@ -61,7 +61,7 @@ public class VenteDAO {
 		ResultSet rs = null;
 		try {
 			cnx = DbConnection.seConnecter();
-			rqt = cnx.prepareStatement(MODIFIERPRIXVENTE);
+			rqt = cnx.prepareStatement(MODIFIERIMAGE);
 			rqt.setString(1, image);
 			rqt.setInt(2, noVente);
 			nbr = rqt.executeUpdate();			
