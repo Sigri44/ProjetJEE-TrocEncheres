@@ -154,6 +154,9 @@ public class VendreUnArticle extends HttpServlet {
 								name = key +"_"+ name;							}
 							item.write(new File(UPLOAD_DIRECTORY + File.separator + name));
 							request.setAttribute("photoname", name);
+							System.out.println(name);
+							System.out.println((int) (long)key);
+							VenteDAO.modifierImage((int) (long)key, name);
 						}
 					}
 				} catch (FileUploadException e) {

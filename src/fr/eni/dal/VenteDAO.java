@@ -16,14 +16,15 @@ import fr.eni.util.DbConnection;
 
 public class VenteDAO {
 	private static final String AJOUTER = "insert into VENTES (nomarticle,description,date_fin_encheres,"
-			+ "prix_initial,prix_vente,no_utilisateur,no_categorie) "
-			+ "values (?,?,?,?,?,?,?)";
+			+ "prix_initial,prix_vente,no_utilisateur,no_categorie, image) "
+			+ "values (?,?,?,?,?,?,?,?)";
 	private static final String SUPPRIMER = "delete from VENTES where no_vente = ?";
 	private static final String MODIFIER = "update VENTES set nomarticle =?, description = ?, date_fin_encheres = ?, prix_initial = ?, "
 			+ "prix_vente = ?, no_utilisateur = ?, "
 			+ "no_categorie = ? ,"
 			+ "where no_vente = ?";
 	private static final String MODIFIERPRIXVENTE = "update VENTES set prix_vente =? where no_vente = ?";
+	private static final String MODIFIERIMAGE = "update VENTES set image =? where no_vente = ?";
 	private static final String RECHERCHER = "select * from VENTES where no_vente = ?";
 	private static final String SEARCHBYNAME = "SELECT * FROM VENTES WHERE nomarticle LIKE ('%?%')";
 	private static final String SEARCHBYIDUSER = "SELECT * FROM VENTES WHERE no_utilisateur = ? AND no_vente = ?";
@@ -53,6 +54,27 @@ public class VenteDAO {
 		return nbr;
 	}
 	
+	public static long modifierImage (int noVente, String image) throws SQLException {
+		Connection cnx = null;
+		PreparedStatement rqt = null;
+		int nbr = 0;
+		ResultSet rs = null;
+		try {
+			cnx = DbConnection.seConnecter();
+			rqt = cnx.prepareStatement(MODIFIERPRIXVENTE);
+			rqt.setString(1, image);
+			rqt.setInt(2, noVente);
+			nbr = rqt.executeUpdate();			
+		}  catch (SQLException e) {
+			new SQLException(e.getMessage());
+		}
+		finally{
+			if (rqt!=null) rqt.close();
+			if (cnx!=null) cnx.close();
+		}
+		return nbr;
+	}
+	
 	public static long ajouter (Vente vente) throws SQLException {
 		Connection cnx = null;
 		PreparedStatement rqt = null;
@@ -68,6 +90,7 @@ public class VenteDAO {
 			rqt.setInt(5, vente.getMiseAPrix());
 			rqt.setInt(6, vente.getVendeur().getNoUtilisateur());
 			rqt.setInt(7, vente.getCategorie().getNoCategorie());
+			rqt.setString(8, vente.getImage());
 			rqt.executeUpdate();
 			rs = rqt.getGeneratedKeys();
 			if (rs.next()) {	
