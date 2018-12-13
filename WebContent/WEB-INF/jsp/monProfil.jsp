@@ -219,7 +219,7 @@
                           <a class="btn btn-lg"><button type="submit" class="btn btn-primary vert">Enregistrer</button></a>
 		        		</div>
 		        		<div class="col-sm-12 col-md-4 col-lg-4">
-                          <a class="btn btn-lg" href="supprProfil"><button type="button" class="btn btn-primary red">Supprimer mon compte</button></a>
+                          <a class="btn btn-lg" href="#"><button type="button" class="btn btn-primary red">Supprimer mon compte</button></a>
 		        		</div>
 		        		<div class="col-sm-12 col-md-4 col-lg-4">
 		                    <a class="btn btn-lg" href="profil"><button type="button" class="btn btn-primary bleu">Retour</button></a>
