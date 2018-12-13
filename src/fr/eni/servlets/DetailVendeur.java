@@ -40,7 +40,6 @@ public class DetailVendeur extends HttpServlet {
 	    	  String pseudo = request.getParameter("pseudo");
 	    	  try {
 				Utilisateur user = UtilisateurDAO.getUserByLogin(pseudo);
-				System.out.println(pseudo);
 				request.setAttribute("user", user);
 				this.getServletContext().getRequestDispatcher( "/WEB-INF/jsp/detailVendeur.jsp" ).forward( request, response );
 			} catch (SQLException e) {

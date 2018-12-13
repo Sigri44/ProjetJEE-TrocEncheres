@@ -143,17 +143,20 @@ public class VendreUnArticle extends HttpServlet {
 						e.printStackTrace();
 					} catch (SQLException e) {
 						e.printStackTrace();
-					}					
+					}			
+					vente.setImage("thumbnail.png");
 					key = VenteDAO.ajouter(vente);
 					// Récupération de l'image si uploadée
 					for(FileItem item : multiparts) {
 						if(!item.isFormField()) {
 							String name = new File(item.getName()).getName();
 							if(name != "") {
-								name = key +"_"+ name;							}
-							item.write(new File(UPLOAD_DIRECTORY + File.separator + name));
-							request.setAttribute("photoname", name);
-							VenteDAO.modifierImage((int) (long)key, name);
+								name = key +"_"+ name;	
+								item.write(new File(UPLOAD_DIRECTORY + File.separator + name));
+								request.setAttribute("photoname", name);
+								VenteDAO.modifierImage((int) (long)key, name);
+								}
+							
 						}
 					}
 				} catch (FileUploadException e) {
